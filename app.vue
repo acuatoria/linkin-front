@@ -1,6 +1,6 @@
 <script setup>
 useHead({
-  title: 'Vitesse Nuxt 3',
+  title: 'Linkin',
   link: [
     {
       rel: 'icon', type: 'image/png', href: '/nuxt.png',
@@ -10,7 +10,7 @@ useHead({
 </script>
 
 <template>
-  <NuxtLayout cl>
+  <NuxtLayout>
     <NuxtPage />
   </NuxtLayout>
 </template>

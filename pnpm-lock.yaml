@@ -3,7 +3,9 @@ lockfileVersion: 5.4
 specifiers:
   '@antfu/eslint-config': ^0.25.2
   '@iconify-json/carbon': ^1.1.7
+  '@iconify-json/line-md': ^1.1.14
   '@iconify-json/twemoji': ^1.1.5
+  '@iconify/vue': ^3.2.1
   '@nuxtjs/color-mode': ^3.1.4
   '@pinia/nuxt': ^0.3.1
   '@unocss/nuxt': ^0.45.4
@@ -16,7 +18,9 @@ specifiers:
 devDependencies:
   '@antfu/eslint-config': 0.25.2_qugx7qdu5zevzvxaiqyxfiwquq
   '@iconify-json/carbon': 1.1.7
+  '@iconify-json/line-md': 1.1.14
   '@iconify-json/twemoji': 1.1.5
+  '@iconify/vue': 3.2.1
   '@nuxtjs/color-mode': 3.1.4
   '@pinia/nuxt': 0.3.1_typescript@4.7.4
   '@unocss/nuxt': 0.45.4
@@ -488,6 +492,12 @@ packages:
       '@iconify/types': 1.1.0
     dev: true
 
+  /@iconify-json/line-md/1.1.14:
+    resolution: {integrity: sha512-lsO9trkjgfnj5NLlTlwPf4Z9uJ/LQ/LHOfX+2wWId+1bvgAG+dsjsQ9/+Ro5pL+BSR7aiKeXeBBAWvkMuboJ6g==}
+    dependencies:
+      '@iconify/types': 1.1.0
+    dev: true
+
   /@iconify-json/twemoji/1.1.5:
     resolution: {integrity: sha512-1sTyrLUrMF7QhXS8a9XOd2ySgxgESQTRvhtN471QFdqIaXMi7oWB5UUFh0z984s/al4Iclet+O8BZfuhM9t7lg==}
     dependencies:
@@ -509,6 +519,12 @@ packages:
       local-pkg: 0.4.2
     transitivePeerDependencies:
       - supports-color
+    dev: true
+
+  /@iconify/vue/3.2.1:
+    resolution: {integrity: sha512-c4R6ZgFo1JrJ8aPMMgOPgfU7lBswihMGR+yWe/P4ZukC3kTkeT4+lkt9Pc/itVFMkwva/S/7u9YofmYv57fnNQ==}
+    peerDependencies:
+      vue: 3.x
     dev: true
 
   /@ioredis/commands/1.2.0:
