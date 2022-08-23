@@ -7,6 +7,16 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@nuxtjs/color-mode',
   ],
+  css: [
+    'vuetify/lib/styles/main.sass',
+    // 'mdi/css/materialdesignicons.min.css',
+  ],
+  build: {
+    transpile: ['vuetify'],
+  },
+  env: {
+    baseUrl: process.env.BASE_URL || 'http://localhost:8000',
+  },
   experimental: {
     reactivityTransform: true,
     viteNode: false,

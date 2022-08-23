@@ -32,6 +32,25 @@ export default {
         Discover urls
       </li>
     </ul>
+    
+    <v-card width="400">
+      <v-card-item>
+        <v-card-title>This is a title</v-card-title>
+
+        <v-card-subtitle>This is a subtitle</v-card-subtitle>
+      </v-card-item>
+
+      <v-card-text>
+        This is content
+      </v-card-text>
+    </v-card>
+
+    <v-card class="mx-auto"
+    max-width="344"
+    >
+      <Icon icon="eos-icons:atom-electron" />
+      Discover urls
+    </v-card>
   </div>
 </template>
 
