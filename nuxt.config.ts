@@ -1,4 +1,5 @@
 import { defineNuxtConfig } from 'nuxt'
+import svgLoader from 'vite-svg-loader'
 
 export default defineNuxtConfig({
   modules: [
@@ -15,7 +16,7 @@ export default defineNuxtConfig({
     transpile: ['vuetify'],
   },
   env: {
-    baseUrl: process.env.BASE_URL || 'http://localhost:8000',
+    apiUrl: process.env.BASE_URL || 'http://localhost:8000',
   },
   experimental: {
     reactivityTransform: true,
@@ -36,5 +37,12 @@ export default defineNuxtConfig({
         config.build.rollupOptions.output.inlineDynamicImports = true
       }
     },
+  },
+  vite: {
+    plugins: [
+      svgLoader({
+        /* ... */
+      }),
+    ],
   },
 })
