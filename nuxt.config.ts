@@ -16,7 +16,7 @@ export default defineNuxtConfig({
     transpile: ['vuetify'],
   },
   env: {
-    apiUrl: process.env.BASE_URL || 'http://localhost:8000',
+    apiUrl: process.env.API_URL || 'http://localhost:8000',
   },
   experimental: {
     reactivityTransform: true,
