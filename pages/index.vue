@@ -1,14 +1,15 @@
+<script>
+// This will work in both `<script setup>` and `<script>`
+definePageMeta({
+  layout: 'home',
+})
+</script>
+
 <template>
   <div>
-    <Logos mb-6 />
+    <Header />
     <Suspense>
-      <PageView />
-      <template #fallback>
-        <div op50 italic>
-          <span animate-pulse>Loading...</span>
-        </div>
-      </template>
+      <Intro />
     </Suspense>
-    <InputEntry />
   </div>
 </template>

@@ -1,4 +1,5 @@
 import { defineNuxtConfig } from 'nuxt'
+import svgLoader from 'vite-svg-loader'
 
 export default defineNuxtConfig({
   modules: [
@@ -7,6 +8,16 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@nuxtjs/color-mode',
   ],
+  css: [
+    'vuetify/lib/styles/main.sass',
+    // 'mdi/css/materialdesignicons.min.css',
+  ],
+  build: {
+    transpile: ['vuetify'],
+  },
+  env: {
+    apiUrl: process.env.BASE_URL || 'http://localhost:8000',
+  },
   experimental: {
     reactivityTransform: true,
     viteNode: false,
@@ -26,5 +37,12 @@ export default defineNuxtConfig({
         config.build.rollupOptions.output.inlineDynamicImports = true
       }
     },
+  },
+  vite: {
+    plugins: [
+      svgLoader({
+        /* ... */
+      }),
+    ],
   },
 })

@@ -1,24 +1,37 @@
 {
   "private": true,
-  "packageManager": "pnpm@7.5.0",
   "scripts": {
     "build": "nuxi build",
-    "dev": "nuxi dev",
-    "start": "node .output/server/index.mjs",
     "lint": "eslint .",
-    "postinstall": "nuxi prepare"
+    "dev": "nuxi dev",
+    "postinstall": "nuxi prepare",
+    "start": "node .output/server/index.mjs"
+  },
+  "dependencies": {
+    "@mdi/font": "5.9.55",
+    "roboto-fontface": "*",
+    "sass": "^1.54.5",
+    "vuetify": "^3.0.0-beta.0",
+    "webfontloader": "^1.0.0"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.25.2",
     "@iconify-json/carbon": "^1.1.7",
+    "@iconify-json/line-md": "^1.1.14",
     "@iconify-json/twemoji": "^1.1.5",
+    "@iconify/vue": "^3.2.1",
     "@nuxtjs/color-mode": "^3.1.4",
     "@pinia/nuxt": "^0.3.1",
+    "@types/webfontloader": "^1.0.0",
     "@unocss/nuxt": "^0.45.4",
     "@vueuse/nuxt": "^9.1.0",
     "eslint": "^8.21.0",
     "nuxt": "^3.0.0-rc.6",
     "pinia": "^2.0.17",
-    "typescript": "^4.7.4"
-  }
+    "typescript": "^4.7.4",
+    "vite-svg-loader": "^3.4.0",
+    "vue-cli-plugin-vuetify": "~2.5.4",
+    "webpack-plugin-vuetify": "^2.0.0-alpha.0"
+  },
+  "packageManager": "pnpm@7.5.0"
 }
