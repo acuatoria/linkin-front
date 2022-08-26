@@ -9,7 +9,7 @@
 
 <style scoped>
 .logo{
-  background-image: url('src/assets/logo_256_simple.svg');
+  background-image: url('~/src/assets/logo_256_simple.svg');
   background-size: cover;
   border:0px !important;
 }
