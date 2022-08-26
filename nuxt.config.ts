@@ -10,13 +10,13 @@ export default defineNuxtConfig({
   ],
   css: [
     'vuetify/lib/styles/main.sass',
-    // 'mdi/css/materialdesignicons.min.css',
+    '@mdi/font/css/materialdesignicons.min.css',
   ],
   build: {
     transpile: ['vuetify'],
   },
-  env: {
-    apiUrl: process.env.API_URL || 'http://localhost:8000',
+  publicRuntimeConfig: {
+    API_BASE_URL: process.env.API_BASE_URL || 'http://localhost:8000',
   },
   experimental: {
     reactivityTransform: true,
@@ -40,9 +40,8 @@ export default defineNuxtConfig({
   },
   vite: {
     plugins: [
-      svgLoader({
-        /* ... */
-      }),
+      svgLoader(),
     ],
   },
+
 })
