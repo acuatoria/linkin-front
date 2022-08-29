@@ -1,16 +1,8 @@
-export function useCount() {
-  const count = useState('count', () => Math.round(Math.random() * 20))
-
-  function inc() {
-    count.value += 1
-  }
-  function dec() {
-    count.value -= 1
-  }
-
-  return {
-    count,
-    inc,
-    dec,
-  }
+const counter = ref(0)
+function time_lapsus() {
+  counter.value++
+}
+setInterval(time_lapsus, 500)
+export function color_return(i: number) {
+  return `hsl(${((i * 10) + counter.value * 6 % 360)},80%,50%)`
 }

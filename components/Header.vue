@@ -6,6 +6,7 @@
     gap-3
   >
     <Logos />
+
     <Account />
   </div>
 </template>
