@@ -1,10 +1,5 @@
 <script setup>
-import { Icon } from '@iconify/vue'
 const login = false
-function do_login() {
-  login.value = true
-  // login()
-}
 </script>
 
 <template>
@@ -16,10 +11,7 @@ function do_login() {
   >
     <div class="flex flex-column">
       <div class="bg-white shadow rounded">
-        <Login dialog="login">
-        <!-- <div class="i-line-md:loading-alt-loop" />
-        <Icon icon="eos-icons:installing" /> -->
-        </login>
+        <Login :dialog="login" />
       </div>
 
       <div class="pa-2 mr-5">

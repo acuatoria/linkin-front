@@ -24,6 +24,8 @@
     "@pinia/nuxt": "^0.3.1",
     "@types/webfontloader": "^1.0.0",
     "@unocss/nuxt": "^0.45.4",
+    "@vuelidate/core": "2.0.0-alpha.44",
+    "@vuelidate/validators": "2.0.0-alpha.31",
     "@vueuse/nuxt": "^9.1.0",
     "eslint": "^8.21.0",
     "nuxt": "^3.0.0-rc.6",

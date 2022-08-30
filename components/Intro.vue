@@ -14,15 +14,14 @@ const items = [
       class="mx-auto"
       max-width="600"
       tile
-      :dark="dark"
     >
       <v-list-item
         v-for="(item, i) in items"
         :key="i"
       >
-        <v-list-item-content class="flex">
+        <div class="flex">
           <span class="text-left"> <v-icon v-if="item.icon" :color="color_return(i + 1)" :icon="item.icon" /> {{ item.text }} </span>
-        </v-list-item-content>
+        </div>
       </v-list-item>
     </v-card>
   </div>

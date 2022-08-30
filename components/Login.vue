@@ -1,51 +1,58 @@
 <script>
+import useVuelidate from '@vuelidate/core'
+import { email, required } from '@vuelidate/validators'
+
 export default {
+  setup() {
+    return { v$: useVuelidate() }
+  },
   data() {
     return ({
-      usuario: {},
       response: {},
-      valid: false,
       dialog: false,
-      form: {},
       username: '',
-      nameRules: [
-        v => !!v || 'Username is required',
-      ],
       password: '',
-      passRules: [
-        v => !!v || 'Password is required',
-      ],
+      api_error: '',
+      sending: false,
     })
+  },
+  validations() {
+    return {
+      username: { required },
+      password: { required },
+    }
   },
   watch: {
     response() {
-      const user = useUserStore()
-      user.token = this.response.token
-      user.isLogged = true
+      if (this.response.token) {
+        const user = useUserStore()
+        user.token = this.response.token
+        user.isLogged = true
+        this.dialog = false
+        this.sending = false
+        this.api_error = ''
+      }
     },
+
   },
   methods: {
-    validate() {
-      this.$refs.form.validate()
-    },
-    reset() {
-      this.$refs.form.reset()
-    },
-    resetValidation() {
-      this.$refs.form.resetValidation()
+    async submitForm() {
+      const isFormCorrect = await this.v$.$validate()
+      if (!isFormCorrect)
+        return
+      this.api_error = ''
+      this.sending = true
+      this.submit()
     },
     async submit() {
       try {
-        this.response = await $fetch('/api-token-auth/', {
-          baseURL: useRuntimeConfig().API_BASE_URL,
-          method: 'POST', // Post method works
-          body: {
-            username: this.username, password: this.password,
-          },
+        this.response = await login({
+          username: this.username, password: this.password,
         })
       }
       catch (error) {
-        this.answer = `Error! Could not reach the API. ${error}`
+        this.api_error = Object.values(error.data).toString()
+        this.sending = false
       }
     },
   },
@@ -53,51 +60,67 @@ export default {
 </script>
 
 <template>
-  <v-row justify="center">
-    <v-dialog
-      v-model="dialog"
-    >
-      <template #activator="{ props }">
-        <v-btn
-          color="primary"
-          v-bind="props"
-        >
-          <v-icon icon="i-line-md:account" />
-          Sign in
-        </v-btn>
-      </template>
+  <v-dialog
+    v-model="dialog"
+  >
+    <template #activator="{ props }">
+      <v-btn
+        color="primary"
+        v-bind="props"
+      >
+        <v-icon icon="i-line-md:account" />
+        Sign in
+      </v-btn>
+    </template>
 
-      <v-card width="50vh">
-        <v-form
-          ref="form"
-          v-model="valid"
-          lazy-validation
-        >
+    <v-card width="50vh">
+      <v-alert
+        v-if="api_error"
+        prominent
+        type="error"
+        variant="outlined"
+      >
+        {{ api_error }}
+      </v-alert>
+      <v-form
+        ref="form"
+      >
+        <div :class="{ 'text-red': v$.username.$errors.length }">
           <v-text-field
             v-model="username"
+            type="username"
             label="username"
-            required
-            :rules="nameRules"
           />
+          <div v-for="error of v$.username.$errors" :key="error.$uid" class="input-errors">
+            <div class="error-msg">
+              {{ error.$message }}
+            </div>
+          </div>
+        </div>
 
+        <div :class="{ 'text-red': v$.password.$errors.length }">
           <v-text-field
             v-model="password"
             type="password"
             label="password"
-            :rules="passRules"
-            required
           />
+          <div v-for="error of v$.password.$errors" :key="error.$uid" class="input-errors">
+            <div class="error-msg">
+              {{ error.$message }}
+            </div>
+          </div>
+        </div>
 
-          <v-btn
-            :disabled="!valid"
-            color="primary"
-            class="mr-4"
-            @click="submit"
-          >
-            Sig In
-          </v-btn>
-        </v-form>
-      </v-card>
-    </v-dialog>
-  </v-row>
+        <v-btn
+          color="primary"
+          class="mr-4"
+          :disabled="sending"
+          @click="submitForm"
+        >
+          Sign In
+          <v-icon v-show="sending" icon="i-line-md:loading-alt-loop" />
+        </v-btn>
+      </v-form>
+    </v-card>
+  </v-dialog>
 </template>

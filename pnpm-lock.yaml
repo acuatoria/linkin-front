@@ -11,6 +11,8 @@ specifiers:
   '@pinia/nuxt': ^0.3.1
   '@types/webfontloader': ^1.0.0
   '@unocss/nuxt': ^0.45.4
+  '@vuelidate/core': 2.0.0-alpha.44
+  '@vuelidate/validators': 2.0.0-alpha.31
   '@vueuse/nuxt': ^9.1.0
   eslint: ^8.21.0
   nuxt: ^3.0.0-rc.6
@@ -41,6 +43,8 @@ devDependencies:
   '@pinia/nuxt': 0.3.1_typescript@4.7.4
   '@types/webfontloader': 1.6.34
   '@unocss/nuxt': 0.45.4
+  '@vuelidate/core': 2.0.0-alpha.44
+  '@vuelidate/validators': 2.0.0-alpha.31
   '@vueuse/nuxt': 9.1.0
   eslint: 8.21.0
   nuxt: 3.0.0-rc.6_sass@1.54.5
@@ -1524,6 +1528,24 @@ packages:
 
   /@vue/shared/3.2.37:
     resolution: {integrity: sha512-4rSJemR2NQIo9Klm1vabqWjD8rs/ZaJSzMxkMNeJS6lHiUjjUeYFbooN19NgFjztubEKh3WlZUeOLVdbbUWHsw==}
+    dev: true
+
+  /@vuelidate/core/2.0.0-alpha.44:
+    resolution: {integrity: sha512-3DlCe3E0RRXbB+OfPacUetKhLmXzmnjeHkzjnbkc03p06mKm6h9pXR5pd6Mv4s4tus4sieuKDb2YWNmKK6rQeA==}
+    dependencies:
+      vue-demi: 0.13.5
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+      - vue
+    dev: true
+
+  /@vuelidate/validators/2.0.0-alpha.31:
+    resolution: {integrity: sha512-+MFA9nZ7Y9zCpq383/voPDk/hiAmu6KqiJJhLOYB/FmrUPVoyKnuKnI9Bwiq8ok9GZlVkI8BnIrKPKGj9QpwiQ==}
+    dependencies:
+      vue-demi: 0.13.5
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+      - vue
     dev: true
 
   /@vuetify/loader-shared/1.5.1_vuetify@3.0.0-beta.8:
