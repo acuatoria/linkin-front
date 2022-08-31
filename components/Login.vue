@@ -1,6 +1,6 @@
 <script>
 import useVuelidate from '@vuelidate/core'
-import { email, required } from '@vuelidate/validators'
+import { required } from '@vuelidate/validators'
 
 export default {
   setup() {
@@ -9,6 +9,7 @@ export default {
   data() {
     return ({
       response: {},
+      user: useUserStore(),
       dialog: false,
       username: '',
       password: '',
@@ -25,9 +26,8 @@ export default {
   watch: {
     response() {
       if (this.response.token) {
-        const user = useUserStore()
-        user.token = this.response.token
-        user.isLogged = true
+        this.user.token = this.response.token
+        this.user.isLogged = true
         this.dialog = false
         this.sending = false
         this.api_error = ''
@@ -65,6 +65,7 @@ export default {
   >
     <template #activator="{ props }">
       <v-btn
+        v-if="!user || !user.isLogged"
         color="primary"
         v-bind="props"
       >

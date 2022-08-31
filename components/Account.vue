@@ -1,5 +1,5 @@
 <script setup>
-const login = false
+const user = useUserStore()
 </script>
 
 <template>
@@ -11,10 +11,10 @@ const login = false
   >
     <div class="flex flex-column">
       <div class="bg-white shadow rounded">
-        <Login :dialog="login" />
+        <Login />
       </div>
 
-      <div class="pa-2 mr-5">
+      <div v-if="!user.isLogged" class="pa-2 mr-5">
         <a class="decoration-line-through" href="#">Register</a>
       </div>
     </div>

@@ -38,6 +38,7 @@ export default defineNuxtConfig({
       }
     },
   },
+  ssr: false,
   vite: {
     plugins: [
       svgLoader(),
