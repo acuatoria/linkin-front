@@ -1,8 +1,10 @@
 <script setup lang="ts">
+import { useTheme } from 'vuetify'
+const theme = useTheme()
 const color = useColorMode()
-
 function toggleDark() {
   color.preference = color.value === 'dark' ? 'light' : 'dark'
+  theme.global.name.value = color.preference
 }
 </script>
 

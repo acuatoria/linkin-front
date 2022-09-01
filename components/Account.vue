@@ -12,6 +12,7 @@ const user = useUserStore()
     <div class="flex flex-column">
       <div class="bg-white shadow rounded">
         <Login />
+        <Logout />
       </div>
 
       <div v-if="!user.isLogged" class="pa-2 mr-5">

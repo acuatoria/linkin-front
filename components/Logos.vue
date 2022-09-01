@@ -26,7 +26,7 @@
           />
         </g>
       </svg>
-      <span text-purple9 mt--2>Linkin</span>
+      <span text-purple9 mt--2 :style="{ color: color_return(1) }">Linkin</span>
     </div>
   </div>
 </template>

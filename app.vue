@@ -2,7 +2,8 @@
 // makes vuetify be dark
 import { useTheme } from 'vuetify'
 const theme = useTheme()
-theme.global.name.value = theme.global.current.value.dark ? 'light' : 'dark'
+const color = useColorMode()
+theme.global.name.value = color.preference
 
 useHead({
   title: 'Linkin',
