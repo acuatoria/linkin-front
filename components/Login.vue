@@ -23,18 +23,6 @@ export default {
       password: { required },
     }
   },
-  watch: {
-    response() {
-      if (this.response.token) {
-        this.user.token = this.response.token
-        this.user.isLogged = true
-        this.dialog = false
-        this.sending = false
-        this.api_error = ''
-      }
-    },
-
-  },
   methods: {
     async submitForm() {
       const isFormCorrect = await this.v$.$validate()
@@ -49,6 +37,14 @@ export default {
         this.response = await login({
           username: this.username, password: this.password,
         })
+        if (this.response.token) {
+          this.user.token = this.response.token
+          this.user.isLogged = true
+          this.dialog = false
+          this.sending = false
+          this.api_error = ''
+          this.$router.push('/user/home')
+        }
       }
       catch (error) {
         this.api_error = Object.values(error.data).toString()

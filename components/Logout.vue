@@ -1,7 +1,9 @@
 <script setup>
 const user = useUserStore()
+const router = useRouter()
 function logout() {
   user.isLogged = false
+  router.push('/')
 }
 </script>
 
