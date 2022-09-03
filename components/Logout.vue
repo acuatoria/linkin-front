@@ -1,8 +1,10 @@
 <script setup>
 const user = useUserStore()
 const router = useRouter()
-function logout() {
-  user.isLogged = false
+async function logout() {
+  const logout = await logout_user(user.token)
+  if (logout)
+    user.isLogged = false
   router.push('/')
 }
 </script>
@@ -10,7 +12,6 @@ function logout() {
 <template>
   <v-btn
     v-if="user && user.isLogged"
-    v-bind="props"
     @click="logout"
   >
     <v-icon icon="i-line-md:cancel" />
