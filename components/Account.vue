@@ -16,11 +16,7 @@ const user = useUserStore()
         </div>
         <div v-if="user && user.isLogged" class="flex flex-column">
           <Logout />
-          <div class="flex justify-around mt-8">
-            <NuxtLink to="/user/home">
-              <v-icon icon="i-line-md:hash-small" />
-            </NuxtLink>
-          </div>
+          <Navegation />
         </div>
       </div>
     </div>

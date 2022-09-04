@@ -6,7 +6,7 @@ definePageMeta({
   middleware: ['auth'],
 })
 const user = useUserStore()
-const records = await get_user_links(user.token)
+const records = await UserLinks.index(user.token)
 </script>
 
 <template>

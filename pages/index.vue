@@ -7,8 +7,7 @@ useHead({
 <template>
   <div>
     <Header />
-    <Suspense>
-      <Intro />
-    </Suspense>
+
+    <Intro />
   </div>
 </template>
