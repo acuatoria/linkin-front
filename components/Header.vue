@@ -4,8 +4,9 @@
     flex
     justify-center
     gap-3
+    items-center
   >
-    <Logos />
+    <Logo />
 
     <Account />
   </div>

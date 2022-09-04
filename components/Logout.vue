@@ -11,7 +11,6 @@ async function logout() {
 
 <template>
   <v-btn
-    v-if="user && user.isLogged"
     @click="logout"
   >
     <v-icon icon="i-line-md:cancel" />

@@ -10,13 +10,18 @@ const user = useUserStore()
     gap-3
   >
     <div class="flex flex-column">
-      <div class="bg-white shadow rounded">
-        <Login />
-        <Logout />
-      </div>
-
-      <div v-if="!user.isLogged" class="pa-2 mr-5">
-        <a class="decoration-line-through" href="#">Register</a>
+      <div class="shadow rounded">
+        <div v-if="!user || !user.isLogged">
+          <Login />
+        </div>
+        <div v-if="user && user.isLogged" class="flex flex-column">
+          <Logout />
+          <div class="flex justify-around mt-8">
+            <NuxtLink to="/user/home">
+              <v-icon icon="i-line-md:hash-small" />
+            </NuxtLink>
+          </div>
+        </div>
       </div>
     </div>
   </div>

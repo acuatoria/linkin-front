@@ -61,7 +61,7 @@ export default {
   >
     <template #activator="{ props }">
       <v-btn
-        v-if="!user || !user.isLogged"
+
         color="primary"
         v-bind="props"
       >
