@@ -1,0 +1,101 @@
+<script>
+import useVuelidate from '@vuelidate/core'
+import { required } from '@vuelidate/validators'
+
+export default {
+  setup() {
+    return { v$: useVuelidate() }
+  },
+  data() {
+    return ({
+      response: {},
+      user: useUserStore(),
+      dialog: false,
+      url: '',
+      api_error: '',
+      sending: false,
+    })
+  },
+  validations() {
+    return {
+      url: { required },
+    }
+  },
+  methods: {
+    async submitForm() {
+      const isFormCorrect = await this.v$.$validate()
+      if (!isFormCorrect)
+        return
+      this.api_error = ''
+      this.sending = true
+      this.submit()
+    },
+    async submit() {
+      const user = useUserStore()
+      try {
+        this.response = await UserLinks.store({ data: { url_string: this.url }, token: user.token })
+        this.dialog = false
+      }
+      catch (error) {
+        const errore = await error
+        this.api_error = Object.values(errore).toString()
+        this.sending = false
+      }
+    },
+  },
+}
+</script>
+
+<template>
+  <v-dialog
+    v-model="dialog"
+  >
+    <template #activator="{ props }">
+      <v-btn
+
+        color="primary"
+        v-bind="props"
+      >
+        <v-icon icon="i-line-md:external-link" />
+        New link
+      </v-btn>
+    </template>
+
+    <v-card width="50vh">
+      <v-alert
+        v-if="api_error"
+        prominent
+        type="error"
+        variant="outlined"
+      >
+        {{ api_error }}
+      </v-alert>
+      <v-form
+        ref="form"
+      >
+        <div :class="{ 'text-red': v$.url.$errors.length }">
+          <v-text-field
+            v-model="url"
+            type="url"
+            label="url"
+          />
+          <div v-for="error of v$.url.$errors" :key="error.$uid" class="input-errors">
+            <div class="error-msg">
+              {{ error.$message }}
+            </div>
+          </div>
+        </div>
+
+        <v-btn
+          color="primary"
+          class="mr-4"
+          :disabled="sending"
+          @click="submitForm"
+        >
+          Save
+          <v-icon v-show="sending" icon="i-line-md:loading-alt-loop" />
+        </v-btn>
+      </v-form>
+    </v-card>
+  </v-dialog>
+</template>

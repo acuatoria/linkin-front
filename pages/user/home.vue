@@ -1,4 +1,6 @@
 <script setup>
+import DeleteLink from '../../components/DeleteLink.vue'
+import NewLink from '~~/components/NewLink.vue'
 useHead({
   title: 'My links',
 })
@@ -13,9 +15,14 @@ const records = await UserLinks.index(user.token)
   <div>
     <Header />
     My links
+
+    <NewLink />
     <v-list v-for="record in records.results" :key="record.id">
       <v-item-group>
-        <v-item><a :href="record.url" target="_blank">{{ record.url }}</a></v-item>
+        <v-item>
+          <a :href="record.url" target="_blank">{{ record.url }}</a>
+          <DeleteLink :id="record.id" />
+        </v-item>
       </v-item-group>
     </v-list>
   </div>
