@@ -1,13 +1,20 @@
+<script setup>
+defineProps({
+  path: String,
+})
+</script>
+
 <template>
   <div
-    m-5
+
     flex
-    justify-center
-    gap-3
+    justify-between
     items-center
   >
     <Logo />
-
+    <div>
+      {{ path }}
+    </div>
     <Account />
   </div>
 </template>

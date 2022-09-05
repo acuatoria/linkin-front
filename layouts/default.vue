@@ -7,3 +7,10 @@
     </div>
   </main>
 </template>
+
+<style>
+body{
+  max-width: 1024px;
+  margin:auto;
+}
+</style>

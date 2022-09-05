@@ -3,6 +3,7 @@ import useVuelidate from '@vuelidate/core'
 import { required } from '@vuelidate/validators'
 
 export default {
+  emits: ['update'],
   setup() {
     return { v$: useVuelidate() }
   },
@@ -34,6 +35,7 @@ export default {
       const user = useUserStore()
       try {
         this.response = await UserLinks.store({ data: { url_string: this.url }, token: user.token })
+        this.$emit('update')
         this.dialog = false
       }
       catch (error) {
@@ -61,7 +63,7 @@ export default {
       </v-btn>
     </template>
 
-    <v-card width="50vh">
+    <v-card class="alert_form">
       <v-alert
         v-if="api_error"
         prominent
@@ -99,3 +101,9 @@ export default {
     </v-card>
   </v-dialog>
 </template>
+
+<style scoped>
+.alert_form{
+  min-width: 250px;
+}
+</style>
