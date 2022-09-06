@@ -1,6 +1,4 @@
 <script setup>
-import DeleteLink from '../../components/DeleteLink.vue'
-import NewLink from '~~/components/NewLink.vue'
 useHead({
   title: 'My links',
 })
@@ -8,22 +6,61 @@ definePageMeta({
   middleware: ['auth'],
 })
 const user = useUserStore()
-const records = await UserLinks.index(user.token)
+
+const records = ref([])
+
+async function update() {
+  records.value = await UserLinks.index(user.token)
+}
+
+onMounted(async () => {
+  update()
+})
 </script>
 
 <template>
-  <div>
-    <Header />
-    My links
+  <div class="my_links">
+    <Header path="My links" />
+    <div flex justify-end class="header">
+      <NewLink @update="update" />
+    </div>
 
-    <NewLink />
     <v-list v-for="record in records.results" :key="record.id">
       <v-item-group>
         <v-item>
-          <a :href="record.url" target="_blank">{{ record.url }}</a>
-          <DeleteLink :id="record.id" />
+          <div flex flex-row justify-between items-center>
+            <div text-left ml-3 overflow-x-auto>
+              <div class="item-text">
+                <span text-size-sm>{{ record.description }}</span>
+              </div>
+
+              <div class="item-text" text-size-xs>
+                {{ record.url }}
+              </div>
+            </div>
+
+            <div class="options_btn">
+              <LinkOptions :id="record.id" @update="update" />
+            </div>
+          </div>
         </v-item>
       </v-item-group>
     </v-list>
   </div>
 </template>
+
+<style scoped>
+.header > *{
+  margin:auto;
+  width: 50%;
+}
+.options_btn{
+  max-width: 50px;
+}
+.item-text{
+  max-height: 60px;
+  line-height: 20px;
+  overflow-x: scroll;
+  white-space: nowrap;
+}
+</style>

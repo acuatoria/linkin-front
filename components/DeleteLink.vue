@@ -1,6 +1,7 @@
 <script>
 export default {
   props: ['id'],
+  emits: ['update'],
   data() {
     return ({
       response: {},
@@ -25,6 +26,7 @@ export default {
       const user = useUserStore()
       try {
         this.response = await UserLinks.delete({ id: this.id, token: user.token })
+        this.$emit('update')
         this.dialog = false
       }
       catch (error) {
@@ -43,15 +45,14 @@ export default {
   >
     <template #activator="{ props }">
       <v-btn
-
-        color="primary"
         v-bind="props"
       >
+        Delete link
         <v-icon icon="i-line-md:remove" />
       </v-btn>
     </template>
 
-    <v-card width="50vh">
+    <v-card>
       <v-alert
         v-if="api_error"
         prominent
@@ -62,11 +63,12 @@ export default {
       </v-alert>
       <v-form
         ref="form"
+        flex
+        flex-col
       >
-        Do you want to remove this link?
+        <span>Do you want to remove this link?</span>
         <v-btn
-          color="primary"
-          class="mr-4"
+          color="secondary"
           :disabled="sending"
           @click="submitForm"
         >
