@@ -13,6 +13,7 @@ export default {
       user: useUserStore(),
       dialog: false,
       url: '',
+      description: '',
       api_error: '',
       sending: false,
     })
@@ -34,9 +35,15 @@ export default {
     async submit() {
       const user = useUserStore()
       try {
-        this.response = await UserLinks.store({ data: { url_string: this.url }, token: user.token })
-        this.$emit('update')
+        this.response = await UserLinks.store({
+          data: { url_string: this.url, description: this.description },
+          token: user.token,
+        })
+        this.sending = false
         this.dialog = false
+        this.url = this.description = ''
+        this.$emit('update')
+        this.v$.$reset()
       }
       catch (error) {
         const errore = await error
@@ -75,6 +82,12 @@ export default {
       <v-form
         ref="form"
       >
+        <v-text-field
+          v-model="description"
+          type="string"
+          label="description"
+        />
+
         <div :class="{ 'text-red': v$.url.$errors.length }">
           <v-text-field
             v-model="url"

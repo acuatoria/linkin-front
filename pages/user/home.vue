@@ -21,7 +21,7 @@ onMounted(async () => {
 <template>
   <div class="my_links">
     <Header path="My links" />
-    <div flex justify-end class="header">
+    <div mb-5 mt-5 flex justify-end class="header">
       <NewLink @update="update" />
     </div>
 
@@ -31,10 +31,10 @@ onMounted(async () => {
           <div flex flex-row justify-between items-center>
             <div text-left ml-3 overflow-x-auto>
               <div class="item-text">
-                <span text-size-sm>{{ record.description }}</span>
+                <span text-size-lg>{{ record.description }}</span>
               </div>
 
-              <div class="item-text" text-size-xs>
+              <div class="item-text" text-size-sm>
                 {{ record.url }}
               </div>
             </div>
@@ -58,9 +58,8 @@ onMounted(async () => {
   max-width: 50px;
 }
 .item-text{
-  max-height: 60px;
-  line-height: 20px;
-  overflow-x: scroll;
+  line-height: 1.4em;
+  overflow-x: auto;
   white-space: nowrap;
 }
 </style>

@@ -12,6 +12,7 @@ const items = [
   <div class="grid grid-flow-column">
     <v-card
       class="mx-auto"
+      mt-8
       max-width="600"
       tile
     >
