@@ -27,10 +27,10 @@ onMounted(async () => {
 
     <v-list v-for="record in records.results" :key="record.id">
       <v-item-group>
-        <a :href="record.url" target="_blank">
-          <v-item>
-            <div flex flex-row justify-between items-center>
-              <div text-left ml-3 overflow-x-auto>
+        <v-item>
+          <div flex flex-row justify-between items-center>
+            <div text-left ml-3 overflow-x-auto>
+              <a :href="record.url" target="_blank">
                 <div class="item-text">
                   <span text-size-lg>{{ record.description }}</span>
                 </div>
@@ -38,14 +38,14 @@ onMounted(async () => {
                 <div class="item-text" text-size-sm>
                   {{ record.url }}
                 </div>
-              </div>
-
-              <div class="options_btn">
-                <LinkOptions :id="record.id" @update="update" />
-              </div>
+              </a>
             </div>
-          </v-item>
-        </a>
+
+            <div class="options_btn">
+              <LinkOptions :id="record.id" @update="update" />
+            </div>
+          </div>
+        </v-item>
       </v-item-group>
     </v-list>
   </div>
