@@ -27,23 +27,25 @@ onMounted(async () => {
 
     <v-list v-for="record in records.results" :key="record.id">
       <v-item-group>
-        <v-item>
-          <div flex flex-row justify-between items-center>
-            <div text-left ml-3 overflow-x-auto>
-              <div class="item-text">
-                <span text-size-lg>{{ record.description }}</span>
+        <a :href="record.url" target="_blank">
+          <v-item>
+            <div flex flex-row justify-between items-center>
+              <div text-left ml-3 overflow-x-auto>
+                <div class="item-text">
+                  <span text-size-lg>{{ record.description }}</span>
+                </div>
+
+                <div class="item-text" text-size-sm>
+                  {{ record.url }}
+                </div>
               </div>
 
-              <div class="item-text" text-size-sm>
-                {{ record.url }}
+              <div class="options_btn">
+                <LinkOptions :id="record.id" @update="update" />
               </div>
             </div>
-
-            <div class="options_btn">
-              <LinkOptions :id="record.id" @update="update" />
-            </div>
-          </div>
-        </v-item>
+          </v-item>
+        </a>
       </v-item-group>
     </v-list>
   </div>

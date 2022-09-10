@@ -1,6 +1,11 @@
-<script setup>
-useHead({
-  title: 'Home',
+<script>
+export default {
+  head: {
+    title: 'Home',
+  },
+}
+definePageMeta({
+  middleware: ['redirect'],
 })
 </script>
 
