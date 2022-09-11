@@ -1,4 +1,4 @@
-export const UserLinks = {
+export const UserLink = {
   index(token: string) {
     return fetch(`${useRuntimeConfig().API_BASE_URL}api/v1/url-user/`, {
       method: 'GET',
@@ -21,8 +21,10 @@ export const UserLinks = {
         'Accept': 'application/json',
       },
     }).then((response) => {
-      if (response.status !== 201)
+      if (response.status !== 201 && response.status !== 500)
         throw response.json()
+      if (response.status === 500)
+        throw response
       else
         return response.json()
     })

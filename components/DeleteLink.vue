@@ -25,7 +25,7 @@ export default {
     async submit() {
       const user = useUserStore()
       try {
-        this.response = await UserLinks.delete({ id: this.id, token: user.token })
+        this.response = await UserLink.delete({ id: this.id, token: user.token })
         this.$emit('update')
         this.dialog = false
       }

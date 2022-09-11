@@ -16,6 +16,8 @@ export default {
       description: '',
       api_error: '',
       sending: false,
+      categories: {},
+      category_selected: '',
     })
   },
   validations() {
@@ -23,6 +25,10 @@ export default {
       url: { required },
     }
   },
+  mounted() {
+    this.categories = useCategoryStore().categories.results
+  },
+
   methods: {
     async submitForm() {
       const isFormCorrect = await this.v$.$validate()
@@ -35,19 +41,22 @@ export default {
     async submit() {
       const user = useUserStore()
       try {
-        this.response = await UserLinks.store({
-          data: { url_string: this.url, description: this.description },
+        this.response = await UserLink.store({
+          data: { url_string: this.url, description: this.description, category: this.category_selected.id },
           token: user.token,
         })
-        this.sending = false
-        this.dialog = false
-        this.url = this.description = ''
+
+        this.sending = this.dialog = false
+        this.url = this.description = this.category_selected = ''
         this.$emit('update')
         this.v$.$reset()
       }
       catch (error) {
         const errore = await error
-        this.api_error = Object.values(errore).toString()
+        if (errore.status === 500)
+          this.api_error = 'Server error'
+        else
+          this.api_error = Object.values(errore).toString()
         this.sending = false
       }
     },
@@ -99,6 +108,17 @@ export default {
               {{ error.$message }}
             </div>
           </div>
+        </div>
+
+        <div class="categories">
+          <v-select
+            v-model="category_selected"
+            :items="categories"
+            item-title="name"
+            item-value="id"
+            dense
+            return-object
+          />
         </div>
 
         <v-btn

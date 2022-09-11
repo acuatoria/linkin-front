@@ -7,12 +7,15 @@ definePageMeta({
 })
 const user = useUserStore()
 
-const records = ref([])
+const userLinks = ref([])
+const categories = ref({})
 
 async function update() {
-  records.value = await UserLinks.index(user.token)
+  useCategoryStore().categories = await Category.index(user.token)
+  categories.value = useCategoryStore().categories
+  userLinks.value = await UserLink.index(user.token)
 }
-
+// categories.results.find(item => item.id === record.category).name
 onMounted(async () => {
   update()
 })
@@ -25,7 +28,7 @@ onMounted(async () => {
       <NewLink @update="update" />
     </div>
 
-    <v-list v-for="record in records.results" :key="record.id">
+    <v-list v-for="record, index in userLinks.results" :key="record.id">
       <v-item-group>
         <v-item>
           <div flex flex-row justify-between items-center>
@@ -44,6 +47,11 @@ onMounted(async () => {
             <div class="options_btn">
               <LinkOptions :id="record.id" @update="update" />
             </div>
+          </div>
+          <div flex>
+            <v-chip v-if="categories.results && record.category" :color="color_return(1 * index)">
+              {{ categories.results.find(item => item.id === record.category).name }}
+            </v-chip>
           </div>
         </v-item>
       </v-item-group>
