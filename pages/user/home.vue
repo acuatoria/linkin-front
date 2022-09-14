@@ -5,6 +5,7 @@ useHead({
 definePageMeta({
   middleware: ['auth'],
 })
+const haystack = ref('')
 const user = useUserStore()
 
 const userLinks = ref([])
@@ -25,11 +26,14 @@ onMounted(async () => {
   <div class="my_links">
     <Header path="My links" />
     <div mb-5 mt-5 flex justify-end class="header">
+      <input v-model="haystack" type="text" placeholder="Filter records">
       <NewLink @update="update" />
     </div>
 
     <v-list v-for="record, index in userLinks.results" :key="record.id">
-      <v-item-group>
+      <v-item-group
+        :style="{ display: record.description.includes(haystack) || record.url.includes(haystack) ? 'unset' : 'none' }"
+      >
         <v-item>
           <div flex flex-row justify-between items-center>
             <div text-left ml-3 overflow-x-auto>
