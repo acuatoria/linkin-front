@@ -1,10 +1,10 @@
 <script>
 export default {
-  props: ['id'],
+  props: ['record'],
   emits: ['update'],
   data() {
     return ({
-      on: false,
+      menu: false,
     })
   },
   methods: {
@@ -17,7 +17,10 @@ export default {
 
 <template>
   <div>
-    <v-menu>
+    <v-menu
+      v-model="menu"
+      :close-on-content-click="false"
+    >
       <template #activator="{ props }">
         <v-btn
           dark
@@ -30,7 +33,10 @@ export default {
 
       <v-list>
         <v-list-item>
-          <DeleteLink :id="id" @update="update" />
+          <DeleteLink :id="record.id" @update="update" @click="menu = false" />
+        </v-list-item>
+        <v-list-item>
+          <EditLink :record="record" @update="update" @click="menu = false" />
         </v-list-item>
       </v-list>
     </v-menu>

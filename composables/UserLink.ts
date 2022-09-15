@@ -30,6 +30,25 @@ export const UserLink = {
     })
   },
 
+  update(data: object) {
+    return fetch(`${useRuntimeConfig().API_BASE_URL}api/v1/url-user/${data.data.id}/`, {
+      method: 'PATCH',
+      body: JSON.stringify(data.data),
+      headers: {
+        'Authorization': 'token' + ` ${data.token}`,
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+    }).then((response) => {
+      if (response.status !== 200 && response.status !== 500)
+        throw response.json()
+      if (response.status === 500)
+        throw response
+      else
+        return response.json()
+    })
+  },
+
   delete(data: object) {
     return fetch(`${useRuntimeConfig().API_BASE_URL}api/v1/url-user/${data.id}/`, {
       method: 'DELETE',

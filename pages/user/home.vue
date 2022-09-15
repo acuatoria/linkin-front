@@ -20,6 +20,13 @@ async function update() {
 onMounted(async () => {
   update()
 })
+
+function search(record) {
+  if (record.description.toLowerCase().includes(haystack.value.toLowerCase())
+      || record.url.toLowerCase().includes(haystack.value.toLowerCase()))
+    return true
+  else return false
+}
 </script>
 
 <template>
@@ -32,7 +39,7 @@ onMounted(async () => {
 
     <v-list v-for="record, index in userLinks.results" :key="record.id">
       <v-item-group
-        :style="{ display: record.description.includes(haystack) || record.url.includes(haystack) ? 'unset' : 'none' }"
+        :style="{ display: search(record) ? 'unset' : 'none' }"
       >
         <v-item>
           <div flex flex-row justify-between items-center>
@@ -49,7 +56,7 @@ onMounted(async () => {
             </div>
 
             <div class="options_btn">
-              <LinkOptions :id="record.id" @update="update" />
+              <LinkOptions :record="record" @update="update" />
             </div>
           </div>
           <div flex>
