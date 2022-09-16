@@ -5,6 +5,7 @@
     flex
     justify-center
     gap-3
+    items-start
   >
     <NuxtLink i-carbon-campsite to="/" title="Home" />
     <DarkToggle />

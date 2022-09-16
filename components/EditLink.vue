@@ -19,7 +19,7 @@ export default {
       api_error: '',
       sending: false,
       categories: {},
-      category_selected: '',
+      category_selected: {},
     })
   },
   validations() {
@@ -48,7 +48,12 @@ export default {
       const user = useUserStore()
       try {
         this.response = await UserLink.update({
-          data: { id: this.id, url_string: this.url, description: this.description, category: this.category_selected.id },
+          data: {
+            id: this.id,
+            url_string: this.url,
+            description: this.description,
+            category: this.category_selected ? this.category_selected.id : '',
+          },
           token: user.token,
         })
 
