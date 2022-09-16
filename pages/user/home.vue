@@ -16,7 +16,6 @@ async function update() {
   categories.value = useCategoryStore().categories
   userLinks.value = await UserLink.index(user.token)
 }
-// categories.results.find(item => item.id === record.category).name
 onMounted(async () => {
   update()
 })

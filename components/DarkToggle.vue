@@ -9,7 +9,7 @@ function toggleDark() {
 </script>
 
 <template>
-  <button class="!outline-none" @click="toggleDark">
+  <button class="!outline-none" title="Dark mode toggle" @click="toggleDark">
     <div class="dark:i-line-md:sun-rising-loop i-line-md:sun-rising-filled-loop" />
   </button>
 </template>

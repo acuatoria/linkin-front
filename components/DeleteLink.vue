@@ -46,9 +46,10 @@ export default {
     <template #activator="{ props }">
       <v-btn
         v-bind="props"
+        color="red"
       >
-        Delete link
         <v-icon icon="i-line-md:remove" />
+        Delete link
       </v-btn>
     </template>
 
@@ -66,9 +67,9 @@ export default {
         flex
         flex-col
       >
-        <span>Do you want to remove this link?</span>
+        <span m-5>Do you want to remove this link?</span>
         <v-btn
-          color="secondary"
+          color="red"
           :disabled="sending"
           @click="submitForm"
         >

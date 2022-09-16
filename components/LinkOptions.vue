@@ -10,6 +10,7 @@ export default {
   methods: {
     update() {
       this.$emit('update')
+      this.menu = false
     },
   },
 }
@@ -19,7 +20,6 @@ export default {
   <div>
     <v-menu
       v-model="menu"
-      :close-on-content-click="false"
     >
       <template #activator="{ props }">
         <v-btn
@@ -33,10 +33,10 @@ export default {
 
       <v-list>
         <v-list-item>
-          <DeleteLink :id="record.id" @update="update" @click="menu = false" />
+          <EditLink :record="record" @update="update" />
         </v-list-item>
         <v-list-item>
-          <EditLink :record="record" @update="update" @click="menu = false" />
+          <DeleteLink :id="record.id" @update="update" />
         </v-list-item>
       </v-list>
     </v-menu>

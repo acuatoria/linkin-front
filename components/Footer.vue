@@ -6,7 +6,8 @@
     justify-center
     gap-3
   >
-    <NuxtLink i-carbon-campsite to="/" />
+    <NuxtLink i-carbon-campsite to="/" title="Home" />
     <DarkToggle />
+    <StopColorParty />
   </div>
 </template>

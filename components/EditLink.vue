@@ -77,7 +77,7 @@ export default {
     <template #activator="{ props }">
       <v-btn
 
-        color="primary"
+        color="secondary"
         v-bind="props"
       >
         <v-icon icon="i-line-md:edit" />
