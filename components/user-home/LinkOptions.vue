@@ -33,10 +33,10 @@ export default {
 
       <v-list>
         <v-list-item>
-          <EditLink :record="record" @update="update" />
+          <UserHomeEditLink :record="record" @update="update" />
         </v-list-item>
         <v-list-item>
-          <DeleteLink :id="record.id" @update="update" />
+          <UserHomeDeleteLink :id="record.id" @update="update" />
         </v-list-item>
       </v-list>
     </v-menu>

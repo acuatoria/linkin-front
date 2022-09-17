@@ -125,6 +125,7 @@ export default {
           <v-select
             v-model="category_selected"
             :items="categories"
+            :clearable="true"
             item-title="name"
             item-value="id"
             dense

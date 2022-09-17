@@ -24,7 +24,7 @@ defineEmits(['update'])
       </div>
 
       <div class="options_btn">
-        <LinkOptions :record="record" @update="$emit('update')" />
+        <UserHomeLinkOptions :record="record" @update="$emit('update')" />
       </div>
     </div>
     <div flex>

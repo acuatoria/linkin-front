@@ -74,7 +74,10 @@ export default {
         color="primary"
         v-bind="props"
       >
-        <v-icon icon="i-line-md:external-link" />
+        <v-icon
+          m-auto
+          icon="i-line-md:external-link"
+        />
         New link
       </v-btn>
     </template>
@@ -115,6 +118,7 @@ export default {
             v-model="category_selected"
             :items="categories"
             item-title="name"
+            :clearable="true"
             item-value="id"
             dense
             return-object
