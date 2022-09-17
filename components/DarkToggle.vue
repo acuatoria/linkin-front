@@ -10,6 +10,6 @@ function toggleDark() {
 
 <template>
   <button class="!outline-none" title="Dark mode toggle" @click="toggleDark">
-    <div class="dark:i-line-md:sun-rising-loop i-line-md:sun-rising-filled-loop" />
+    <div class="dark:i-line-md:sunny-filled i-line-md:moon-filled" />
   </button>
 </template>
