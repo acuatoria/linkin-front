@@ -6,7 +6,7 @@ defineProps({
 
 <template>
   <div
-
+    p-5
     flex
     justify-between
     items-center

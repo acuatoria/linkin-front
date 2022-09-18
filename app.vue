@@ -23,7 +23,7 @@ useHead({
 </script>
 
 <template>
-  <NuxtLayout :name="windowWidth <= '760' ? 'mobile' : 'default'">
+  <NuxtLayout>
     <NuxtPage />
   </NuxtLayout>
 </template>

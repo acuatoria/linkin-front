@@ -53,7 +53,7 @@ function search(record) {
 <template>
   <div class="my_links">
     <Header path="My links" />
-    <div mb-5 mt-5 flex flex-row flex-wrap class="header">
+    <div flex flex-row flex-wrap class="header">
       <v-responsive
         class="mx-auto"
         max-width="300"
@@ -62,7 +62,7 @@ function search(record) {
           v-model="haystack"
           placeholder="Filter records"
           density="compact"
-          variant="solo"
+          variant="outlined"
           :clearable="true"
         />
       </v-responsive>
@@ -77,8 +77,8 @@ function search(record) {
           item-value="id"
           :clearable="true"
           density="compact"
-          placeholder="Filter by category"
-          variant="solo"
+          label="Filter by category"
+          variant="outlined"
           return-object
         />
       </v-responsive>
