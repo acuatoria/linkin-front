@@ -5,13 +5,6 @@ const theme = useTheme()
 const color = useColorMode()
 theme.global.name.value = color.preference
 
-// changes layout dinamically
-const windowWidth = ref(window.innerWidth)
-function onResize() {
-  windowWidth.value = window.innerWidth
-}
-window.addEventListener('resize', onResize)
-
 useHead({
   title: 'Linkin',
   link: [

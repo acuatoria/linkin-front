@@ -9,6 +9,5 @@
   >
     <NuxtLink i-carbon-campsite to="/" title="Home" />
     <DarkToggle />
-    <StopColorParty />
   </div>
 </template>
