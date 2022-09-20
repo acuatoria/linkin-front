@@ -33,8 +33,9 @@ onMounted(async () => {
 
 function search(record) {
   let match = true
-  if (record.description.toLowerCase().includes(haystack.value.toLowerCase())
-      || record.url.toLowerCase().includes(haystack.value.toLowerCase()))
+  const haystack_ = haystack.value.toLowerCase().trim()
+  if (record.description.toLowerCase().includes(haystack_)
+      || record.url.toLowerCase().includes(haystack_))
     match = match & true
   else
     match = match & false
@@ -60,6 +61,7 @@ function search(record) {
       >
         <v-text-field
           v-model="haystack"
+          class="mt-5"
           placeholder="Filter records"
           density="compact"
           variant="outlined"
@@ -67,11 +69,11 @@ function search(record) {
         />
       </v-responsive>
       <v-responsive
-        class="mx-auto"
         max-width="300"
       >
         <v-select
           v-model="category_search"
+          class="mt-5"
           :items="categories.results"
           item-title="name"
           item-value="id"
@@ -97,11 +99,9 @@ function search(record) {
 
     <Dialog :error="server_error" />
 
-    <v-list v-for="record, index in userLinks.results" :key="record.id">
-      <v-item-group
-        :style="{ display: search(record) ? 'unset' : 'none' }"
-      >
-        <UserHomeLink :record="record" :categories="categories" :index="index" @update="update" />
+    <v-list>
+      <v-item-group v-for="record, index in userLinks.results" :key="record.id">
+        <UserHomeLink v-if="search(record)" :record="record" :categories="categories" :index="index" @update="update" />
       </v-item-group>
     </v-list>
   </div>
