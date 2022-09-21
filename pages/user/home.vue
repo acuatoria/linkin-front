@@ -32,6 +32,9 @@ onMounted(async () => {
 })
 
 function search(record) {
+  if (!haystack.value)
+    return true
+
   let match = true
   const haystack_ = haystack.value.toLowerCase().trim()
   if (record.description.toLowerCase().includes(haystack_)
@@ -73,15 +76,15 @@ function search(record) {
       >
         <v-select
           v-model="category_search"
-          class="mt-5"
           :items="categories.results"
           item-title="name"
           item-value="id"
+          return-object
           :clearable="true"
           density="compact"
+          class="mt-5"
           label="Filter by category"
           variant="outlined"
-          return-object
         />
       </v-responsive>
       <v-responsive

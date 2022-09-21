@@ -21,13 +21,17 @@ export const UserLink = {
         'Accept': 'application/json',
       },
     }).then((response) => {
-      if (response.status !== 201 && response.status !== 500)
-        throw response.json()
-      if (response.status === 500)
-        throw response
-      else
+      if (response.ok)
         return response.json()
+
+      throw response.json()
     })
+      .then((responseJson) => {
+        return responseJson
+      })
+      .catch((error) => {
+        throw error
+      })
   },
 
   update(data: object) {
@@ -40,13 +44,17 @@ export const UserLink = {
         'Accept': 'application/json',
       },
     }).then((response) => {
-      if (response.status !== 200 && response.status !== 500)
-        throw response.json()
-      if (response.status === 500)
-        throw response
-      else
+      if (response.ok)
         return response.json()
+
+      throw response.json()
     })
+      .then((responseJson) => {
+        return responseJson
+      })
+      .catch((error) => {
+        throw error
+      })
   },
 
   delete(data: object) {
@@ -58,10 +66,16 @@ export const UserLink = {
         'Accept': 'application/json',
       },
     }).then((response) => {
-      if (response.status !== 204)
-        throw response.json()
-      else
-        return 'ok'
+      if (response.ok)
+        return response.json()
+
+      throw response.json()
     })
+      .then((responseJson) => {
+        return responseJson
+      })
+      .catch((error) => {
+        throw error
+      })
   },
 }

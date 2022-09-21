@@ -2,9 +2,8 @@
 const user = useUserStore()
 const router = useRouter()
 async function logout() {
-  const logout = await logout_user(user.token)
-  if (logout)
-    user.isLogged = false
+  const _ = await logout_user(user.token)
+  user.isLogged = false
   router.push('/')
 }
 </script>

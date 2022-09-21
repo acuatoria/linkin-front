@@ -52,11 +52,13 @@ export default {
         this.v$.$reset()
       }
       catch (error) {
-        const errore = await error
-        if (errore.status === 500)
-          this.api_error = 'Server error'
-        else
-          this.api_error = Object.values(errore).toString()
+        this.api_error = 'Server error'
+
+        try {
+          const error_msg = await error
+          this.api_error += `: ${Object.values(error_msg).toString()}`
+        }
+        catch (err) {}
         this.sending = false
       }
     },
@@ -98,6 +100,7 @@ export default {
           v-model="description"
           type="string"
           label="description"
+          density="compact"
         />
 
         <div :class="{ 'text-red': v$.url.$errors.length }">
@@ -105,6 +108,7 @@ export default {
             v-model="url"
             type="url"
             label="url"
+            density="compact"
           />
           <div v-for="error of v$.url.$errors" :key="error.$uid" class="input-errors">
             <div class="error-msg">
@@ -118,10 +122,12 @@ export default {
             v-model="category_selected"
             :items="categories"
             item-title="name"
-            :clearable="true"
             item-value="id"
-            dense
             return-object
+            :clearable="true"
+            density="compact"
+            class="mt-5"
+            label="Category"
           />
         </div>
 
