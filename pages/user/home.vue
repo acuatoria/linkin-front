@@ -32,7 +32,7 @@ onMounted(async () => {
 })
 
 function search(record) {
-  if (!haystack.value)
+  if (!haystack.value && !category_search.value)
     return true
 
   let match = true

@@ -53,7 +53,7 @@ export default {
       </v-btn>
     </template>
 
-    <v-card>
+    <v-card class="alert_form">
       <v-alert
         v-if="api_error"
         prominent
@@ -80,3 +80,11 @@ export default {
     </v-card>
   </v-dialog>
 </template>
+
+<style scoped>
+  .alert_form{
+    width: 90%;
+    max-width: 300px;
+    margin: auto;
+  }
+</style>

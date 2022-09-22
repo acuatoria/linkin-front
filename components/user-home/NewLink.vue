@@ -146,7 +146,9 @@ export default {
 </template>
 
 <style scoped>
-.alert_form{
-  min-width: 250px;
-}
+  .alert_form{
+    width: 90%;
+    max-width: 600px;
+    margin: auto;
+  }
 </style>
