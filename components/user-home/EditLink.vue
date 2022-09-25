@@ -13,9 +13,10 @@ export default {
       response: {},
       user: useUserStore(),
       dialog: false,
-      url: '',
       id: '',
-      description: '',
+      link_url: '',
+      link_description: '',
+      link_public: false,
       api_error: '',
       sending: false,
       categories: {},
@@ -24,15 +25,16 @@ export default {
   },
   validations() {
     return {
-      url: { required },
+      link_url: { required },
     }
   },
   mounted() {
     this.categories = useCategoryStore().categories.results
     this.id = this.record.id
-    this.url = this.record.url
-    this.description = this.record.description
+    this.link_url = this.record.url
+    this.link_description = this.record.description
     this.category_selected = this.record.category
+    this.link_public = this.record.public
   },
 
   methods: {
@@ -50,23 +52,23 @@ export default {
         this.response = await UserLink.update({
           data: {
             id: this.id,
-            url_string: this.url,
-            description: this.description,
+            url_string: this.link_url,
+            description: this.link_description,
             category: this.category_selected ? this.category_selected.id : '',
+            public: this.link_public,
           },
           token: user.token,
         })
 
         this.sending = this.dialog = false
-        this.url = this.description = this.category_selected = ''
+        this.link_url = this.link_description = this.category_selected = ''
         this.$emit('update')
         this.v$.$reset()
       }
       catch (error) {
         this.api_error = 'Server error'
-
         try {
-          const error_msg = await error
+          const error_msg = await error.response._data
           this.api_error += `: ${Object.values(error_msg).toString()}`
         }
         catch (err) {}
@@ -105,27 +107,27 @@ export default {
         ref="form"
       >
         <v-text-field
-          v-model="description"
+          v-model="link_description"
           type="string"
           label="description"
           density="compact"
         />
 
-        <div :class="{ 'text-red': v$.url.$errors.length }">
+        <div :class="{ 'text-red': v$.link_url.$errors.length }">
           <v-text-field
-            v-model="url"
+            v-model="link_url"
             type="url"
             label="url"
             density="compact"
           />
-          <div v-for="error of v$.url.$errors" :key="error.$uid" class="input-errors">
+          <div v-for="error of v$.link_url.$errors" :key="error.$uid" class="input-errors">
             <div class="error-msg">
               {{ error.$message }}
             </div>
           </div>
         </div>
 
-        <div class="categories">
+        <div>
           <v-select
             v-model="category_selected"
             :items="categories"
@@ -136,6 +138,15 @@ export default {
             density="compact"
             class="mt-5"
             label="Category"
+          />
+        </div>
+
+        <div>
+          <v-checkbox
+            v-model="link_public"
+            density="compact"
+            class="mt-5"
+            label="Public visibility"
           />
         </div>
 

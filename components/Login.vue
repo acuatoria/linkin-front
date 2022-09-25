@@ -37,20 +37,23 @@ export default {
         this.response = await login({
           username: this.username, password: this.password,
         })
-        if (this.response.token) {
-          // ñapa for v-dialog
-          document.documentElement.removeAttribute('class')
+        // ñapa for v-dialog
+        document.documentElement.removeAttribute('class')
 
-          this.user.token = this.response.token
-          this.user.isLogged = true
-          this.dialog = false
-          this.sending = false
-          this.api_error = ''
-          this.$router.push('/user/home')
-        }
+        this.user.token = this.response.token
+        this.user.isLogged = true
+        this.dialog = false
+        this.sending = false
+        this.api_error = ''
+        this.$router.push('/user/home')
       }
       catch (error) {
-        this.api_error = Object.values(error.data).toString()
+        this.api_error = 'Server error'
+        try {
+          const error_msg = await error.response._data
+          this.api_error += `: ${Object.values(error_msg).toString()}`
+        }
+        catch (err) {}
         this.sending = false
       }
     },
@@ -59,70 +62,75 @@ export default {
 </script>
 
 <template>
-  <div>
-    <v-dialog
-      v-model="dialog"
-    >
-      <template #activator="{ props }">
+  <v-dialog
+    v-model="dialog"
+    text-center
+  >
+    <template #activator="{ props }">
+      <v-btn
+
+        color="primary"
+        v-bind="props"
+      >
+        <v-icon icon="i-line-md:account" />
+        Sign in
+      </v-btn>
+    </template>
+
+    <v-card m-auto>
+      <v-alert
+        v-if="api_error"
+        prominent
+        type="error"
+        variant="outlined"
+      >
+        {{ api_error }}
+      </v-alert>
+      <v-form
+        ref="form"
+      >
+        <div :class="{ 'text-red': v$.username.$errors.length }">
+          <v-text-field
+            v-model="username"
+            type="username"
+            label="username"
+          />
+          <div v-for="error of v$.username.$errors" :key="error.$uid" class="input-errors">
+            <div class="error-msg">
+              {{ error.$message }}
+            </div>
+          </div>
+        </div>
+
+        <div :class="{ 'text-red': v$.password.$errors.length }">
+          <v-text-field
+            v-model="password"
+            type="password"
+            label="password"
+          />
+          <div v-for="error of v$.password.$errors" :key="error.$uid" class="input-errors">
+            <div class="error-msg">
+              {{ error.$message }}
+            </div>
+          </div>
+        </div>
+
         <v-btn
-
           color="primary"
-          v-bind="props"
+          class="mr-4"
+          :disabled="sending"
+          @click="submitForm"
         >
-          <v-icon icon="i-line-md:account" />
-          Sign in
+          Sign In
+          <v-icon v-show="sending" icon="i-line-md:loading-alt-loop" />
         </v-btn>
-      </template>
-
-      <v-card width="50vh">
-        <v-alert
-          v-if="api_error"
-          prominent
-          type="error"
-          variant="outlined"
-        >
-          {{ api_error }}
-        </v-alert>
-        <v-form
-          ref="form"
-        >
-          <div :class="{ 'text-red': v$.username.$errors.length }">
-            <v-text-field
-              v-model="username"
-              type="username"
-              label="username"
-            />
-            <div v-for="error of v$.username.$errors" :key="error.$uid" class="input-errors">
-              <div class="error-msg">
-                {{ error.$message }}
-              </div>
-            </div>
-          </div>
-
-          <div :class="{ 'text-red': v$.password.$errors.length }">
-            <v-text-field
-              v-model="password"
-              type="password"
-              label="password"
-            />
-            <div v-for="error of v$.password.$errors" :key="error.$uid" class="input-errors">
-              <div class="error-msg">
-                {{ error.$message }}
-              </div>
-            </div>
-          </div>
-
-          <v-btn
-            color="primary"
-            class="mr-4"
-            :disabled="sending"
-            @click="submitForm"
-          >
-            Sign In
-            <v-icon v-show="sending" icon="i-line-md:loading-alt-loop" />
-          </v-btn>
-        </v-form>
-      </v-card>
-    </v-dialog>
-  </div>
+      </v-form>
+    </v-card>
+  </v-dialog>
 </template>
+
+<style scoped>
+div{
+  min-width: 315px;
+}
+</style>

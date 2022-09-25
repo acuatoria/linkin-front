@@ -15,6 +15,7 @@ export default {
       url: '',
       description: '',
       api_error: '',
+      link_public: false,
       sending: false,
       categories: {},
       category_selected: '',
@@ -42,7 +43,12 @@ export default {
       const user = useUserStore()
       try {
         this.response = await UserLink.store({
-          data: { url_string: this.url, description: this.description, category: this.category_selected.id },
+          data: {
+            url_string: this.url,
+            description: this.description,
+            category: this.category_selected.id,
+            public: this.link_public,
+          },
           token: user.token,
         })
 
@@ -128,6 +134,15 @@ export default {
             density="compact"
             class="mt-5"
             label="Category"
+          />
+        </div>
+
+        <div>
+          <v-checkbox
+            v-model="link_public"
+            density="compact"
+            class="mt-5"
+            label="Public visibility"
           />
         </div>
 

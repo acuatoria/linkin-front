@@ -1,81 +1,39 @@
 export const UserLink = {
+  userlink_endpoint() { return `${useRuntimeConfig().API_BASE_URL}api/v1/url-user/` },
+  headers(token: string) {
+    return {
+      'Authorization': 'token' + ` ${token}`,
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+    }
+  },
   index(token: string) {
-    return fetch(`${useRuntimeConfig().API_BASE_URL}api/v1/url-user/`, {
+    return $fetch(this.userlink_endpoint(), {
       method: 'GET',
-      headers: { Authorization: 'token' + ` ${token}` },
-    }).then((response) => {
-      if (response.status !== 200)
-        throw response.status
-      else
-        return response.json()
+      headers: this.headers(token),
     })
   },
 
   store(data: object) {
-    return fetch(`${useRuntimeConfig().API_BASE_URL}api/v1/url-user/`, {
+    return $fetch(this.userlink_endpoint(), {
       method: 'POST',
       body: JSON.stringify(data.data),
-      headers: {
-        'Authorization': 'token' + ` ${data.token}`,
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-      },
-    }).then((response) => {
-      if (response.ok)
-        return response.json()
-
-      throw response.json()
+      headers: this.headers(data.token),
     })
-      .then((responseJson) => {
-        return responseJson
-      })
-      .catch((error) => {
-        throw error
-      })
   },
 
   update(data: object) {
-    return fetch(`${useRuntimeConfig().API_BASE_URL}api/v1/url-user/${data.data.id}/`, {
+    return $fetch(`${this.userlink_endpoint()}${data.data.id}/`, {
       method: 'PATCH',
       body: JSON.stringify(data.data),
-      headers: {
-        'Authorization': 'token' + ` ${data.token}`,
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-      },
-    }).then((response) => {
-      if (response.ok)
-        return response.json()
-
-      throw response.json()
+      headers: this.headers(data.token),
     })
-      .then((responseJson) => {
-        return responseJson
-      })
-      .catch((error) => {
-        throw error
-      })
   },
 
   delete(data: object) {
-    return fetch(`${useRuntimeConfig().API_BASE_URL}api/v1/url-user/${data.id}/`, {
+    return $fetch(`${this.userlink_endpoint()}${data.id}/`, {
       method: 'DELETE',
-      headers: {
-        'Authorization': 'token' + ` ${data.token}`,
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-      },
-    }).then((response) => {
-      if (response.ok)
-        return response.json()
-
-      throw response.json()
+      headers: this.headers(data.token),
     })
-      .then((responseJson) => {
-        return responseJson
-      })
-      .catch((error) => {
-        throw error
-      })
   },
 }

@@ -15,13 +15,13 @@ export default {
 </script>
 
 <template>
-  <div class="text-center">
+  <div text-center>
     <v-dialog
       v-model="dialog"
       activator="parent"
     >
       <v-card>
-        <v-card-text>
+        <v-card-text text-center>
           {{ error }}
         </v-card-text>
         <v-card-actions>
@@ -33,3 +33,9 @@ export default {
     </v-dialog>
   </div>
 </template>
+
+<style scoped>
+div{
+  max-width: 512px;
+}
+</style>
