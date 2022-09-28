@@ -123,7 +123,7 @@ const items = computed(() => {
     <v-pagination
       v-model="page"
       :records="items_number"
-      :length="items_number >= items_x_page ? items_number / items_x_page : 1"
+      :length="items_number >= items_x_page ? Math.ceil(items_number / items_x_page) : 1"
     />
   </div>
 </template>
