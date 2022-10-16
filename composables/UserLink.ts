@@ -7,8 +7,8 @@ export const UserLink = {
       'Accept': 'application/json',
     }
   },
-  index(token: string) {
-    return $fetch(this.userlink_endpoint(), {
+  index(token: string, page: Number, query: string, category_search: Number) {
+    return $fetch(`${this.userlink_endpoint()}?page=${page}&query=${query}&category_search=${category_search}`, {
       method: 'GET',
       headers: this.headers(token),
     })

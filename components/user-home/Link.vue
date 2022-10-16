@@ -29,7 +29,12 @@ defineEmits(['update'])
         </div>
       </div>
       <div flex>
-        <v-chip v-if="categories.results && record.category" :color="color_return(1 * index)">
+        <v-chip
+          v-if="categories.results
+            && record.category
+            && categories.results.find(item => item.id === record.category)"
+          :color="color_return(1 * index)"
+        >
           {{ categories.results.find(item => item.id === record.category).name }}
         </v-chip>
       </div>
