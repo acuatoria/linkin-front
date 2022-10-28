@@ -10,30 +10,30 @@
   "dependencies": {
     "@mdi/font": "5.9.55",
     "roboto-fontface": "*",
-    "sass": "^1.54.5",
+    "sass": "^1.56.0",
     "vuetify": "3.0.0-beta.11",
-    "webfontloader": "^1.0.0"
+    "webfontloader": "^1.6.28"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.25.2",
-    "@iconify-json/carbon": "^1.1.7",
-    "@iconify-json/line-md": "^1.1.14",
+    "@iconify-json/carbon": "^1.1.9",
+    "@iconify-json/line-md": "^1.1.18",
     "@iconify-json/twemoji": "^1.1.5",
     "@iconify/vue": "^3.2.1",
-    "@nuxtjs/color-mode": "^3.1.4",
+    "@nuxtjs/color-mode": "^3.1.8",
     "@pinia/nuxt": "^0.3.1",
-    "@types/webfontloader": "^1.0.0",
-    "@unocss/nuxt": "^0.45.4",
+    "@types/webfontloader": "^1.6.35",
+    "@unocss/nuxt": "^0.45.30",
     "@vuelidate/core": "2.0.0-alpha.44",
     "@vuelidate/validators": "2.0.0-alpha.31",
-    "@vueuse/nuxt": "^9.1.0",
-    "eslint": "^8.21.0",
-    "nuxt": "^3.0.0-rc.6",
-    "pinia": "^2.0.17",
-    "typescript": "^4.7.4",
-    "vite-svg-loader": "^3.4.0",
-    "vue-cli-plugin-vuetify": "~2.5.4",
-    "webpack-plugin-vuetify": "^2.0.0-alpha.0"
+    "@vueuse/nuxt": "^9.4.0",
+    "eslint": "^8.26.0",
+    "nuxt": "^3.0.0-rc.13",
+    "pinia": "^2.0.23",
+    "typescript": "^4.8.4",
+    "vite-svg-loader": "^3.6.0",
+    "vue-cli-plugin-vuetify": "~2.5.8",
+    "webpack-plugin-vuetify": "^2.0.0"
   },
   "packageManager": "pnpm@7.5.0"
 }

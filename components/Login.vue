@@ -37,8 +37,6 @@ export default {
         this.response = await login({
           username: this.username, password: this.password,
         })
-        // ñapa for v-dialog
-        document.documentElement.removeAttribute('class')
 
         this.user.token = this.response.token
         this.user.isLogged = true
@@ -64,6 +62,7 @@ export default {
 <template>
   <v-dialog
     v-model="dialog"
+    scroll-strategy="close"
     text-center
   >
     <template #activator="{ props }">

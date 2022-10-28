@@ -42,6 +42,7 @@ export default {
 <template>
   <v-dialog
     v-model="dialog"
+    scroll-strategy="close"
   >
     <template #activator="{ props }">
       <v-btn

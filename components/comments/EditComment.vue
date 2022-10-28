@@ -3,6 +3,7 @@ import useVuelidate from '@vuelidate/core'
 import { required } from '@vuelidate/validators'
 
 export default {
+  props: ['userComment', 'url', 'label'],
   emits: ['update'],
   setup() {
     return { v$: useVuelidate() }
@@ -10,24 +11,19 @@ export default {
   data() {
     return ({
       response: {},
-      user: useUserStore(),
       dialog: false,
-      url: '',
-      description: '',
+      comment: '',
       api_error: '',
-      link_public: false,
       sending: false,
-      categories: {},
-      category_selected: '',
     })
   },
   validations() {
     return {
-      url: { required },
+      comment: { required },
     }
   },
   mounted() {
-    this.categories = useCategoryStore().categories
+    this.comment = this.userComment
   },
 
   methods: {
@@ -42,26 +38,23 @@ export default {
     async submit() {
       const user = useUserStore()
       try {
-        this.response = await UserLink.store({
-          data: {
-            url_string: this.url,
-            description: this.description,
-            category: this.category_selected.id,
-            public: this.link_public,
+        this.response = await Comment.create(
+          user.token,
+          {
+            url: this.url,
+            comment: this.comment,
+            action: this.userComment ? 'update' : 'add',
           },
-          token: user.token,
-        })
+        )
 
-        this.sending = this.dialog = false
-        this.url = this.description = this.category_selected = ''
-        this.$emit('update')
         this.v$.$reset()
+        this.sending = this.dialog = false
+        this.$emit('update')
       }
       catch (error) {
         this.api_error = 'Server error'
-
         try {
-          const error_msg = await error
+          const error_msg = await error.response._data
           this.api_error += `: ${Object.values(error_msg).toString()}`
         }
         catch (err) {}
@@ -75,19 +68,16 @@ export default {
 <template>
   <v-dialog
     v-model="dialog"
-    scroll-strategy="close"
+    scroll-strategy="reposition"
   >
     <template #activator="{ props }">
       <v-btn
-
-        color="primary"
+        prepend-icon="mdi-pen"
+        variant="outlined"
         v-bind="props"
+        :color="`${color_return(66)}`"
       >
-        <v-icon
-          m-auto
-          icon="i-line-md:external-link"
-        />
-        New link
+        {{ label }}
       </v-btn>
     </template>
 
@@ -103,49 +93,21 @@ export default {
       <v-form
         ref="form"
       >
-        <v-text-field
-          v-model="description"
-          type="string"
-          label="description"
-          density="compact"
-        />
-
-        <div :class="{ 'text-red': v$.url.$errors.length }">
-          <v-text-field
-            v-model="url"
-            type="url"
-            label="url (required)"
-            density="compact"
+        <div :class="{ 'text-red': v$.comment.$errors.length }">
+          <v-textarea
+            v-model="comment"
+            outlined
+            name="input-7-4"
+            label="comment"
           />
-          <div v-for="error of v$.url.$errors" :key="error.$uid" class="input-errors">
+
+          <div v-for="error of v$.comment.$errors" :key="error.$uid" class="input-errors">
             <div class="error-msg">
               {{ error.$message }}
             </div>
           </div>
         </div>
 
-        <div class="categories">
-          <v-select
-            v-model="category_selected"
-            :items="categories"
-            item-title="name"
-            item-value="id"
-            return-object
-            :clearable="true"
-            density="compact"
-            class="mt-5"
-            label="Category"
-          />
-        </div>
-
-        <div>
-          <v-checkbox
-            v-model="link_public"
-            density="compact"
-            class="mt-5"
-            label="Public visibility"
-          />
-        </div>
         <v-btn
           color="primary"
           class="mr-4"
@@ -167,3 +129,4 @@ export default {
     margin: auto;
   }
 </style>
+

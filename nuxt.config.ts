@@ -1,4 +1,4 @@
-import { defineNuxtConfig } from 'nuxt'
+import { defineNuxtConfig } from 'nuxt/config'
 import svgLoader from 'vite-svg-loader'
 
 export default defineNuxtConfig({
@@ -20,7 +20,6 @@ export default defineNuxtConfig({
     API_BASE_URL: process.env.API_BASE_URL || 'http://localhost:8000/',
   },
   experimental: {
-    reactivityTransform: true,
     viteNode: false,
   },
   unocss: {
