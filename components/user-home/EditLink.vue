@@ -11,7 +11,6 @@ export default {
   data() {
     return ({
       response: {},
-      user: useUserStore(),
       dialog: false,
       id: '',
       link_url: '',
@@ -29,7 +28,7 @@ export default {
     }
   },
   mounted() {
-    this.categories = useCategoryStore().categories.results
+    this.categories = useCategoryStore().categories
     this.id = this.record.id
     this.link_url = this.record.url
     this.link_description = this.record.description
@@ -82,6 +81,7 @@ export default {
 <template>
   <v-dialog
     v-model="dialog"
+    scroll-strategy="close"
   >
     <template #activator="{ props }">
       <v-btn

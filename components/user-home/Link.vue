@@ -1,11 +1,22 @@
-<script setup>
-defineProps({
-  record: {},
-  categories: {},
-  index: Number,
-
-})
-defineEmits(['update'])
+<script>
+export default {
+  props: ['record', 'categories', 'index'],
+  emits: ['update'],
+  data() {
+    return ({
+      response: {},
+    })
+  },
+  mounted() {
+    this.getCommentsCount()
+  },
+  methods: {
+    async getCommentsCount() {
+      const user = useUserStore()
+      this.response = await CommentCount.index(user.token, this.record.url_id)
+    },
+  },
+}
 </script>
 
 <template>
@@ -30,12 +41,19 @@ defineEmits(['update'])
       </div>
       <div flex>
         <v-chip
-          v-if="categories.results
+          v-if="categories
             && record.category
-            && categories.results.find(item => item.id === record.category)"
+            && categories.find(item => item.id === record.category)"
           :color="color_return(1 * index)"
         >
-          {{ categories.results.find(item => item.id === record.category).name }}
+          {{ categories.find(item => item.id === record.category).name }}
+        </v-chip>
+        <v-chip
+          :color="color_return(1 * index)"
+        >
+          <a @click="$router.push(`/link-page/${record.url_id}`)">
+            {{ response.comments }}<v-icon>mdi-comment-multiple</v-icon>
+          </a>
         </v-chip>
       </div>
     </v-item>

@@ -11,7 +11,7 @@ const category_search = ref('')
 const user = useUserStore()
 const loading = ref(true)
 const userLinks = shallowRef([])
-const categories = ref({})
+const categories = ref([])
 const server_error = ref('')
 const page = ref(1)
 const items_number = ref(0)
@@ -76,7 +76,7 @@ const items = computed(() => {
       >
         <v-select
           v-model="category_search"
-          :items="categories.results"
+          :items="categories"
           item-title="name"
           item-value="id"
           return-object
