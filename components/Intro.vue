@@ -1,10 +1,18 @@
 <script setup>
 const items = [
   { text: 'Manage here your links', icon: 'i-carbon-link' },
-  { text: 'Discover new sites', icon: 'i-carbon-image-search' },
+  { text: 'Discover new links', icon: 'i-carbon-image-search', page: 'discover' },
   { text: 'Share links collections', icon: 'i-carbon-share-knowledge' },
   { text: 'Comments on links', icon: 'i-carbon-add-comment' },
 ]
+const color_changing = ref(0)
+const myPolling = setInterval(async () => {
+  color_changing.value++
+}, 200)
+
+onBeforeUnmount(() => {
+  window.clearInterval(myPolling)
+})
 </script>
 
 <template>
@@ -23,8 +31,11 @@ const items = [
     >
       <div class="flex">
         <span text-left text-xl m-3>
-          <v-icon v-if="item.icon" :color="color_return(i + 1)" :icon="item.icon" />
-          <span ml-3>{{ item.text }}</span>
+          <a @click="$router.push(`/${item.page}`)">
+            <v-icon v-if="item.icon" :color="color_return(i + 1)" :icon="item.icon" />
+            <span ml-3>{{ item.text }}</span>
+            <hr v-if="item.page" :style="`border-color:${color_return(color_changing * 2)}`">
+          </a>
         </span>
       </div>
     </v-list-item>

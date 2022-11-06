@@ -50,7 +50,7 @@ export default {
         color="red"
       >
         <v-icon icon="i-line-md:remove" />
-        Delete link
+        &nbsp;Delete link
       </v-btn>
     </template>
 

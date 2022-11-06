@@ -4,6 +4,7 @@ const router = useRouter()
 async function logout() {
   const _ = await logout_user(user.token)
   user.isLogged = false
+  user.token = ''
   router.push('/')
 }
 </script>

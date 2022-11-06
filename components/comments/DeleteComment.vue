@@ -44,12 +44,11 @@ export default {
   >
     <template #activator="{ props }">
       <v-btn
-        prepend-icon="mdi-delete"
-        variant="outlined"
-        :color="`${color_return(77)}`"
         v-bind="props"
+        color="red"
       >
-        Delete my comment
+        <v-icon icon="i-line-md:remove" />
+        &nbsp;Delete my comment
       </v-btn>
     </template>
 

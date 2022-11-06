@@ -12,9 +12,15 @@ defineProps({
     items-center
   >
     <Logo />
-    <div>
+    <div class="title">
       {{ path }}
     </div>
     <Account />
   </div>
 </template>
+
+<style scoped>
+.title{
+  font-weight: bold;
+}
+</style>

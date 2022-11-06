@@ -79,15 +79,14 @@ export default {
   >
     <template #activator="{ props }">
       <v-btn
-
-        color="primary"
+        color="deep-purple"
         v-bind="props"
       >
         <v-icon
           m-auto
           icon="i-line-md:external-link"
         />
-        New link
+        &nbsp;Add link
       </v-btn>
     </template>
 
@@ -103,16 +102,18 @@ export default {
       <v-form
         ref="form"
       >
-        <v-text-field
+        <v-textarea
           v-model="description"
           type="string"
+          auto-grow="true"
           label="description"
           density="compact"
         />
 
         <div :class="{ 'text-red': v$.url.$errors.length }">
-          <v-text-field
+          <v-textarea
             v-model="url"
+            auto-grow="true"
             type="url"
             label="url (required)"
             density="compact"

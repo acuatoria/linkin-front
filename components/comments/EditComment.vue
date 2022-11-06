@@ -72,12 +72,11 @@ export default {
   >
     <template #activator="{ props }">
       <v-btn
-        prepend-icon="mdi-pen"
-        variant="outlined"
+        :color="label === 'Add a comment' ? 'deep-purple' : 'cyan'"
         v-bind="props"
-        :color="`${color_return(66)}`"
       >
-        {{ label }}
+        <v-icon icon="i-line-md:edit" />
+        &nbsp;{{ label }}
       </v-btn>
     </template>
 

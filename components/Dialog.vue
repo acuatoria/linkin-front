@@ -1,14 +1,17 @@
 <script>
 export default {
-  props: ['error'],
+  props: ['message', 'show'],
   data() {
     return {
       dialog: false,
     }
   },
   watch: {
-    error() {
+    message() {
       this.dialog = true
+    },
+    show() {
+      this.dialog = !this.dialog
     },
   },
 }
@@ -22,7 +25,7 @@ export default {
     >
       <v-card>
         <v-card-text text-center>
-          {{ error }}
+          {{ message }}
         </v-card-text>
         <v-card-actions>
           <v-btn color="primary" block @click="dialog = false">

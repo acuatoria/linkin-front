@@ -1,9 +1,6 @@
 <script setup>
 useHead({
-  title: 'My links',
-})
-definePageMeta({
-  middleware: ['auth'],
+  title: 'Discover Links',
 })
 
 const needle = ref('')
@@ -32,11 +29,10 @@ watch(category_search, (newValue) => {
 
 async function update() {
   loading.value = true
-  server_error.value = ''
   try {
     useCategoryStore().categories = await Category.index(user.token)
     categories.value = useCategoryStore().categories
-    userLinks.value = await UserLink.index(user.token, page.value, needle.value, category_search.value ? category_search.value.id : '')
+    userLinks.value = await Url.discover(page.value, needle.value, category_search.value ? category_search.value.id : '')
     items_number.value = userLinks.value.count
   }
   catch (error) {
@@ -57,7 +53,7 @@ const items = computed(() => {
 
 <template>
   <div class="my_links">
-    <Header path="My links" />
+    <Header path="Discover Links" />
     <div flex flex-row flex-wrap class="header">
       <v-responsive
         class="mx-auto"
@@ -91,21 +87,18 @@ const items = computed(() => {
       <v-responsive
         class="mx-auto"
         max-width="300"
-      >
-        <UserHomeNewLink @update="update" />
-      </v-responsive>
+      />
     </div>
     <v-progress-circular
       v-if="loading"
       indeterminate
       color="primary"
     />
-
     <Dialog :message="server_error" />
-
     <v-list>
       <v-item-group v-for="record, index in items" :key="record.id">
-        <UserHomeLink :record="record" :categories="categories" :index="index" @update="update" />
+        <DiscoverLink :record="record" :categories="categories" :index="index" @update="update" />
+        <hr :style="`border-color:${color_return(index + 5)}`">
       </v-item-group>
     </v-list>
     <v-pagination
