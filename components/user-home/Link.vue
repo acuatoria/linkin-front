@@ -4,32 +4,24 @@ export default {
   emits: ['update'],
   data() {
     return ({
-      response: {},
+      showDialog: false,
     })
-  },
-  mounted() {
-    this.getCommentsCount()
-  },
-  methods: {
-    async getCommentsCount() {
-      const user = useUserStore()
-      this.response = await CommentCount.index(user.token, this.record.url_id)
-    },
   },
 }
 </script>
 
 <template>
+  <Dialog :message="record.description" :show="showDialog" />
   <div class="userlink">
     <v-item>
       <div flex flex-row justify-between items-center>
         <div text-left ml-3 overflow-x-auto>
           <a :href="record.url" target="_blank">
             <div class="item-text">
-              <span text-size-lg>{{ record.description }}</span>
+              <span text-size-lg>{{ record.url_title || '&nbsp;' }}</span>
             </div>
 
-            <div class="item-text" text-size-sm>
+            <div class="item-text" text-size-sm h-8>
               {{ record.url }}
             </div>
           </a>
@@ -39,23 +31,32 @@ export default {
           <UserHomeLinkOptions :record="record" @update="$emit('update')" />
         </div>
       </div>
-      <div flex>
-        <v-chip
-          v-if="categories
-            && record.category
-            && categories.find(item => item.id === record.category)"
-          :color="color_return(1 * index)"
-        >
-          {{ categories.find(item => item.id === record.category).name }}
-        </v-chip>
-        <v-chip
-          :color="color_return(1 * index)"
-        >
-          <a @click="$router.push(`/link-page/${record.url_id}`)">
-            {{ response.comments }}<v-icon>mdi-comment-multiple</v-icon>
-          </a>
-        </v-chip>
+      <div flex flex-row>
+        <div>
+          <v-chip
+            v-if="categories
+              && record.category
+              && categories.find(item => item.id === record.category)"
+            color="deep-orange"
+          >
+            {{ categories.find(item => item.id === record.category).name }}
+          </v-chip>
+        </div>
+        <div>
+          <v-chip
+            color="blue-grey"
+            @click="$router.push(`/link-page/${record.url_id}`)"
+          >
+            <span>{{ record.comments }} <v-icon>mdi-comment-multiple</v-icon></span>
+          </v-chip>
+        </div>
+        <div class="flex-no-overflow">
+          <v-chip color="amber" @click="showDialog = !showDialog">
+            {{ record.description || '{Here your description}' }}
+          </v-chip>
+        </div>
       </div>
+      <hr>
     </v-item>
   </div>
 </template>
@@ -70,7 +71,10 @@ export default {
   white-space: nowrap;
 }
 .userlink{
-  min-height: 95px;
+  min-height: 100px;
+}
+.flex-no-overflow{
+  min-width: 0;
 }
 </style>
 

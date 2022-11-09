@@ -85,12 +85,11 @@ export default {
   >
     <template #activator="{ props }">
       <v-btn
-
-        color="secondary"
+        color="cyan"
         v-bind="props"
       >
         <v-icon icon="i-line-md:edit" />
-        Edit link
+        &nbsp;Edit link
       </v-btn>
     </template>
 
@@ -106,18 +105,20 @@ export default {
       <v-form
         ref="form"
       >
-        <v-text-field
+        <v-textarea
           v-model="link_description"
           type="string"
+          auto-grow="true"
           label="description"
           density="compact"
         />
 
         <div :class="{ 'text-red': v$.link_url.$errors.length }">
-          <v-text-field
+          <v-textarea
             v-model="link_url"
             type="url"
             label="url"
+            auto-grow="true"
             density="compact"
           />
           <div v-for="error of v$.link_url.$errors" :key="error.$uid" class="input-errors">
