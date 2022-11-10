@@ -1,7 +1,6 @@
 <script>
 export default {
-  props: ['record', 'categories', 'index'],
-  emits: ['update'],
+  props: ['record', 'categories'],
 }
 </script>
 
@@ -22,21 +21,8 @@ export default {
         </div>
       </div>
       <div flex>
-        <v-chip
-          v-if="categories
-            && record.category
-            && categories.find(item => item.id === record.category)"
-          color="deep-orange"
-        >
-          {{ categories.find(item => item.id === record.category).name }}
-        </v-chip>
-        <v-chip
-          color="blue-grey"
-        >
-          <v-button @click="$router.push(`/link-page/${record.id}`)">
-            {{ record.comments }} <v-icon>mdi-comment-multiple</v-icon>
-          </v-button>
-        </v-chip>
+        <LinkTagCategory :record="record" :categories="categories" />
+        <LinkTagComment :url-id="record.id" :comments="record.comments" />
       </div>
     </v-item>
   </div>

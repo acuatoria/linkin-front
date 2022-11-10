@@ -23,7 +23,7 @@ export default {
 <template>
   <div>
     <Header path="Link & comments" />
-    <CommentsTheLink :id="$route.params.id" />
+    <CommentsLink :id="$route.params.id" />
     <CommentsUserCommentForm v-if="user" :id="$route.params.id" :key="updated" @update="update" />
     <CommentsTheComments :id="$route.params.id" :key="updated" />
   </div>

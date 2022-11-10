@@ -1,6 +1,6 @@
 <script>
 export default {
-  props: ['record', 'categories', 'index'],
+  props: ['record', 'categories'],
   emits: ['update'],
   data() {
     return ({
@@ -11,7 +11,7 @@ export default {
 </script>
 
 <template>
-  <Dialog :message="record.description" :show="showDialog" />
+  <Dialog :message="record.description || '{Here your description}'" :show="showDialog" />
   <div class="userlink">
     <v-item>
       <div flex flex-row justify-between items-center>
@@ -33,22 +33,10 @@ export default {
       </div>
       <div flex flex-row>
         <div>
-          <v-chip
-            v-if="categories
-              && record.category
-              && categories.find(item => item.id === record.category)"
-            color="deep-orange"
-          >
-            {{ categories.find(item => item.id === record.category).name }}
-          </v-chip>
+          <LinkTagCategory :record="record" :categories="categories" />
         </div>
         <div>
-          <v-chip
-            color="blue-grey"
-            @click="$router.push(`/link-page/${record.url_id}`)"
-          >
-            <span>{{ record.comments }} <v-icon>mdi-comment-multiple</v-icon></span>
-          </v-chip>
+          <LinkTagComment :url-id="record.url_id" :comments="record.comments" />
         </div>
         <div class="flex-no-overflow">
           <v-chip color="amber" @click="showDialog = !showDialog">

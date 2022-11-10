@@ -97,7 +97,7 @@ const items = computed(() => {
     <Dialog :message="server_error" />
     <v-list>
       <v-item-group v-for="record, index in items" :key="record.id">
-        <DiscoverLink :record="record" :categories="categories" :index="index" @update="update" />
+        <DiscoverLink :record="record" :categories="categories" />
         <hr :style="`border-color:${color_return(index + 5)}`">
       </v-item-group>
     </v-list>

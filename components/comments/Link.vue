@@ -33,17 +33,8 @@ export default {
       {{ response.url }}
     </a>
   </v-card>
-  <v-chip
-    v-if="response.category_name"
-    color="deep-orange"
-  >
-    {{ response.category_name }}
-  </v-chip>
-  <v-chip
-    color="blue-grey"
-  >
-    <span>{{ response.comments }} <v-icon>mdi-comment-multiple</v-icon></span>
-  </v-chip>
+  <LinkTagCategory :category-name="response.category_name" />
+  <LinkTagComment :url-id="response.id" :comments="response.comments" />
 </template>
 
 <style scoped>
