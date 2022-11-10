@@ -7,6 +7,15 @@ export default {
       showDialog: false,
     })
   },
+  computed: {
+    categoryName() {
+      if (this.categories && this.record.category
+      && this.categories.find(item => item.id === this.record.category))
+        return this.categories.find(item => item.id === this.record.category).name
+      return ''
+    },
+  },
+
 }
 </script>
 
@@ -33,7 +42,7 @@ export default {
       </div>
       <div flex flex-row>
         <div>
-          <LinkTagCategory :record="record" :categories="categories" />
+          <LinkTagCategory :category-name="categoryName" />
         </div>
         <div>
           <LinkTagComment :url-id="record.url_id" :comments="record.comments" />

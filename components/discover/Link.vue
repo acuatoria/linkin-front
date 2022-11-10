@@ -1,6 +1,16 @@
 <script>
 export default {
   props: ['record', 'categories'],
+  data() {
+    return ({
+      categoryName: '',
+    })
+  },
+  mounted() {
+    if (this.categories && this.record.category
+      && this.categories.find(item => item.id === this.record.category))
+      this.categoryName = this.categories.find(item => item.id === this.record.category).name
+  },
 }
 </script>
 
@@ -21,7 +31,7 @@ export default {
         </div>
       </div>
       <div flex>
-        <LinkTagCategory :record="record" :categories="categories" />
+        <LinkTagCategory :category-name="categoryName" />
         <LinkTagComment :url-id="record.id" :comments="record.comments" />
       </div>
     </v-item>

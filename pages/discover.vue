@@ -94,7 +94,7 @@ const items = computed(() => {
       indeterminate
       color="primary"
     />
-    <Dialog :message="server_error" />
+    <ErrorDialog :message="server_error" />
     <v-list>
       <v-item-group v-for="record, index in items" :key="record.id">
         <DiscoverLink :record="record" :categories="categories" />

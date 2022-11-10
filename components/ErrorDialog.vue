@@ -1,14 +1,14 @@
 <script>
 export default {
-  props: ['message', 'show'],
+  props: ['message'],
   data() {
     return {
       dialog: false,
     }
   },
   watch: {
-    show() {
-      this.dialog = !this.dialog
+    message() {
+      this.dialog = true
     },
   },
 }

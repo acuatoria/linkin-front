@@ -101,7 +101,7 @@ const items = computed(() => {
       color="primary"
     />
 
-    <Dialog :message="server_error" />
+    <ErrorDialog :message="server_error" />
 
     <v-list>
       <v-item-group v-for="record, index in items" :key="record.id">
