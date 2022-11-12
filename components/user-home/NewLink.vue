@@ -19,6 +19,8 @@ export default {
       sending: false,
       categories: {},
       category_selected: '',
+      color_changing: 0,
+      myPolling: null,
     })
   },
   validations() {
@@ -28,6 +30,12 @@ export default {
   },
   mounted() {
     this.categories = useCategoryStore().categories
+    this.myPolling = setInterval(async () => {
+      this.color_changing++
+    }, 1000 / 4)
+  },
+  beforeUnmount() {
+    window.clearInterval(this.myPolling)
   },
 
   methods: {
@@ -102,14 +110,6 @@ export default {
       <v-form
         ref="form"
       >
-        <v-textarea
-          v-model="description"
-          type="string"
-          auto-grow="true"
-          label="description"
-          density="compact"
-        />
-
         <div :class="{ 'text-red': v$.url.$errors.length }">
           <v-textarea
             v-model="url"
@@ -125,6 +125,15 @@ export default {
           </div>
         </div>
 
+        <v-textarea
+          v-model="description"
+          type="string"
+          auto-grow="true"
+          label="description"
+          density="compact"
+          color="amber"
+        />
+
         <div class="categories">
           <v-select
             v-model="category_selected"
@@ -136,6 +145,7 @@ export default {
             density="compact"
             class="mt-5"
             label="Category"
+            color="deep-orange"
           />
         </div>
 
@@ -145,6 +155,7 @@ export default {
             density="compact"
             class="mt-5"
             label="Public visibility"
+            :style="`color:${color_return(color_changing)}`"
           />
         </div>
         <v-btn

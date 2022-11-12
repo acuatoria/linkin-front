@@ -8,7 +8,7 @@ const items = [
 const color_changing = ref(0)
 const myPolling = setInterval(async () => {
   color_changing.value++
-}, 200)
+}, 1000 / 4)
 
 onBeforeUnmount(() => {
   window.clearInterval(myPolling)
@@ -34,7 +34,7 @@ onBeforeUnmount(() => {
           <a @click="$router.push(`/${item.page}`)">
             <v-icon v-if="item.icon" :color="color_return(i + 1)" :icon="item.icon" />
             <span ml-3>{{ item.text }}</span>
-            <hr v-if="item.page" :style="`border-color:${color_return(color_changing * 2)}`">
+            <hr v-if="item.page" :style="`border-color:${color_return(color_changing)}`">
           </a>
         </span>
       </div>
