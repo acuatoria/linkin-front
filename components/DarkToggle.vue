@@ -17,6 +17,7 @@ function toggleDark() {
 
 <template>
   <button class="!outline-none" title="Dark mode toggle" @click="toggleDark">
-    <div class="dark:i-line-md:sunny-filled i-line-md:moon-filled" />
+    <v-icon v-if="color.preference === 'dark'" icon="i-line-md:sunny-filled" />
+    <v-icon v-else icon="i-line-md:moon-filled" />
   </button>
 </template>

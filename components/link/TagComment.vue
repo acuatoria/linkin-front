@@ -6,7 +6,7 @@ export default {
 
 <template>
   <v-chip
-    color="blue-grey"
+    color="amber"
   >
     <v-button @click="$router.push(`/comments/${urlId}`)">
       {{ comments }} <v-icon>mdi-comment-multiple</v-icon>

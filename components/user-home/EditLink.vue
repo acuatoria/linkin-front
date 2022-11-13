@@ -20,6 +20,8 @@ export default {
       sending: false,
       categories: {},
       category_selected: {},
+      color_changing: 0,
+      myPolling: null,
     })
   },
   validations() {
@@ -34,6 +36,12 @@ export default {
     this.link_description = this.record.description
     this.category_selected = this.record.category
     this.link_public = this.record.public
+    this.myPolling = setInterval(async () => {
+      this.color_changing++
+    }, 1000 / 4)
+  },
+  beforeUnmount() {
+    window.clearInterval(this.myPolling)
   },
 
   methods: {
@@ -105,20 +113,12 @@ export default {
       <v-form
         ref="form"
       >
-        <v-textarea
-          v-model="link_description"
-          type="string"
-          auto-grow="true"
-          label="description"
-          density="compact"
-        />
-
         <div :class="{ 'text-red': v$.link_url.$errors.length }">
           <v-textarea
             v-model="link_url"
-            type="url"
-            label="url"
             auto-grow="true"
+            type="url"
+            label="url (required)"
             density="compact"
           />
           <div v-for="error of v$.link_url.$errors" :key="error.$uid" class="input-errors">
@@ -128,7 +128,16 @@ export default {
           </div>
         </div>
 
-        <div>
+        <v-textarea
+          v-model="link_description"
+          type="string"
+          auto-grow="true"
+          label="description"
+          density="compact"
+          color="blue-grey"
+        />
+
+        <div class="categories">
           <v-select
             v-model="category_selected"
             :items="categories"
@@ -139,6 +148,7 @@ export default {
             density="compact"
             class="mt-5"
             label="Category"
+            color="deep-orange"
           />
         </div>
 
@@ -148,6 +158,7 @@ export default {
             density="compact"
             class="mt-5"
             label="Public visibility"
+            :style="`color:${color_return(color_changing)}`"
           />
         </div>
 

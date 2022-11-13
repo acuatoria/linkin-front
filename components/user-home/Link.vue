@@ -48,7 +48,7 @@ export default {
           <LinkTagComment :url-id="record.url_id" :comments="record.comments" />
         </div>
         <div class="flex-no-overflow">
-          <v-chip color="amber" @click="showDialog = !showDialog">
+          <v-chip color="blue-grey" @click="showDialog = !showDialog">
             {{ record.description || '{Here your description}' }}
           </v-chip>
         </div>

@@ -84,6 +84,7 @@ const items = computed(() => {
           :clearable="true"
           density="compact"
           class="mt-5"
+          color="deep-orange"
           label="Filter by category"
           variant="outlined"
         />

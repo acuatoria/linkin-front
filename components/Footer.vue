@@ -7,7 +7,9 @@
     gap-3
     items-start
   >
-    <NuxtLink i-carbon-campsite to="/" title="Home" />
+    <NuxtLink to="/" title="Home">
+      <v-icon icon="i-carbon:campsite" />
+    </NuxtLink>
     <DarkToggle />
   </div>
 </template>

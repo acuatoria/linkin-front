@@ -131,7 +131,7 @@ export default {
           auto-grow="true"
           label="description"
           density="compact"
-          color="amber"
+          color="blue-grey"
         />
 
         <div class="categories">
