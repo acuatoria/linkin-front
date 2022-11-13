@@ -1,10 +1,13 @@
 <script>
 export default {
-  props: ['record', 'categories'],
+  props: ['record', 'categories', 'urlToUpdate'],
   emits: ['update'],
   data() {
     return ({
       showDialog: false,
+      title: '',
+      attempts: 5,
+      fetching_title: false,
     })
   },
   computed: {
@@ -15,19 +18,52 @@ export default {
       return ''
     },
   },
+  watch: {
+    urlToUpdate() {
+      this.check_for_update()
+    },
+  },
+  mounted() {
+    this.title = this.record.url_title || '{ pending title }'
+    this.check_for_update()
+  },
+  methods: {
+    check_for_update() {
+      if (this.record.url && !this.record.url_title && this.urlToUpdate === this.record.url && this.attempts === 5)
+        this.update_title()
+    },
+    update(data) {
+      this.$emit('update', data)
+    },
+    update_title() {
+      this.title = 'fetching title'
+      this.fetching_title = true
+      setTimeout(this.getUrlInfo, 1000)
+    },
+    async getUrlInfo() {
+      const user = useUserStore()
+      this.response = await Url.get(user.token, this.record.url_id)
+      if (this.response.title) { this.title = this.response.title; this.fetching_title = false }
+      else if (this.attempts < 1) { this.title = '{ pending title }'; this.fetching_title = false }
+      else {
+        this.attempts--
+        setTimeout(this.getUrlInfo, 1000 * (5 - this.attempts + 1) ** 2)
+      }
+    },
+  },
 
 }
 </script>
 
 <template>
-  <Dialog :message="record.description || '{Here your description}'" :show="showDialog" />
+  <Dialog :message="record.description || '{ your description }'" :show="showDialog" />
   <div class="userlink">
     <v-item>
       <div flex flex-row justify-between items-center>
         <div text-left ml-3 overflow-x-auto>
           <a :href="record.url" target="_blank">
             <div class="item-text">
-              <span text-size-lg>{{ record.url_title || '&nbsp;' }}</span>
+              <span text-size-lg><v-icon v-if="fetching_title" icon="i-line-md:loading-alt-loop" />{{ title }}</span>
             </div>
 
             <div class="item-text" text-size-sm h-8>
@@ -37,7 +73,7 @@ export default {
         </div>
 
         <div class="options_btn">
-          <UserHomeLinkOptions :record="record" @update="$emit('update')" />
+          <UserHomeLinkOptions :record="record" @update="update($event, data)" />
         </div>
       </div>
       <div flex flex-row>
@@ -49,7 +85,7 @@ export default {
         </div>
         <div class="flex-no-overflow">
           <v-chip color="blue-grey" @click="showDialog = !showDialog">
-            {{ record.description || '{Here your description}' }}
+            {{ record.description || '{ your description }' }}
           </v-chip>
         </div>
       </div>

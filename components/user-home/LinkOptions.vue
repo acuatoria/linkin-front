@@ -8,8 +8,8 @@ export default {
     })
   },
   methods: {
-    update() {
-      this.$emit('update')
+    update(data) {
+      this.$emit('update', data)
       this.menu = false
     },
   },
@@ -33,7 +33,7 @@ export default {
 
       <v-list>
         <v-list-item>
-          <UserHomeEditLink :record="record" @update="update" />
+          <UserHomeEditLink :record="record" @update="update($event, data)" />
         </v-list-item>
         <v-list-item>
           <UserHomeDeleteLink :id="record.id" @update="update" />

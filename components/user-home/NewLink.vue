@@ -61,8 +61,8 @@ export default {
         })
 
         this.sending = this.dialog = false
+        this.$emit('update', { url: this.url })
         this.url = this.description = this.category_selected = ''
-        this.$emit('update')
         this.v$.$reset()
       }
       catch (error) {

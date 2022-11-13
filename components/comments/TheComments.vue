@@ -39,7 +39,7 @@ export default {
         <div
           text-right
           text-sm
-          :style="`color:${color_return(1 * index)}`"
+          style="color:#607d8b"
           v-text="`comment by ${record.user_name}`"
         />
       </v-card>

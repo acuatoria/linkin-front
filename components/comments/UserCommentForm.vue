@@ -4,7 +4,7 @@ export default {
   emits: ['update'],
   data() {
     return ({
-      response: {},
+      response: null,
       comment: null,
       has_comment: false,
       user: {},
@@ -30,16 +30,18 @@ export default {
 </script>
 
 <template>
-  <div v-if="has_comment" p-3 class="flex-container" justify-between>
-    <div class="button">
-      <CommentsDeleteComment class="button" :coment="comment" :url="id" @update="update" />
+  <div v-if="response">
+    <div v-if="has_comment" p-3 class="flex-container" justify-between>
+      <div class="button">
+        <CommentsDeleteComment class="button" :coment="comment" :url="id" @update="update" />
+      </div>
+      <div class="button">
+        <CommentsEditComment class="button" :user-comment="comment.comment" :url="id" label="Edit my comment" @update="update" />
+      </div>
     </div>
-    <div class="button">
-      <CommentsEditComment class="button" :user-comment="comment.comment" :url="id" label="Edit my comment" @update="update" />
+    <div v-if="user.isLogged && !has_comment" p-3 m-auto>
+      <CommentsEditComment class="button" :coment="comment" :url="id" label="Add a comment" @update="update" />
     </div>
-  </div>
-  <div v-if="user.isLogged && !has_comment" p-3 m-auto>
-    <CommentsEditComment class="button" :coment="comment" :url="id" label="Add a comment" @update="update" />
   </div>
 </template>
 

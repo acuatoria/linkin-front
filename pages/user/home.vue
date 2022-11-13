@@ -16,6 +16,7 @@ const server_error = ref('')
 const page = ref(1)
 const items_number = ref(0)
 const items_x_page = ref(10)
+const urlToUpdate = ref('')
 
 watch(page, (newValue) => {
   update()
@@ -30,14 +31,17 @@ watch(category_search, (newValue) => {
   update()
 })
 
-async function update() {
+async function update(data) {
+  urlToUpdate.value = ''
   loading.value = true
   server_error.value = ''
+  console.log(data)
   try {
     useCategoryStore().categories = await Category.index(user.token)
     categories.value = useCategoryStore().categories
     userLinks.value = await UserLink.index(user.token, page.value, needle.value, category_search.value ? category_search.value.id : '')
     items_number.value = userLinks.value.count
+    urlToUpdate.value = data ? data.url : ''
   }
   catch (error) {
     server_error.value = 'Error at server'
@@ -93,7 +97,7 @@ const items = computed(() => {
         class="mx-auto"
         max-width="300"
       >
-        <UserHomeNewLink @update="update" />
+        <UserHomeNewLink @update="update($event, data)" />
       </v-responsive>
     </div>
     <v-progress-circular
@@ -106,7 +110,13 @@ const items = computed(() => {
 
     <v-list>
       <v-item-group v-for="record, index in items" :key="record.id">
-        <UserHomeLink :record="record" :categories="categories" :index="index" @update="update" />
+        <UserHomeLink
+          :record="record"
+          :categories="categories"
+          :index="index"
+          :url-to-update="urlToUpdate"
+          @update="update($event, data)"
+        />
       </v-item-group>
     </v-list>
     <v-pagination
