@@ -129,7 +129,7 @@ export default {
           v-model="description"
           type="string"
           auto-grow="true"
-          label="description"
+          label="your description is always private"
           density="compact"
           color="blue-grey"
         />
@@ -154,7 +154,7 @@ export default {
             v-model="link_public"
             density="compact"
             class="mt-5"
-            label="Public visibility"
+            label="Public visibility (to discover section)"
             :style="`color:${color_return(color_changing)}`"
           />
         </div>
