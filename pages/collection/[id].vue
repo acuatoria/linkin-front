@@ -1,51 +1,44 @@
 <script setup>
 useHead({
-  title: 'My links',
-})
-definePageMeta({
-  middleware: ['auth'],
+  title: 'Collection',
 })
 
+const id = ref('')
+const name = ref('')
 const needle = ref('')
 const category_search = ref('')
 const user = useUserStore()
 const loading = ref(true)
+const collection = shallowRef([])
 const userLinks = shallowRef([])
 const categories = ref([])
 const server_error = ref('')
 const page = ref(1)
 const items_number = ref(0)
 const items_x_page = ref(10)
-const urlToUpdate = ref('')
-const collections = shallowRef([])
+const route = useRoute()
 
 watch(page, (newValue) => {
   update()
 })
 
 watch(needle, (newValue) => {
-  if (newValue.length > 3 || newValue === '') {
-    page.value = 1
+  if (newValue.length > 3 || newValue === '')
     update()
-  }
 })
 
 watch(category_search, (newValue) => {
-  page.value = 1
   update()
 })
 
-async function update(data) {
-  urlToUpdate.value = ''
+async function update() {
   loading.value = true
-  server_error.value = ''
   try {
     useCategoryStore().categories = await Category.index(user.token)
     categories.value = useCategoryStore().categories
-    useCollectionStore().collections = await Collection.index(user.token)
-    userLinks.value = await UserLink.index(user.token, page.value, needle.value, category_search.value ? category_search.value.id : '')
+    collection.value = await Collection.get(user.token, id.value)
+    userLinks.value = await Collection.items(user.token, id.value, page.value, needle.value, category_search.value ? category_search.value.id : '')
     items_number.value = userLinks.value.count
-    urlToUpdate.value = data ? data.url : ''
   }
   catch (error) {
     server_error.value = 'Error at server'
@@ -54,18 +47,20 @@ async function update(data) {
 }
 
 onMounted(async () => {
+  id.value = route.params.id
   update()
 })
 
 const items = computed(() => {
-  if (userLinks.value.results)
+  if (userLinks.value)
     return userLinks.value.results
 })
 </script>
 
 <template>
   <div class="my_links">
-    <Header path="My links" />
+    <Header path="Collection" />
+    <div>Collection <b>{{ collection.name }}</b>: {{ collection.description }}</div>
     <div flex flex-row flex-wrap class="header">
       <v-responsive
         class="mx-auto"
@@ -99,46 +94,31 @@ const items = computed(() => {
       </v-responsive>
       <v-responsive
         class="mx-auto"
-        max-width="200"
-      >
-        <UserHomeNewLink @update="update($event, data)" />
-      </v-responsive>
-      <v-responsive
-        class="mx-auto"
-        max-width="200"
-      >
-        <v-btn
-          color="deep-purple"
-          @click="$router.push(`/user/collections`)"
-        >
-          Collections
-        </v-btn>
-      </v-responsive>
+        max-width="300"
+      />
     </div>
+    <ErrorDialog :message="server_error" />
     <v-progress-circular
       v-if="loading"
       indeterminate
       color="primary"
     />
-
-    <ErrorDialog :message="server_error" />
-
-    <v-list>
-      <v-item-group v-for="record, index in items" :key="record.id">
-        <UserHomeLink
-          :record="record"
-          :categories="categories"
-          :index="index"
-          :url-to-update="urlToUpdate"
-          @update="update($event, data)"
-        />
-      </v-item-group>
-    </v-list>
-    <v-pagination
-      v-model="page"
-      :records="items_number"
-      :length="items_number >= items_x_page ? Math.ceil(items_number / items_x_page) : 1"
-    />
+    <div v-if="items_number > 0">
+      <v-list>
+        <v-item-group v-for="record, index in items" :key="record.id">
+          <DiscoverLink :record="record" :categories="categories" />
+          <hr :style="`border-color:${color_return(index * 2)}`">
+        </v-item-group>
+      </v-list>
+      <v-pagination
+        v-model="page"
+        :records="items_number"
+        :length="items_number >= items_x_page ? Math.ceil(items_number / items_x_page) : 1"
+      />
+    </div>
+    <div v-else-if="!loading">
+      No items on this collection
+    </div>
   </div>
 </template>
 

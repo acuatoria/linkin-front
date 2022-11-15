@@ -4,10 +4,11 @@ const theme = useTheme()
 const color = useColorMode()
 
 theme.global.name.value = color.preference
-if (color.preference === 'system')
-  theme.global.name.value = 'dark'
 
-// theme.global.name.value = theme.global.current.value.dark ? 'light' : 'dark'
+if (color.preference === 'system') {
+  theme.global.name.value = 'dark'
+  theme.global.name.value = theme.global.current.value.dark ? 'light' : 'dark'
+}
 
 function toggleDark() {
   color.preference = color.preference === 'dark' ? 'light' : 'dark'

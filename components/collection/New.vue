@@ -12,33 +12,17 @@ export default {
       response: {},
       user: useUserStore(),
       dialog: false,
-      url: '',
+      name: '',
       description: '',
       api_error: '',
-      link_public: false,
+      is_public: false,
       sending: false,
-      categories: {},
-      category_selected: '',
-      collections: [],
-      collections_selected: [],
-      color_changing: 0,
-      myPolling: null,
     })
   },
   validations() {
     return {
-      url: { required },
+      name: { required },
     }
-  },
-  mounted() {
-    this.categories = useCategoryStore().categories
-    this.collections = useCollectionStore().collections
-    this.myPolling = setInterval(async () => {
-      this.color_changing++
-    }, 1000 / 4)
-  },
-  beforeUnmount() {
-    window.clearInterval(this.myPolling)
   },
 
   methods: {
@@ -53,20 +37,17 @@ export default {
     async submit() {
       const user = useUserStore()
       try {
-        this.response = await UserLink.store({
+        this.response = await Collection.store({
           data: {
-            url_string: this.url,
+            name: this.name,
             description: this.description,
-            category: this.category_selected.id,
-            public: this.link_public,
-            collection: this.collections_selected,
+            public: this.is_public,
           },
           token: user.token,
         })
-
         this.sending = this.dialog = false
-        this.$emit('update', { url: this.url })
-        this.url = this.description = this.category_selected = ''
+        this.$emit('update')
+        this.name = this.description = ''
         this.v$.$reset()
       }
       catch (error) {
@@ -90,12 +71,17 @@ export default {
     scroll-strategy="close"
   >
     <template #activator="{ props }">
-      <v-btn
-        color="purple"
-        v-bind="props"
+      <v-responsive
+        class="mx-auto"
+        max-width="150"
       >
-        Add link
-      </v-btn>
+        <v-btn
+          color="deep-purple"
+          v-bind="props"
+        >
+          Add Collection
+        </v-btn>
+      </v-responsive>
     </template>
 
     <v-card class="alert_form">
@@ -110,15 +96,15 @@ export default {
       <v-form
         ref="form"
       >
-        <div :class="{ 'text-red': v$.url.$errors.length }">
+        <div :class="{ 'text-red': v$.name.$errors.length }">
           <v-textarea
-            v-model="url"
+            v-model="name"
             auto-grow="true"
-            type="url"
-            label="url (required)"
+            type="name"
+            label="name (required)"
             density="compact"
           />
-          <div v-for="error of v$.url.$errors" :key="error.$uid" class="input-errors">
+          <div v-for="error of v$.name.$errors" :key="error.$uid" class="input-errors">
             <div class="error-msg">
               {{ error.$message }}
             </div>
@@ -129,47 +115,17 @@ export default {
           v-model="description"
           type="string"
           auto-grow="true"
-          label="your description is always private"
+          label="Collection description"
           density="compact"
           color="blue-grey"
         />
 
-        <div class="categories">
-          <v-select
-            v-model="category_selected"
-            :items="categories"
-            item-title="name"
-            item-value="id"
-            return-object
-            :clearable="true"
-            density="compact"
-            class="mt-5"
-            label="Category"
-            color="deep-orange"
-          />
-        </div>
-
-        <div class="collections">
-          <v-select
-            v-model="collections_selected"
-            :items="collections"
-            multiple
-            item-title="name"
-            item-value="id"
-            return-object
-            :clearable="true"
-            density="compact"
-            class="mt-5"
-            label="Collections"
-          />
-        </div>
-
         <div>
           <v-checkbox
-            v-model="link_public"
+            v-model="is_public"
             density="compact"
             class="mt-5"
-            label="Public visibility (to discover section)"
+            label="Shareable collection"
             :style="`color:${color_return(color_changing)}`"
           />
         </div>

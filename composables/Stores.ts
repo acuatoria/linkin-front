@@ -15,6 +15,12 @@ export const useCategoryStore = defineStore('category', () => {
     categories,
   }
 })
+export const useCollectionStore = defineStore('collection', () => {
+  const collections = ref(useLocalStorage('collections', {}))
+  return {
+    collections,
+  }
+})
 
 if (import.meta.hot)
   import.meta.hot.accept(acceptHMRUpdate(useUserStore, import.meta.hot))
