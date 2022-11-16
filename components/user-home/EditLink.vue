@@ -20,6 +20,8 @@ export default {
       sending: false,
       categories: {},
       category_selected: {},
+      collections: [],
+      collections_selected: [],
       color_changing: 0,
       myPolling: null,
     })
@@ -32,6 +34,8 @@ export default {
   mounted() {
     this.categories = useCategoryStore().categories
     this.id = this.record.id
+    this.collections = useCollectionStore().collections
+    this.collections_selected = this.record.collection
     this.link_url = this.record.url
     this.link_description = this.record.description
     this.category_selected = this.record.category
@@ -63,6 +67,7 @@ export default {
             description: this.link_description,
             category: this.category_selected ? this.category_selected.id : '',
             public: this.link_public,
+            collection: this.collections_selected,
           },
           token: user.token,
         })
@@ -149,6 +154,21 @@ export default {
             class="mt-5"
             label="Category"
             color="deep-orange"
+          />
+        </div>
+
+        <div class="collections">
+          <v-select
+            v-model="collections_selected"
+            :items="collections"
+            multiple
+            item-title="name"
+            item-value="id"
+            return-object
+            :clearable="true"
+            density="compact"
+            class="mt-5"
+            label="Collections"
           />
         </div>
 

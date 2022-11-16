@@ -1,5 +1,5 @@
-export const UserLink = {
-  userlink_endpoint() { return `${useRuntimeConfig().API_BASE_URL}api/v1/url-user/` },
+export const Collection = {
+  userlink_endpoint() { return `${useRuntimeConfig().API_BASE_URL}api/v1/collection/` },
   headers(token: string) {
     return {
       'Authorization': token ? 'token' + ` ${token}` : '',
@@ -7,8 +7,20 @@ export const UserLink = {
       'Accept': 'application/json',
     }
   },
-  index(token: string, page: Number, query: string, category_search: Number) {
-    return $fetch(`${this.userlink_endpoint()}?page=${page}&query=${query}&category_search=${category_search}`, {
+  get(token: string, id: string) {
+    return $fetch(`${this.userlink_endpoint()}${id}/`, {
+      method: 'GET',
+      headers: this.headers(token),
+    })
+  },
+  items(token: string, id: string, page: Number, query: string, category_search: Number) {
+    return $fetch(`${useRuntimeConfig().API_BASE_URL}api/v1/urluser-min/?collection=${id}&page=${page}&query=${query}&category_search=${category_search}`, {
+      method: 'GET',
+      headers: this.headers(token),
+    })
+  },
+  index(token: string) {
+    return $fetch(`${this.userlink_endpoint()}`, {
       method: 'GET',
       headers: this.headers(token),
     })

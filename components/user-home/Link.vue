@@ -1,6 +1,6 @@
 <script>
 export default {
-  props: ['record', 'categories', 'urlToUpdate'],
+  props: ['record', 'urlToUpdate'],
   emits: ['update'],
   data() {
     return ({
@@ -8,6 +8,7 @@ export default {
       title: '',
       attempts: 5,
       fetching_title: false,
+      categories: useCategoryStore().categories,
     })
   },
   computed: {
@@ -66,7 +67,7 @@ export default {
               <span text-size-lg><v-icon v-if="fetching_title" icon="i-line-md:loading-alt-loop" />{{ title }}</span>
             </div>
 
-            <div class="item-text" text-size-sm h-8>
+            <div class="item-text" text-size-sm>
               {{ record.url }}
             </div>
           </a>
@@ -89,9 +90,9 @@ export default {
           </v-chip>
         </div>
       </div>
-      <hr>
     </v-item>
   </div>
+  <hr>
 </template>
 
 <style scoped>
@@ -99,12 +100,12 @@ export default {
   max-width: 50px;
 }
 .item-text{
-  line-height: 1.4em;
+  line-height: 1.2em;
   overflow-x: auto;
   white-space: nowrap;
 }
 .userlink{
-  min-height: 100px;
+  min-height: 90px;
 }
 .flex-no-overflow{
   min-width: 0;
