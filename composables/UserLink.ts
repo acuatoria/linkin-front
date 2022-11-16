@@ -1,8 +1,8 @@
 export const UserLink = {
-  userlink_endpoint() { return `${useRuntimeConfig().API_BASE_URL}api/v1/url-user/` },
+  userlink_endpoint() { return `${useRuntimeConfig().public.API_BASE_URL}api/v1/url-user/` },
   headers(token: string) {
     return {
-      'Authorization': token ? 'token' + ` ${token}` : '',
+      'Authorization': token ? `token ${token}` : '',
       'Content-Type': 'application/json',
       'Accept': 'application/json',
     }

@@ -1,5 +1,5 @@
 export const Url = {
-  userlink_endpoint() { return `${useRuntimeConfig().API_BASE_URL}api/v1/urls/` },
+  userlink_endpoint() { return `${useRuntimeConfig().public.API_BASE_URL}api/v1/urls/` },
   headers(token: string) {
     return {
       'Authorization': token ? 'token' + ` ${token}` : '',

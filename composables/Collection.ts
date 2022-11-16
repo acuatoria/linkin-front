@@ -1,5 +1,5 @@
 export const Collection = {
-  userlink_endpoint() { return `${useRuntimeConfig().API_BASE_URL}api/v1/collection/` },
+  userlink_endpoint() { return `${useRuntimeConfig().public.API_BASE_URL}api/v1/collection/` },
   headers(token: string) {
     return {
       'Authorization': token ? 'token' + ` ${token}` : '',
@@ -14,7 +14,7 @@ export const Collection = {
     })
   },
   items(token: string, id: string, page: Number, query: string, category_search: Number) {
-    return $fetch(`${useRuntimeConfig().API_BASE_URL}api/v1/urluser-min/?collection=${id}&page=${page}&query=${query}&category_search=${category_search}`, {
+    return $fetch(`${useRuntimeConfig().public.API_BASE_URL}api/v1/urluser-min/?collection=${id}&page=${page}&query=${query}&category_search=${category_search}`, {
       method: 'GET',
       headers: this.headers(token),
     })

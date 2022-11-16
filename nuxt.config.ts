@@ -16,8 +16,10 @@ export default defineNuxtConfig({
   build: {
     transpile: ['vuetify'],
   },
-  publicRuntimeConfig: {
-    API_BASE_URL: process.env.API_BASE_URL || 'http://localhost:8000/',
+  runtimeConfig: {
+    public: {
+      API_BASE_URL: process.env.API_BASE_URL || 'http://localhost:8000/',
+    },
   },
   experimental: {
     viteNode: false,

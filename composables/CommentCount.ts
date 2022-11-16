@@ -1,5 +1,5 @@
 export const CommentCount = {
-  userlink_endpoint() { return `${useRuntimeConfig().API_BASE_URL}api/v1/comments-count/` },
+  userlink_endpoint() { return `${useRuntimeConfig().public.API_BASE_URL}api/v1/comments-count/` },
   headers(token: string) {
     return {
       'Authorization': token ? 'token' + ` ${token}` : '',

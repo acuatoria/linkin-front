@@ -7,7 +7,7 @@ export const Category = {
     }
   },
   index(token: string) {
-    return fetch(`${useRuntimeConfig().API_BASE_URL}api/v1/category/`, {
+    return fetch(`${useRuntimeConfig().public.API_BASE_URL}api/v1/category/`, {
       method: 'GET',
       headers: this.headers(token),
     }).then((response) => {

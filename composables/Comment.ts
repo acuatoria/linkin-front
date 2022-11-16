@@ -1,5 +1,5 @@
 export const Comment = {
-  userlink_endpoint() { return `${useRuntimeConfig().API_BASE_URL}api/v1/comments/` },
+  userlink_endpoint() { return `${useRuntimeConfig().public.API_BASE_URL}api/v1/comments/` },
   headers(token: string) {
     return {
       'Authorization': token ? 'token' + ` ${token}` : '',
