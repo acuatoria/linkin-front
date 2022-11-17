@@ -1,6 +1,6 @@
 <script>
 export default {
-  props: ['record', 'urlToUpdate'],
+  props: ['record', 'urlToUpdate', 'index'],
   emits: ['update'],
   data() {
     return ({
@@ -63,8 +63,17 @@ export default {
       <div flex flex-row justify-between items-center>
         <div text-left ml-3 overflow-x-auto>
           <a :href="record.url" target="_blank">
-            <div class="item-text">
-              <span text-size-lg><v-icon v-if="fetching_title" icon="i-line-md:loading-alt-loop" />{{ title }}</span>
+            <div class="item-text mt-2 me-2">
+              <span text-size-lg>
+                <v-icon v-if="fetching_title" icon="i-line-md:loading-alt-loop" />
+                <v-chip
+                  label
+                  color="primary"
+                  variant="outlined"
+                >
+                  {{ title }}
+                </v-chip>
+              </span>
             </div>
 
             <div class="item-text" text-size-sm>

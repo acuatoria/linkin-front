@@ -116,6 +116,7 @@ export default {
             auto-grow="true"
             type="url"
             label="url (required)"
+            placeholder="https://xxxxxx.xxx"
             density="compact"
           />
           <div v-for="error of v$.url.$errors" :key="error.$uid" class="input-errors">

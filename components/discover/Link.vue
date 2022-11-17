@@ -21,7 +21,16 @@ export default {
         <div text-left ml-3 overflow-x-auto>
           <a :href="record.url" target="_blank">
             <div class="item-text">
-              <span text-size-lg>{{ record.title || '&nbsp;' }}</span>
+              <span text-size-lg>
+                <v-chip
+                  class="mt-2 me-2"
+                  label
+                  color="primary"
+                  variant="outlined"
+                >
+                  {{ record.title || '&nbsp;' }}
+                </v-chip>
+              </span>
             </div>
 
             <div class="item-text" text-size-sm h-8>
