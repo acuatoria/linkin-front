@@ -58,7 +58,7 @@ onMounted(async () => {
         max-width="150"
       >
         <v-btn
-          color="purple"
+          color="orange"
           @click="$router.push(`/user/home`)"
         >
           Links
@@ -66,7 +66,7 @@ onMounted(async () => {
       </v-responsive>
       <CollectionNew @update="update" />
     </div>
-    <v-list>
+    <v-list class="listado">
       <v-item-group v-for="record, index in collections" :key="record.id">
         <CollectionLink
           class="collection"
@@ -74,7 +74,6 @@ onMounted(async () => {
           :index="index"
           @update="update"
         />
-        <hr>
       </v-item-group>
     </v-list>
     <v-pagination
@@ -91,8 +90,11 @@ onMounted(async () => {
   width: 50%;
 }
 .collection{
-  min-height: 90px;
+  min-height: 120px;
   margin-top: 10px;
   margin-bottom: 10px;
+}
+.listado{
+  margin-top: 20px;
 }
 </style>

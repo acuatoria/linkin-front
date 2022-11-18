@@ -52,7 +52,7 @@ export default {
       </v-btn>
     </template>
 
-    <v-card class="alert_form">
+    <v-card class="alert_form" flex flex-col>
       <v-alert
         v-if="api_error"
         prominent
@@ -62,23 +62,20 @@ export default {
         {{ api_error }}
       </v-alert>
 
-      <div flex flex-col h-100>
-        <div m-auto>
-          <span>
-            Are you sure you want to delete your comment?
-          </span>
-        </div>
-        <div m-auto>
-          <v-btn
-            color="primary"
-            class="mr-4"
-            :disabled="sending"
-            @click="submit"
-          >
-            Yes
-            <v-icon v-show="sending" icon="i-line-md:loading-alt-loop" />
-          </v-btn>
-        </div>
+      <span m-4>
+        Are you sure you want to delete your comment?
+      </span>
+
+      <div flex m-4>
+        <v-btn
+          color="red"
+          m-auto
+          :disabled="sending"
+          @click="submit"
+        >
+          Yes
+          <v-icon v-show="sending" icon="i-line-md:loading-alt-loop" />
+        </v-btn>
       </div>
     </v-card>
   </v-dialog>
@@ -87,9 +84,8 @@ export default {
 <style scoped>
   .alert_form{
     width: 90%;
-    max-width: 600px;
+    max-width: 300px;
     margin: auto;
-    height:150px;
   }
 </style>
 

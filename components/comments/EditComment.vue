@@ -72,7 +72,7 @@ export default {
   >
     <template #activator="{ props }">
       <v-btn
-        :color="label === 'Add a comment' ? 'deep-purple' : 'cyan'"
+        :color="label === 'Add a comment' ? 'orange' : 'cyan'"
         v-bind="props"
       >
         <v-icon icon="i-line-md:edit" />
@@ -107,15 +107,17 @@ export default {
           </div>
         </div>
 
-        <v-btn
-          color="primary"
-          class="mr-4"
-          :disabled="sending"
-          @click="submitForm"
-        >
-          Save
-          <v-icon v-show="sending" icon="i-line-md:loading-alt-loop" />
-        </v-btn>
+        <div flex m-2>
+          <v-btn
+            color="orange"
+            m-auto
+            :disabled="sending"
+            @click="submitForm"
+          >
+            Save
+            <v-icon v-show="sending" icon="i-line-md:loading-alt-loop" />
+          </v-btn>
+        </div>
       </v-form>
     </v-card>
   </v-dialog>

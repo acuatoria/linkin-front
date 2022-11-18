@@ -17,7 +17,6 @@ const page = ref(1)
 const items_number = ref(0)
 const items_x_page = ref(10)
 const urlToUpdate = ref('')
-const collections = shallowRef([])
 
 watch(page, (newValue) => {
   update()
@@ -108,7 +107,7 @@ const items = computed(() => {
         max-width="200"
       >
         <v-btn
-          color="deep-purple"
+          color="green"
           @click="$router.push(`/user/collections`)"
         >
           Collections
@@ -123,7 +122,7 @@ const items = computed(() => {
 
     <ErrorDialog :message="server_error" />
 
-    <v-list>
+    <v-list class="listado">
       <v-item-group v-for="record, index in items" :key="record.id">
         <UserHomeLink
           :record="record"
@@ -146,5 +145,8 @@ const items = computed(() => {
 .header > *{
   margin:auto;
   width: 50%;
+}
+.listado{
+  margin-top: 20px;
 }
 </style>

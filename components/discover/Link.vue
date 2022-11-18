@@ -22,18 +22,11 @@ export default {
           <a :href="record.url" target="_blank">
             <div class="item-text">
               <span text-size-lg>
-                <v-chip
-                  class="mt-2 me-2"
-                  label
-                  color="primary"
-                  variant="outlined"
-                >
-                  {{ record.title || '&nbsp;' }}
-                </v-chip>
+                {{ record.title || '&nbsp;' }}
               </span>
             </div>
 
-            <div class="item-text" text-size-sm h-8>
+            <div class="item-text" text-size-sm>
               {{ record.url }}
             </div>
           </a>
@@ -57,7 +50,7 @@ export default {
   white-space: nowrap;
 }
 .userlink{
-  min-height: 95px;
+  min-height: 120px;
 }
 </style>
 

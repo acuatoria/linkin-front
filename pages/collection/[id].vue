@@ -104,10 +104,9 @@ const items = computed(() => {
       color="primary"
     />
     <div v-if="items_number > 0">
-      <v-list>
+      <v-list class="listado">
         <v-item-group v-for="record, index in items" :key="record.id">
           <DiscoverLink :record="record" :categories="categories" />
-          <hr :style="`border-color:${color_return(index * 2)}`">
         </v-item-group>
       </v-list>
       <v-pagination

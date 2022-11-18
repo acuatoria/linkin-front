@@ -91,7 +91,7 @@ export default {
   >
     <template #activator="{ props }">
       <v-btn
-        color="purple"
+        color="orange"
         v-bind="props"
       >
         Add link
@@ -174,15 +174,17 @@ export default {
             :style="`color:${color_return(color_changing)}`"
           />
         </div>
-        <v-btn
-          color="primary"
-          class="mr-4"
-          :disabled="sending"
-          @click="submitForm"
-        >
-          Save
-          <v-icon v-show="sending" icon="i-line-md:loading-alt-loop" />
-        </v-btn>
+        <div flex m-2>
+          <v-btn
+            color="orange"
+            m-auto
+            :disabled="sending"
+            @click="submitForm"
+          >
+            Save
+            <v-icon v-show="sending" icon="i-line-md:loading-alt-loop" />
+          </v-btn>
+        </div>
       </v-form>
     </v-card>
   </v-dialog>

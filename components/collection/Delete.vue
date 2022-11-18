@@ -68,15 +68,18 @@ export default {
         flex
         flex-col
       >
-        <span m-5>Do you want to remove this collection?</span>
-        <v-btn
-          color="red"
-          :disabled="sending"
-          @click="submitForm"
-        >
-          Yes
-          <v-icon v-show="sending" icon="i-line-md:loading-alt-loop" />
-        </v-btn>
+        <span p-4 m-auto>Do you want to remove this collection?</span>
+        <div flex m-4>
+          <v-btn
+            color="red"
+            m-auto
+            :disabled="sending"
+            @click="submitForm"
+          >
+            Yes
+            <v-icon v-show="sending" icon="i-line-md:loading-alt-loop" />
+          </v-btn>
+        </div>
       </v-form>
     </v-card>
   </v-dialog>

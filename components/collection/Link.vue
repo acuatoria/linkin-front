@@ -29,7 +29,7 @@ export default {
             <div class="item-text">
               <span text-size-lg><v-chip color="lighten-1">{{ record.name }}</v-chip></span>
             </div>
-            <div class="item-text" text-size-sm h-8>
+            <div class="item-text" text-size-sm>
               {{ record.description || '{ your description }' }}
             </div>
           </a>
@@ -57,12 +57,12 @@ export default {
   max-width: 50px;
 }
 .item-text{
-  line-height: 1.2em;
+  line-height: 1.5em;
   overflow-x: auto;
   white-space: nowrap;
 }
 .userlink{
-  min-height: 100px;
+  min-height: 120px;
 }
 .flex-no-overflow{
   min-width: 0;

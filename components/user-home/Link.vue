@@ -66,13 +66,7 @@ export default {
             <div class="item-text mt-2 me-2">
               <span text-size-lg>
                 <v-icon v-if="fetching_title" icon="i-line-md:loading-alt-loop" />
-                <v-chip
-                  label
-                  color="primary"
-                  variant="outlined"
-                >
-                  {{ title }}
-                </v-chip>
+                {{ title }}
               </span>
             </div>
 
@@ -101,7 +95,6 @@ export default {
       </div>
     </v-item>
   </div>
-  <hr>
 </template>
 
 <style scoped>
@@ -109,12 +102,12 @@ export default {
   max-width: 50px;
 }
 .item-text{
-  line-height: 1.2em;
+  line-height: 1.5em;
   overflow-x: auto;
   white-space: nowrap;
 }
 .userlink{
-  min-height: 90px;
+  min-height: 120px;
 }
 .flex-no-overflow{
   min-width: 0;
