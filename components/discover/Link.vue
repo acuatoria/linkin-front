@@ -34,7 +34,7 @@ export default {
       </div>
       <div flex>
         <LinkTagCategory :category-name="categoryName" />
-        <LinkTagComment :url-id="record.id" :comments="record.comments" />
+        <LinkTagComment :url-id="record.url_id || record.id" :comments="record.comments" />
       </div>
     </v-item>
   </div>
