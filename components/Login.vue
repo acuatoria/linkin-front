@@ -115,7 +115,7 @@ export default {
 
         <v-btn
           color="orange"
-          class="m-4"
+          class="mr-3"
           :disabled="sending"
           @click="submitForm"
         >

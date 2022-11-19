@@ -13,7 +13,7 @@ async function logout() {
   <v-btn
     @click="logout"
   >
-    <v-icon icon="i-line-md:cancel" />
+    <v-icon mr-3 icon="i-line-md:cancel" />
     Sign out
   </v-btn>
 </template>
