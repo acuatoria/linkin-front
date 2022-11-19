@@ -1,6 +1,6 @@
 <script setup>
 useHead({
-  title: 'Linkin',
+  title: 'Pyxilink - Links everywhere',
 })
 </script>
 

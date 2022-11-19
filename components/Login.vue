@@ -67,12 +67,11 @@ export default {
   >
     <template #activator="{ props }">
       <v-btn
-
-        color="primary"
+        color="orange"
         v-bind="props"
       >
         <v-icon icon="i-line-md:account" />
-        Sign in
+        <span ml-2 text-l>Sign in</span>
       </v-btn>
     </template>
 
@@ -115,8 +114,8 @@ export default {
         </div>
 
         <v-btn
-          color="primary"
-          class="mr-4"
+          color="orange"
+          class="m-4"
           :disabled="sending"
           @click="submitForm"
         >
