@@ -1,24 +1,24 @@
-import { acceptHMRUpdate, defineStore } from 'pinia'
+import { acceptHMRUpdate, defineStore, skipHydrate } from 'pinia'
 
 export const useUserStore = defineStore('user', () => {
   const token = ref(useLocalStorage('token', ''))
   const isLogged = ref(useLocalStorage('isLogged', false))
   return {
-    token,
-    isLogged,
+    token: skipHydrate(token),
+    isLogged: skipHydrate(isLogged),
   }
 })
 
 export const useCategoryStore = defineStore('category', () => {
   const categories = ref(useLocalStorage('categories', {}))
   return {
-    categories,
+    categories: skipHydrate(categories),
   }
 })
 export const useCollectionStore = defineStore('collection', () => {
   const collections = ref(useLocalStorage('collections', {}))
   return {
-    collections,
+    collections: skipHydrate(collections),
   }
 })
 

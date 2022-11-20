@@ -126,7 +126,6 @@ const items = computed(() => {
       <v-item-group v-for="record, index in items" :key="record.id">
         <UserHomeLink
           :record="record"
-          :categories="categories"
           :index="index"
           :url-to-update="urlToUpdate"
           @update="update($event, data)"

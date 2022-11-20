@@ -121,7 +121,7 @@ export default {
         <div :class="{ 'text-red': v$.link_url.$errors.length }">
           <v-textarea
             v-model="link_url"
-            auto-grow="true"
+            auto-grow
             type="url"
             label="url (required)"
             placeholder="https://xxxxxx.xxx"
@@ -137,7 +137,7 @@ export default {
         <v-textarea
           v-model="link_description"
           type="string"
-          auto-grow="true"
+          auto-grow
           label="your description is always private"
           density="compact"
           color="blue-grey"

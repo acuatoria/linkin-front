@@ -5,7 +5,8 @@
     "lint": "eslint .",
     "dev": "nuxi dev",
     "postinstall": "nuxi prepare",
-    "start": "node .output/server/index.mjs"
+    "start": "node .output/server/index.mjs",
+    "deploy": "nuxi build && nuxi generate"
   },
   "dependencies": {
     "@mdi/font": "5.9.55",

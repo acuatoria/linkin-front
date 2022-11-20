@@ -7,6 +7,11 @@ export default {
       updated: 0,
     })
   },
+  head() {
+    return {
+      title: 'Comments',
+    }
+  },
   mounted() {
     this.id = this.$route.params.id
     this.user = useUserStore()
