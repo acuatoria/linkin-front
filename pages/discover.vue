@@ -19,11 +19,14 @@ watch(page, (newValue) => {
 })
 
 watch(needle, (newValue) => {
-  if (newValue.length > 3 || newValue === '')
+  if (newValue.length > 3 || newValue === '') {
+    page.value = 1
     update()
+  }
 })
 
 watch(category_search, (newValue) => {
+  page.value = 1
   update()
 })
 

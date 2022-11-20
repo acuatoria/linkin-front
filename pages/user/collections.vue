@@ -69,9 +69,7 @@ onMounted(async () => {
     <v-list class="listado">
       <v-item-group v-for="record, index in collections" :key="record.id">
         <CollectionLink
-          class="collection"
           :record="record"
-          :index="index"
           @update="update"
         />
       </v-item-group>
@@ -89,11 +87,7 @@ onMounted(async () => {
   margin:auto;
   width: 50%;
 }
-.collection{
-  min-height: 120px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
+
 .listado{
   margin-top: 20px;
 }

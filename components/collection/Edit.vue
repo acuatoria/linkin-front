@@ -106,7 +106,7 @@ export default {
         <div :class="{ 'text-red': v$.name.$errors.length }">
           <v-textarea
             v-model="name"
-            auto-grow="true"
+            auto-grow
             type="name"
             label="name (required)"
             density="compact"
@@ -121,7 +121,7 @@ export default {
         <v-textarea
           v-model="description"
           type="string"
-          auto-grow="true"
+          auto-grow
           label="Collection description"
           density="compact"
           color="blue-grey"

@@ -4,7 +4,6 @@ useHead({
 })
 
 const id = ref('')
-const name = ref('')
 const needle = ref('')
 const category_search = ref('')
 const user = useUserStore()
@@ -39,6 +38,9 @@ async function update() {
     collection.value = await Collection.get(user.token, id.value)
     userLinks.value = await Collection.items(user.token, id.value, page.value, needle.value, category_search.value ? category_search.value.id : '')
     items_number.value = userLinks.value.count
+    useHead({
+      title: `Collection: ${collection.value.name}`,
+    })
   }
   catch (error) {
     server_error.value = 'Error at server'

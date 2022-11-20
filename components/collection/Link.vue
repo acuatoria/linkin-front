@@ -21,7 +21,7 @@ export default {
 
 <template>
   <Dialog :message="`public link: ${baseUrl}/collection/${record.id}`" :show="showDialog" />
-  <div class="userlink">
+  <div class="collection">
     <v-item>
       <div flex flex-row justify-between items-center>
         <div text-left ml-3 overflow-x-auto>
@@ -61,8 +61,10 @@ export default {
   overflow-x: auto;
   white-space: nowrap;
 }
-.userlink{
+.collection{
   min-height: 120px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 .flex-no-overflow{
   min-width: 0;

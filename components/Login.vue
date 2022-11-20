@@ -60,75 +60,77 @@ export default {
 </script>
 
 <template>
-  <v-dialog
-    v-model="dialog"
-    scroll-strategy="close"
-    text-center
-  >
-    <template #activator="{ props }">
-      <v-btn
-        color="orange"
-        v-bind="props"
-      >
-        <v-icon icon="i-line-md:account" />
-        <span ml-2 text-l>Sign in</span>
-      </v-btn>
-    </template>
-
-    <v-card m-auto>
-      <v-alert
-        v-if="api_error"
-        prominent
-        type="error"
-        variant="outlined"
-      >
-        {{ api_error }}
-      </v-alert>
-      <v-form
-        ref="form"
-      >
-        <div :class="{ 'text-red': v$.username.$errors.length }">
-          <v-text-field
-            v-model="username"
-            type="username"
-            label="username"
-          />
-          <div v-for="error of v$.username.$errors" :key="error.$uid" class="input-errors">
-            <div class="error-msg">
-              {{ error.$message }}
-            </div>
-          </div>
-        </div>
-
-        <div :class="{ 'text-red': v$.password.$errors.length }">
-          <v-text-field
-            v-model="password"
-            type="password"
-            label="password"
-          />
-          <div v-for="error of v$.password.$errors" :key="error.$uid" class="input-errors">
-            <div class="error-msg">
-              {{ error.$message }}
-            </div>
-          </div>
-        </div>
-
+  <div>
+    <v-dialog
+      v-model="dialog"
+      scroll-strategy="close"
+      text-center
+    >
+      <template #activator="{ props }">
         <v-btn
           color="orange"
-          class="mr-3"
-          :disabled="sending"
-          @click="submitForm"
+          v-bind="props"
         >
-          Sign In
-          <v-icon v-show="sending" icon="i-line-md:loading-alt-loop" />
+          <v-icon icon="i-line-md:account" />
+          <span ml-2 text-l>Sign in</span>
         </v-btn>
-      </v-form>
-    </v-card>
-  </v-dialog>
+      </template>
+
+      <v-card m-auto class="modal">
+        <v-alert
+          v-if="api_error"
+          prominent
+          type="error"
+          variant="outlined"
+        >
+          {{ api_error }}
+        </v-alert>
+        <v-form
+          ref="form"
+        >
+          <div :class="{ 'text-red': v$.username.$errors.length }">
+            <v-text-field
+              v-model="username"
+              type="username"
+              label="username"
+            />
+            <div v-for="error of v$.username.$errors" :key="error.$uid" class="input-errors">
+              <div class="error-msg">
+                {{ error.$message }}
+              </div>
+            </div>
+          </div>
+
+          <div :class="{ 'text-red': v$.password.$errors.length }">
+            <v-text-field
+              v-model="password"
+              type="password"
+              label="password"
+            />
+            <div v-for="error of v$.password.$errors" :key="error.$uid" class="input-errors">
+              <div class="error-msg">
+                {{ error.$message }}
+              </div>
+            </div>
+          </div>
+
+          <v-btn
+            color="orange"
+            class="m-3"
+            :disabled="sending"
+            @click="submitForm"
+          >
+            Sign In
+            <v-icon v-show="sending" icon="i-line-md:loading-alt-loop" />
+          </v-btn>
+        </v-form>
+      </v-card>
+    </v-dialog>
+  </div>
 </template>
 
 <style scoped>
-div{
-  min-width: 315px;
+.modal{
+  min-width: 270px;
 }
 </style>

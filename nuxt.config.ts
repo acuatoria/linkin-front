@@ -14,7 +14,7 @@ export default defineNuxtConfig({
     '~/assets/scss/main.scss',
   ],
   build: {
-    transpile: ['vuetify'],
+    transpile: ['vuetify', 'pinia'],
   },
   runtimeConfig: {
     public: {
@@ -23,9 +23,6 @@ export default defineNuxtConfig({
   },
   experimental: {
     viteNode: false,
-  },
-  nitro: {
-    serveStatic: true,
   },
   unocss: {
     preflight: true,
@@ -43,7 +40,7 @@ export default defineNuxtConfig({
       }
     },
   },
-  ssr: false,
+  ssr: true,
   vite: {
     plugins: [
       svgLoader(),

@@ -7,11 +7,6 @@ export default {
       response: {},
     })
   },
-  head() {
-    return {
-      title: 'Link & comments',
-    }
-  },
   mounted() {
     this.getUrlInfo()
   },

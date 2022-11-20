@@ -31,8 +31,7 @@ export default {
         text-sm
         text-left
         :border="true"
-        flat="true"
-        :density="compact"
+        flat
         :style="`border-color:${color_return(1 * index)}`"
       >
         {{ record.comment }}
