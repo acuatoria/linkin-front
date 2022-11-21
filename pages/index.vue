@@ -4,9 +4,6 @@ export default {
     title: 'Home',
   },
 }
-definePageMeta({
-  middleware: ['redirect'],
-})
 </script>
 
 <template>

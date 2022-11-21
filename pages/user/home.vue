@@ -2,9 +2,6 @@
 useHead({
   title: 'My links',
 })
-definePageMeta({
-  middleware: ['auth'],
-})
 
 const needle = ref('')
 const category_search = ref('')
@@ -17,6 +14,11 @@ const page = ref(1)
 const items_number = ref(0)
 const items_x_page = ref(10)
 const urlToUpdate = ref('')
+
+onBeforeMount(() => {
+  if (!user.isLogged)
+    return navigateTo('/')
+})
 
 watch(page, (newValue) => {
   update()
@@ -63,7 +65,7 @@ const items = computed(() => {
 </script>
 
 <template>
-  <div class="my_links">
+  <client-only>
     <Header path="My links" />
     <div flex flex-row flex-wrap class="header">
       <v-responsive
@@ -137,7 +139,7 @@ const items = computed(() => {
       :records="items_number"
       :length="items_number >= items_x_page ? Math.ceil(items_number / items_x_page) : 1"
     />
-  </div>
+  </client-only>
 </template>
 
 <style scoped>
