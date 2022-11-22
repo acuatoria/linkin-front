@@ -9,8 +9,6 @@ export default defineNuxtConfig({
     '@nuxtjs/color-mode',
   ],
   css: [
-    'vuetify/lib/styles/main.sass',
-    '@mdi/font/css/materialdesignicons.min.css',
     '~/assets/scss/main.scss',
   ],
   build: {
