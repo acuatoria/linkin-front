@@ -44,5 +44,11 @@ export default defineNuxtConfig({
       svgLoader(),
     ],
   },
+  routeRules: {
+    // Static page generated on-demand, revalidates in background
+    '/collection/**': { swr: true },
+    // Static page generated on-demand once
+    '/comments/**': { swr: true },
+  },
 
 })
