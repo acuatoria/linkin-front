@@ -3,7 +3,7 @@ const items = [
   { text: 'Save your links', icon: 'i-carbon-link' },
   { text: 'Comment on links', icon: 'i-carbon-add-comment' },
   { text: 'Share your links collections', icon: 'i-carbon-share-knowledge' },
-  { text: 'Discover new links', icon: 'i-carbon-image-search', page: 'discover' },
+  { text: 'Discover new links', icon: 'i-carbon-image-search' },
 ]
 </script>
 

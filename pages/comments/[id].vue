@@ -1,23 +1,10 @@
-<script>
-export default {
-  data() {
-    return ({
-      id: String,
-      user: Object,
-      updated: 0,
-    })
-  },
-  mounted() {
-    this.id = this.$route.params.id
-    this.user = useUserStore()
-  },
+<script setup>
+useHead({
+  title: 'Comments',
+})
 
-  methods: {
-    update() {
-      this.updated++
-    },
-  },
-}
+const user = useUserStore()
+const updated = ref(0)
 </script>
 
 <template>
@@ -27,7 +14,7 @@ export default {
     </Head>
     <Header path="Link & comments" />
     <CommentsLink :id="$route.params.id" />
-    <CommentsUserCommentForm v-if="user" :id="$route.params.id" :key="updated" @update="update" />
+    <CommentsUserCommentForm v-if="user" :id="$route.params.id" :key="updated" @update="updated++" />
     <CommentsTheComments :id="$route.params.id" :key="updated" />
   </div>
 </template>
