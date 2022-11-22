@@ -9,9 +9,6 @@ const updated = ref(0)
 
 <template>
   <div>
-    <Head>
-      <Title>Comments - Pyxilink</Title>
-    </Head>
     <Header path="Link & comments" />
     <CommentsLink :id="$route.params.id" />
     <CommentsUserCommentForm v-if="user" :id="$route.params.id" :key="updated" @update="updated++" />
