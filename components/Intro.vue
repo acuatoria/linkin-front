@@ -5,14 +5,6 @@ const items = [
   { text: 'Share your links collections', icon: 'i-carbon-share-knowledge' },
   { text: 'Discover new links', icon: 'i-carbon-image-search', page: 'discover' },
 ]
-const color_changing = ref(0)
-const myPolling = setInterval(async () => {
-  color_changing.value++
-}, 1000 / 4)
-
-onBeforeUnmount(() => {
-  window.clearInterval(myPolling)
-})
 </script>
 
 <template>
@@ -39,7 +31,6 @@ onBeforeUnmount(() => {
   </v-card>
   <div mt-5>
     <v-btn
-      :style="`color:${color_return(color_changing)}`"
       color="lime"
       @click="$router.push(`/discover`)"
     >

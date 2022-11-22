@@ -56,59 +56,61 @@ const items = computed(() => {
 
 <template>
   <div>
-    <Header path="Discover Links" />
-    <div flex flex-row flex-wrap class="header">
-      <v-responsive
-        class="mx-auto"
-        max-width="300"
-      >
-        <v-text-field
-          v-model="needle"
-          class="mt-5"
-          placeholder="Filter records"
-          density="compact"
-          variant="outlined"
-          :clearable="true"
+    <v-no-ssr>
+      <Header path="Discover Links" />
+      <div flex flex-row flex-wrap class="header">
+        <v-responsive
+          class="mx-auto"
+          max-width="300"
+        >
+          <v-text-field
+            v-model="needle"
+            class="mt-5"
+            placeholder="Filter records"
+            density="compact"
+            variant="outlined"
+            :clearable="true"
+          />
+        </v-responsive>
+        <v-responsive
+          max-width="300"
+        >
+          <v-select
+            v-model="category_search"
+            :items="categories"
+            item-title="name"
+            item-value="id"
+            return-object
+            :clearable="true"
+            density="compact"
+            class="mt-5"
+            color="deep-orange"
+            label="Filter by category"
+            variant="outlined"
+          />
+        </v-responsive>
+        <v-responsive
+          class="mx-auto"
+          max-width="300"
         />
-      </v-responsive>
-      <v-responsive
-        max-width="300"
-      >
-        <v-select
-          v-model="category_search"
-          :items="categories"
-          item-title="name"
-          item-value="id"
-          return-object
-          :clearable="true"
-          density="compact"
-          class="mt-5"
-          color="deep-orange"
-          label="Filter by category"
-          variant="outlined"
-        />
-      </v-responsive>
-      <v-responsive
-        class="mx-auto"
-        max-width="300"
+      </div>
+      <v-progress-circular
+        v-if="loading"
+        indeterminate
+        color="primary"
       />
-    </div>
-    <v-progress-circular
-      v-if="loading"
-      indeterminate
-      color="primary"
-    />
-    <ErrorDialog :message="server_error" />
-    <v-list>
-      <v-item-group v-for="record, index in items" :key="record.id">
-        <DiscoverLink :record="record" :categories="categories" />
-      </v-item-group>
-    </v-list>
-    <v-pagination
-      v-model="page"
-      :records="items_number"
-      :length="items_number >= items_x_page ? Math.ceil(items_number / items_x_page) : 1"
-    />
+      <ErrorDialog :message="server_error" />
+      <v-list>
+        <v-item-group v-for="record, index in items" :key="record.id">
+          <DiscoverLink :record="record" :categories="categories" />
+        </v-item-group>
+      </v-list>
+      <v-pagination
+        v-model="page"
+        :records="items_number"
+        :length="items_number >= items_x_page ? Math.ceil(items_number / items_x_page) : 1"
+      />
+    </v-no-ssr>
   </div>
 </template>
 

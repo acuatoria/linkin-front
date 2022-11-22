@@ -7,11 +7,6 @@ export default {
       updated: 0,
     })
   },
-  head() {
-    return {
-      title: 'Comments',
-    }
-  },
   mounted() {
     this.id = this.$route.params.id
     this.user = useUserStore()
@@ -27,6 +22,9 @@ export default {
 
 <template>
   <div>
+    <Head>
+      <Title>Comments - Pyxilink</Title>
+    </Head>
     <Header path="Link & comments" />
     <CommentsLink :id="$route.params.id" />
     <CommentsUserCommentForm v-if="user" :id="$route.params.id" :key="updated" @update="update" />
