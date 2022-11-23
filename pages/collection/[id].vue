@@ -1,5 +1,5 @@
 <script setup>
-useHead({
+definePageMeta({
   title: 'Collection',
 })
 
@@ -61,7 +61,7 @@ const items = computed(() => {
 
 <template>
   <div>
-    <v-no-ssr>
+    <ClientOnly>
       <Header path="Collection" />
       <div>Collection <b>{{ collection.name }}</b>: {{ collection.description }}</div>
       <div flex flex-row flex-wrap class="header">
@@ -121,7 +121,7 @@ const items = computed(() => {
       <div v-else-if="!loading">
         No items on this collection
       </div>
-    </v-no-ssr>
+    </ClientOnly>
   </div>
 </template>
 

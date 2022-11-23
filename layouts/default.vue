@@ -1,8 +1,10 @@
 <template>
-  <main class="text-center text-size-lg">
-    <slot />
-    <Footer />
-  </main>
+  <div>
+    <main class="text-center text-size-lg">
+      <slot />
+      <Footer />
+    </main>
+  </div>
 </template>
 
 <style>

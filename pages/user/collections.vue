@@ -39,7 +39,7 @@ onMounted(async () => {
 
 <template>
   <div>
-    <v-no-ssr>
+    <ClientOnly>
       <Header path="My collections" />
       <div flex flex-row flex-wrap class="header">
         <v-responsive
@@ -82,7 +82,7 @@ onMounted(async () => {
         :records="items_number"
         :length="items_number >= items_x_page ? Math.ceil(items_number / items_x_page) : 1"
       />
-    </v-no-ssr>
+    </ClientOnly>
   </div>
 </template>
 

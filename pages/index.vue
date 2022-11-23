@@ -8,10 +8,9 @@ export default {
 
 <template>
   <div>
-    <v-no-ssr>
+    <ClientOnly>
       <Header />
-
       <Intro />
-    </v-no-ssr>
+    </ClientOnly>
   </div>
 </template>

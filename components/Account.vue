@@ -9,18 +9,16 @@ const user = useUserStore()
     justify-center
     gap-3
   >
-    <v-no-ssr>
-      <div class="flex flex-column">
-        <div class="shadow rounded">
-          <div v-if="!user || !user.isLogged">
-            <Login />
-          </div>
-          <div v-if="user && user.isLogged" class="flex flex-column">
-            <Logout />
-            <Navegation />
-          </div>
+    <div class="flex flex-column">
+      <div class="shadow rounded">
+        <div v-if="!user || !user.isLogged">
+          <Login />
+        </div>
+        <div v-if="user && user.isLogged" class="flex flex-column">
+          <Logout />
+          <Navegation />
         </div>
       </div>
-    </v-no-ssr>
+    </div>
   </div>
 </template>
