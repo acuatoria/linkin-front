@@ -2,10 +2,11 @@
 useHead({
   title: 'My links',
 })
-
+definePageMeta({
+  middleware: ['auth'],
+})
 const needle = ref('')
 const category_search = ref('')
-const user = useUserStore()
 const loading = ref(true)
 const userLinks = shallowRef([])
 const categories = ref([])
@@ -14,11 +15,6 @@ const page = ref(1)
 const items_number = ref(0)
 const items_x_page = ref(10)
 const urlToUpdate = ref('')
-
-onBeforeMount(() => {
-  if (!user.isLogged)
-    return navigateTo('/')
-})
 
 watch(page, (newValue) => {
   update()
@@ -41,10 +37,10 @@ async function update(data) {
   loading.value = true
   server_error.value = ''
   try {
-    useCategoryStore().categories = await Category.index(user.token)
+    useCategoryStore().categories = await Category.index()
     categories.value = useCategoryStore().categories
-    useCollectionStore().collections = await Collection.index(user.token)
-    userLinks.value = await UserLink.index(user.token, page.value, needle.value.trim(), category_search.value ? category_search.value.id : '')
+    useCollectionStore().collections = await Collection.index()
+    userLinks.value = await UserLink.index(page.value, needle.value.trim(), category_search.value ? category_search.value.id : '')
     items_number.value = userLinks.value.count
     urlToUpdate.value = data ? data.url : ''
   }

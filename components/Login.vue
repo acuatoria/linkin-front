@@ -9,7 +9,6 @@ export default {
   data() {
     return ({
       response: {},
-      user: useUserStore(),
       dialog: false,
       username: '',
       password: '',
@@ -34,12 +33,12 @@ export default {
     },
     async submit() {
       try {
-        this.response = await login({
-          username: this.username, password: this.password,
+        await useNuxtApp().$auth.loginWith('local', {
+          body:
+            {
+              username: this.username, password: this.password,
+            },
         })
-
-        this.user.token = this.response.token
-        this.user.isLogged = true
         this.dialog = false
         this.sending = false
         this.api_error = ''

@@ -36,10 +36,8 @@ export default {
       this.submit()
     },
     async submit() {
-      const user = useUserStore()
       try {
         this.response = await Comment.create(
-          user.token,
           {
             url: this.url,
             comment: this.comment,

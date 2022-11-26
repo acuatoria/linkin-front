@@ -1,7 +1,3 @@
-<script setup>
-const user = useUserStore()
-</script>
-
 <template>
   <div
     m-5
@@ -11,10 +7,10 @@ const user = useUserStore()
   >
     <div class="flex flex-column">
       <div class="shadow rounded">
-        <div v-if="!user || !user.isLogged">
+        <div v-if="!$auth.loggedIn">
           <Login />
         </div>
-        <div v-if="user && user.isLogged" class="flex flex-column">
+        <div v-if="$auth.loggedIn" class="flex flex-column">
           <Logout />
           <Navegation />
         </div>

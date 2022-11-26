@@ -1,35 +1,35 @@
 export const Comment = {
   userlink_endpoint() { return `${useRuntimeConfig().public.API_BASE_URL}api/v1/comments/` },
-  headers(token: string) {
+  headers() {
     return {
-      'Authorization': token ? 'token' + ` ${token}` : '',
+      'Authorization': `${useNuxtApp().$auth.$storage.getCookie('_token.local')}`,
       'Content-Type': 'application/json',
       'Accept': 'application/json',
     }
   },
-  index(token: string, url: string) {
+  index(url: string) {
     return $fetch(`${this.userlink_endpoint()}${url}/`, {
       method: 'GET',
-      headers: this.headers(token),
+      headers: this.headers(),
     })
   },
-  get(token: string, url: string) {
+  get(url: string) {
     return $fetch(`${this.userlink_endpoint()}?url=${url}`, {
       method: 'GET',
-      headers: this.headers(token),
+      headers: this.headers(),
     })
   },
-  create(token: string, data: object) {
+  create(data: object) {
     return $fetch(`${this.userlink_endpoint()}`, {
       method: 'POST',
       body: JSON.stringify(data),
-      headers: this.headers(token),
+      headers: this.headers(),
     })
   },
-  delete(token: string, url: string) {
+  delete(url: string) {
     return $fetch(`${this.userlink_endpoint()}${url}/`, {
       method: 'DELETE',
-      headers: this.headers(token),
+      headers: this.headers(),
     })
   },
 }

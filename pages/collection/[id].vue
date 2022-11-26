@@ -6,7 +6,6 @@ definePageMeta({
 const id = ref('')
 const needle = ref('')
 const category_search = ref('')
-const user = useUserStore()
 const loading = ref(true)
 const collection = shallowRef([])
 const userLinks = shallowRef([])
@@ -33,10 +32,10 @@ watch(category_search, (newValue) => {
 async function update() {
   loading.value = true
   try {
-    useCategoryStore().categories = await Category.index(user.token)
+    useCategoryStore().categories = await Category.index()
     categories.value = useCategoryStore().categories
-    collection.value = await Collection.get(user.token, id.value)
-    userLinks.value = await Collection.items(user.token, id.value, page.value, needle.value, category_search.value ? category_search.value.id : '')
+    collection.value = await Collection.get(id.value)
+    userLinks.value = await Collection.items(id.value, page.value, needle.value, category_search.value ? category_search.value.id : '')
     items_number.value = userLinks.value.count
     useHead({
       title: `Collection: ${collection.value.name}`,

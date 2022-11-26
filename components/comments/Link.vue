@@ -12,8 +12,7 @@ export default {
   },
   methods: {
     async getUrlInfo() {
-      const user = useUserStore()
-      this.response = await Url.get(user.token, this.id)
+      this.response = await Url.get(this.id)
     },
   },
 }

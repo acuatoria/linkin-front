@@ -5,7 +5,6 @@ useHead({
 
 const needle = ref('')
 const category_search = ref('')
-const user = useUserStore()
 const loading = ref(true)
 const userLinks = shallowRef([])
 const categories = ref([])
@@ -33,7 +32,7 @@ watch(category_search, (newValue) => {
 async function update() {
   loading.value = true
   try {
-    useCategoryStore().categories = await Category.index(user.token)
+    useCategoryStore().categories = await Category.index()
     categories.value = useCategoryStore().categories
     userLinks.value = await Url.discover(page.value, needle.value, category_search.value ? category_search.value.id : '')
     items_number.value = userLinks.value.count

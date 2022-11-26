@@ -13,10 +13,8 @@ export default {
   },
   methods: {
     async submit() {
-      const user = useUserStore()
       try {
         this.response = await Comment.delete(
-          user.token,
           this.url,
         )
         this.sending = this.dialog = false

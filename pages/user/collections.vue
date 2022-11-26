@@ -2,19 +2,16 @@
 useHead({
   title: 'My collections',
 })
+definePageMeta({
+  middleware: ['auth'],
+})
 
-const user = useUserStore()
 const loading = ref(true)
 const collections = shallowRef([])
 const server_error = ref('')
 const page = ref(1)
 const items_number = ref(0)
 const items_x_page = ref(10)
-
-onBeforeMount(() => {
-  if (!user.isLogged)
-    return navigateTo('/')
-})
 
 watch(page, (newValue) => {
   update()
@@ -24,7 +21,7 @@ async function update(data) {
   loading.value = true
   server_error.value = ''
   try {
-    collections.value = await Collection.index(user.token)
+    collections.value = await Collection.index()
   }
   catch (error) {
     server_error.value = 'Error at server'

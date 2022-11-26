@@ -9,6 +9,9 @@
   },
   "dependencies": {
     "@mdi/font": "5.9.55",
+    "@nuxtjs-alt/auth": "^2.1.5",
+    "@nuxtjs-alt/http": "^1.5.0",
+    "@nuxtjs-alt/proxy": "^2.1.0",
     "roboto-fontface": "*",
     "sass": "^1.56.1",
     "vuetify": "^3.0.2",

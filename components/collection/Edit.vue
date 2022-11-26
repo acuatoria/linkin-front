@@ -11,7 +11,6 @@ export default {
   data() {
     return ({
       response: {},
-      user: useUserStore(),
       dialog: false,
       id: '',
       name: '',
@@ -42,7 +41,6 @@ export default {
       this.submit()
     },
     async submit() {
-      const user = useUserStore()
       try {
         this.response = await Collection.update({
           data: {
@@ -51,7 +49,6 @@ export default {
             description: this.description,
             public: this.is_public,
           },
-          token: user.token,
         })
         this.sending = this.dialog = false
         this.$emit('update')

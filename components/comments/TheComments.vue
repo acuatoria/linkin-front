@@ -17,8 +17,7 @@ export default {
   },
   methods: {
     async getComments() {
-      const user = useUserStore()
-      this.response = await Comment.index(user.token, this.id)
+      this.response = await Comment.index(this.id)
     },
   },
 }

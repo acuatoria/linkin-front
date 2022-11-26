@@ -42,8 +42,7 @@ export default {
       setTimeout(this.getUrlInfo, 1000)
     },
     async getUrlInfo() {
-      const user = useUserStore()
-      this.response = await Url.get(user.token, this.record.url_id)
+      this.response = await Url.get(this.record.url_id)
       if (this.response.title) { this.title = this.response.title; this.fetching_title = false }
       else if (this.attempts < 1) { this.title = '{ pending title }'; this.fetching_title = false }
       else {

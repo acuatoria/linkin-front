@@ -58,7 +58,6 @@ export default {
       this.submit()
     },
     async submit() {
-      const user = useUserStore()
       try {
         this.response = await UserLink.update({
           data: {
@@ -69,7 +68,6 @@ export default {
             public: this.link_public,
             collection: this.collections_selected,
           },
-          token: user.token,
         })
 
         this.sending = this.dialog = false

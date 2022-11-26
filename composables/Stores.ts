@@ -1,13 +1,4 @@
-import { acceptHMRUpdate, defineStore, skipHydrate } from 'pinia'
-
-export const useUserStore = defineStore('user', () => {
-  const token = ref(useLocalStorage('token', ''))
-  const isLogged = ref(useLocalStorage('isLogged', false))
-  return {
-    token: skipHydrate(token),
-    isLogged: skipHydrate(isLogged),
-  }
-})
+import { defineStore, skipHydrate } from 'pinia'
 
 export const useCategoryStore = defineStore('category', () => {
   const categories = ref(useLocalStorage('categories', {}))
@@ -22,5 +13,3 @@ export const useCollectionStore = defineStore('collection', () => {
   }
 })
 
-if (import.meta.hot)
-  import.meta.hot.accept(acceptHMRUpdate(useUserStore, import.meta.hot))

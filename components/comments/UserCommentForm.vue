@@ -15,8 +15,7 @@ export default {
   },
   methods: {
     async getUserComment() {
-      this.user = useUserStore()
-      this.response = await Comment.get(this.user.token, this.id)
+      this.response = await Comment.get(this.id)
       if (this.response[0]) {
         this.comment = this.response[0]
         this.has_comment = true

@@ -1,22 +1,22 @@
 export const Url = {
   userlink_endpoint() { return `${useRuntimeConfig().public.API_BASE_URL}api/v1/urls/` },
-  headers(token: string) {
+  headers() {
     return {
-      'Authorization': token ? 'token' + ` ${token}` : '',
+      'Authorization': `${useNuxtApp().$auth.$storage.getCookie('_token.local')}`,
       'Content-Type': 'application/json',
       'Accept': 'application/json',
     }
   },
-  get(token: string, url: string) {
+  get(url: string) {
     return $fetch(`${this.userlink_endpoint()}${url}/`, {
       method: 'GET',
-      headers: this.headers(token),
+      headers: this.headers(),
     })
   },
   discover(page: Number, query: string, category_search: Number) {
     return $fetch(`${this.userlink_endpoint()}?page=${page}&query=${query}&category_search=${category_search}`, {
       method: 'GET',
-      headers: this.headers(''),
+      headers: this.headers(),
     })
   },
 }

@@ -3,7 +3,6 @@ useHead({
   title: 'Comments',
 })
 
-const user = useUserStore()
 const updated = ref(0)
 </script>
 
@@ -12,7 +11,7 @@ const updated = ref(0)
     <ClientOnly>
       <Header path="Link & comments" />
       <CommentsLink :id="$route.params.id" />
-      <CommentsUserCommentForm v-if="user" :id="$route.params.id" :key="updated" @update="updated++" />
+      <CommentsUserCommentForm v-if="$auth.loggedIn" :id="$route.params.id" :key="updated" @update="updated++" />
       <CommentsTheComments :id="$route.params.id" :key="updated" />
     </ClientOnly>
   </div>

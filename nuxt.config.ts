@@ -3,6 +3,9 @@ import svgLoader from 'vite-svg-loader'
 
 export default defineNuxtConfig({
   modules: [
+    '@nuxtjs-alt/auth',
+    '@nuxtjs-alt/http',
+    '@nuxtjs-alt/proxy',
     '@vueuse/nuxt',
     '@unocss/nuxt',
     '@pinia/nuxt',
@@ -33,5 +36,31 @@ export default defineNuxtConfig({
     plugins: [
       svgLoader(),
     ],
+  },
+  auth: {
+    redirect: {
+      login: '/',
+    },
+    strategies: {
+      local: {
+        token: {
+          required: true,
+          property: 'token',
+          type: 'token',
+        },
+        endpoints: {
+          login: {
+            url: `${process.env.API_BASE_URL || 'http://localhost:8000/'}api-token-auth/`,
+            method: 'post',
+          },
+          user: false,
+          logout: {
+            url: `${process.env.API_BASE_URL || 'http://localhost:8000/'}api-auth/logout/`,
+            method: 'get',
+          },
+        },
+
+      },
+    },
   },
 })

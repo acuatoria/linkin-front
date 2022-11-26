@@ -5,7 +5,6 @@ export default {
   data() {
     return ({
       response: {},
-      user: useUserStore(),
       dialog: false,
       api_error: '',
       sending: false,
@@ -23,9 +22,8 @@ export default {
       this.submit()
     },
     async submit() {
-      const user = useUserStore()
       try {
-        this.response = await Collection.delete({ id: this.id, token: user.token })
+        this.response = await Collection.delete({ id: this.id })
         this.$emit('update')
         this.dialog = false
       }
