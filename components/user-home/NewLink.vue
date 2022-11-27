@@ -3,6 +3,7 @@ import useVuelidate from '@vuelidate/core'
 import { required } from '@vuelidate/validators'
 
 export default {
+  props: ['collection'],
   emits: ['update'],
   setup() {
     return { v$: useVuelidate() }
@@ -32,6 +33,7 @@ export default {
   mounted() {
     this.categories = useCategoryStore().categories
     this.collections = useCollectionStore().collections
+    this.collections_selected.push(this.collections.find(item => item.id === this.collection))
     this.myPolling = setInterval(async () => {
       this.color_changing++
     }, 1000 / 4)
@@ -91,7 +93,12 @@ export default {
         color="orange"
         v-bind="props"
       >
-        Add link
+        <span v-if="collection">
+          Add link to collection
+        </span>
+        <span v-else>
+          Add link
+        </span>
       </v-btn>
     </template>
 

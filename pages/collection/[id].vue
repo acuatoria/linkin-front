@@ -10,11 +10,13 @@ const loading = ref(true)
 const collection = shallowRef([])
 const userLinks = shallowRef([])
 const categories = ref([])
+const collections = ref([])
 const server_error = ref('')
 const page = ref(1)
 const items_number = ref(0)
 const items_x_page = ref(10)
 const route = useRoute()
+const urlToUpdate = ref('')
 
 watch(page, (newValue) => {
   update()
@@ -29,7 +31,8 @@ watch(category_search, (newValue) => {
   update()
 })
 
-async function update() {
+async function update(data) {
+  urlToUpdate.value = ''
   loading.value = true
   try {
     useCategoryStore().categories = await Category.index()
@@ -37,6 +40,7 @@ async function update() {
     collection.value = await Collection.get(id.value)
     userLinks.value = await Collection.items(id.value, page.value, needle.value, category_search.value ? category_search.value.id : '')
     items_number.value = userLinks.value.count
+    urlToUpdate.value = data ? data.url : ''
     useHead({
       title: `Collection: ${collection.value.name}`,
     })
@@ -49,6 +53,7 @@ async function update() {
 
 onMounted(async () => {
   id.value = route.params.id
+  collections.value = useCollectionStore().collections
   update()
 })
 
@@ -96,8 +101,10 @@ const items = computed(() => {
         </v-responsive>
         <v-responsive
           class="mx-auto"
-          max-width="300"
-        />
+          max-width="250"
+        >
+          <UserHomeNewLink v-if="collections.find(item => item.id === id)" :collection="id" @update="update($event, data)" />
+        </v-responsive>
       </div>
       <ErrorDialog :message="server_error" />
       <v-progress-circular
@@ -108,7 +115,12 @@ const items = computed(() => {
       <div v-if="items_number > 0">
         <v-list class="listado">
           <v-item-group v-for="record, index in items" :key="record.id">
-            <DiscoverLink :record="record" :categories="categories" />
+            <UserHomeLink
+              :record="record"
+              :index="index"
+              :url-to-update="urlToUpdate"
+              @update="update($event, data)"
+            />
           </v-item-group>
         </v-list>
         <v-pagination
