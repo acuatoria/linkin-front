@@ -38,7 +38,7 @@ export default {
         <CommentsEditComment class="button" :user-comment="comment.comment" :url="id" label="Edit my comment" @update="update" />
       </div>
     </div>
-    <div v-if="user.isLogged && !has_comment" p-3 m-auto>
+    <div v-if="$auth.loggedIn && !has_comment" p-3 m-auto>
       <CommentsEditComment class="button" :coment="comment" :url="id" label="Add a comment" @update="update" />
     </div>
   </div>

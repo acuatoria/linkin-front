@@ -60,7 +60,7 @@ export default {
 
 <template>
   <div>
-    <v-dialog
+    <my-v-dialog
       v-model="dialog"
       scroll-strategy="close"
       text-center
@@ -124,7 +124,7 @@ export default {
           </v-btn>
         </v-form>
       </v-card>
-    </v-dialog>
+    </my-v-dialog>
   </div>
 </template>
 
