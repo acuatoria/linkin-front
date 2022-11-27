@@ -47,6 +47,7 @@ export default defineNuxtConfig({
           required: true,
           property: 'token',
           type: 'token',
+          maxAge: false,
         },
         endpoints: {
           login: {
