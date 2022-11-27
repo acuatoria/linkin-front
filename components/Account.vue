@@ -12,8 +12,8 @@
         </div>
         <div v-if="$auth.loggedIn" class="flex flex-column">
           <Logout />
+          <LinkUserHome />
         </div>
-        <Navegation />
       </div>
     </div>
   </div>
