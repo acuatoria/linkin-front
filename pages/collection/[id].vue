@@ -17,6 +17,7 @@ const items_number = ref(0)
 const items_x_page = ref(10)
 const route = useRoute()
 const urlToUpdate = ref('')
+const owner = ref(false)
 
 watch(page, (newValue) => {
   update()
@@ -39,7 +40,8 @@ async function update(data) {
     categories.value = useCategoryStore().categories
     collection.value = await Collection.get(id.value)
     const user_collections = await Collection.index()
-    if (user_collections.find(item => item.id = id)) {
+    owner.value = user_collections.filter(item => item.id === id.value).length > 0
+    if (owner.value) {
       userLinks.value = await UserLink.index(
         page.value,
         needle.value,
@@ -115,7 +117,7 @@ const items = computed(() => {
           max-width="250"
         >
           <UserHomeNewLink
-            v-if="$auth.loggedIn && collections.find(item => item.id === id)"
+            v-if="$auth.loggedIn && owner"
             :collection="id"
             @update="update($event, data)"
           />
@@ -130,12 +132,17 @@ const items = computed(() => {
       <div v-if="items_number > 0">
         <v-list class="listado">
           <v-item-group v-for="record, index in items" :key="record.id">
-            <UserHomeLink
-              :record="record"
-              :index="index"
-              :url-to-update="urlToUpdate"
-              @update="update($event, data)"
-            />
+            <div v-if="owner">
+              <UserHomeLink
+                :record="record"
+                :index="index"
+                :url-to-update="urlToUpdate"
+                @update="update($event, data)"
+              />
+            </div>
+            <div v-else>
+              <DiscoverLink :record="record" :categories="categories" />
+            </div>
           </v-item-group>
         </v-list>
         <v-pagination
