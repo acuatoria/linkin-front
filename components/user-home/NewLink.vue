@@ -33,7 +33,8 @@ export default {
   mounted() {
     this.categories = useCategoryStore().categories
     this.collections = useCollectionStore().collections
-    this.collections_selected.push(this.collections.find(item => item.id === this.collection))
+    if (this.collection)
+      this.collections_selected.push(this.collections.find(item => item.id === this.collection))
     this.myPolling = setInterval(async () => {
       this.color_changing++
     }, 1000 / 4)

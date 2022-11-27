@@ -40,7 +40,12 @@ async function update(data) {
     useCategoryStore().categories = await Category.index()
     categories.value = useCategoryStore().categories
     useCollectionStore().collections = await Collection.index()
-    userLinks.value = await UserLink.index(page.value, needle.value.trim(), category_search.value ? category_search.value.id : '')
+    userLinks.value = await UserLink.index(
+      page.value,
+      needle.value.trim(),
+      category_search.value ? category_search.value.id : '',
+      '',
+    )
     items_number.value = userLinks.value.count
     urlToUpdate.value = data ? data.url : ''
   }

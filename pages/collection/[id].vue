@@ -38,7 +38,18 @@ async function update(data) {
     useCategoryStore().categories = await Category.index()
     categories.value = useCategoryStore().categories
     collection.value = await Collection.get(id.value)
-    userLinks.value = await Collection.items(id.value, page.value, needle.value, category_search.value ? category_search.value.id : '')
+    const user_collections = await Collection.index()
+    if (user_collections.find(item => item.id = id)) {
+      userLinks.value = await UserLink.index(
+        page.value,
+        needle.value,
+        category_search.value ? category_search.value.id : '',
+        id.value,
+      )
+    }
+    else {
+      userLinks.value = await Collection.items(id.value, page.value, needle.value, category_search.value ? category_search.value.id : '')
+    }
     items_number.value = userLinks.value.count
     urlToUpdate.value = data ? data.url : ''
     useHead({
@@ -103,7 +114,11 @@ const items = computed(() => {
           class="mx-auto"
           max-width="250"
         >
-          <UserHomeNewLink v-if="collections.find(item => item.id === id)" :collection="id" @update="update($event, data)" />
+          <UserHomeNewLink
+            v-if="$auth.loggedIn && collections.find(item => item.id === id)"
+            :collection="id"
+            @update="update($event, data)"
+          />
         </v-responsive>
       </div>
       <ErrorDialog :message="server_error" />

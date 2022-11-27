@@ -35,7 +35,9 @@ export default {
     this.categories = useCategoryStore().categories
     this.id = this.record.id
     this.collections = useCollectionStore().collections
-    this.collections_selected = this.record.collection
+    this.record.collection.forEach(item =>
+      this.collections_selected.push(this.collections.find(element => element.id === item.id)),
+    )
     this.link_url = this.record.url
     this.link_description = this.record.description
     this.category_selected = this.record.category

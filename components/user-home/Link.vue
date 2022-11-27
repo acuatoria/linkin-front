@@ -76,7 +76,7 @@ export default {
         </div>
 
         <div class="options_btn">
-          <UserHomeLinkOptions :record="record" @update="update($event, data)" />
+          <UserHomeLinkOptions v-if="$auth.loggedIn" :record="record" @update="update($event, data)" />
         </div>
       </div>
       <div flex flex-row>
@@ -87,7 +87,7 @@ export default {
           <LinkTagComment :url-id="record.url_id" :comments="record.comments" />
         </div>
         <div class="flex-no-overflow">
-          <v-chip color="blue-grey" @click="showDialog = !showDialog">
+          <v-chip v-if="$auth.loggedIn" color="blue-grey" @click="showDialog = !showDialog">
             {{ record.description || '{ your description }' }}
           </v-chip>
         </div>
