@@ -40,7 +40,7 @@ export default {
     )
     this.link_url = this.record.url
     this.link_description = this.record.description
-    this.category_selected = this.record.category
+    this.category_selected = this.categories.find(item => item.id === this.record.category)
     this.link_public = this.record.public
     this.myPolling = setInterval(async () => {
       this.color_changing++
