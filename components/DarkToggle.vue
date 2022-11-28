@@ -11,7 +11,8 @@ export default {
   },
   watch: {
     currentColor() {
-      setTimeout(() => { this.theme.global.name = this.currentColor }, 100)
+      setTimeout(() => { this.theme.global.name = this.currentColor }, 200)
+      setTimeout(() => { this.color.preference = this.currentColor }, 100)
     },
   },
   mounted() {
@@ -19,14 +20,12 @@ export default {
       this.currentColor = 'dark'
     }
     else {
-      this.color.preference = 'light'
       this.currentColor = 'light'
     }
   },
   methods: {
     toggleDark() {
-      this.color.preference = this.color.value === 'dark' ? 'light' : 'dark'
-      this.currentColor = this.color.preference
+      this.currentColor = this.currentColor === 'dark' ? 'light' : 'dark'
     },
   },
 }
