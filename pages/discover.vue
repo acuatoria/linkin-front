@@ -12,15 +12,18 @@ const server_error = ref('')
 const page = ref(1)
 const items_number = ref(0)
 const items_x_page = ref(10)
+const retardo = ref()
 
 watch(page, (newValue) => {
   update()
 })
 
 watch(needle, (newValue) => {
+
   if (newValue.length > 3 || newValue === '') {
-    page.value = 1
-    update()
+    clearInterval(retardo)
+    retardo = setTimeout(()=>{page.value=1;update()}, 500)
+       
   }
 })
 
