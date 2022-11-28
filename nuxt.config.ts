@@ -25,6 +25,9 @@ export default defineNuxtConfig({
   experimental: {
     viteNode: false,
   },
+  nitro: {
+    serveStatic: true,
+  },
   unocss: {
     preflight: true,
   },

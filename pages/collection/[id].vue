@@ -18,14 +18,17 @@ const items_x_page = ref(10)
 const route = useRoute()
 const urlToUpdate = ref('')
 const owner = ref(false)
+const retardo = ref('')
 
 watch(page, (newValue) => {
   update()
 })
 
 watch(needle, (newValue) => {
-  if (newValue.length > 3 || newValue === '')
-    update()
+  if (newValue.length > 3 || newValue === '') {
+    clearInterval(retardo.value)
+    retardo.value = setTimeout(() => { page.value = 1; update() }, 500)
+  }
 })
 
 watch(category_search, (newValue) => {

@@ -19,11 +19,9 @@ watch(page, (newValue) => {
 })
 
 watch(needle, (newValue) => {
-
   if (newValue.length > 3 || newValue === '') {
     clearInterval(retardo.value)
-    retardo.value = setTimeout(()=>{page.value=1;update()}, 500)
-       
+    retardo.value = setTimeout(() => { page.value = 1; update() }, 500)
   }
 })
 
