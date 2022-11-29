@@ -82,6 +82,7 @@ const items = computed(() => {
             density="compact"
             variant="outlined"
             :clearable="true"
+            @click:clear="needle = ''"
           />
         </v-responsive>
         <v-responsive

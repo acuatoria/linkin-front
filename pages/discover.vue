@@ -70,7 +70,7 @@ const items = computed(() => {
             density="compact"
             variant="outlined"
             :clearable="true"
-            @click:clear="needle=''"
+            @click:clear="needle = ''"
           />
         </v-responsive>
         <v-responsive
