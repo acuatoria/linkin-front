@@ -1,11 +1,11 @@
-This is the frontend of a proyect about links
+This is the frontend of a project about links
 
-## Features
+## Features of the project
 
 - Save your links
 - Share your links through collections
 - Discover new stuff
 - Comment on links
 
-## The site
-- [Pyxilink](https://pyxilink.com)
+## Visit the site
+- [pyxilink.com](https://pyxilink.com)
