@@ -16,7 +16,9 @@ useHead({
 body {
   font-family: Roboto;
 }
-
+:root {
+  color-scheme: unset !important;
+}
 html.dark {
   background: #222;
   color: white;

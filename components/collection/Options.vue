@@ -23,7 +23,6 @@ export default {
     >
       <template #activator="{ props }">
         <v-btn
-          dark
           icon
           v-bind="props"
         >

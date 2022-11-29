@@ -30,11 +30,12 @@ const items = [
     </v-list-item>
   </v-card>
   <div mt-5>
-    <v-btn
-      color="lime"
-      @click="$router.push(`/discover`)"
-    >
-      Discover here now
-    </v-btn>
+    <NuxtLink to="/discover">
+      <v-btn
+        color="lime"
+      >
+        Discover here now
+      </v-btn>
+    </NuxtLink>
   </div>
 </template>
