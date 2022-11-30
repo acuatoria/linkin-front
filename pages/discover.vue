@@ -33,8 +33,6 @@ watch(category_search, (newValue) => {
 async function update() {
   loading.value = true
   try {
-    useCategoryStore().categories = await Category.index()
-    categories.value = useCategoryStore().categories
     userLinks.value = await Url.discover(page.value, needle.value, category_search.value ? category_search.value.id : '')
     items_number.value = userLinks.value.count
   }
@@ -45,6 +43,8 @@ async function update() {
 }
 
 onMounted(async () => {
+  useCategoryStore().categories = await Category.index()
+  categories.value = useCategoryStore().categories
   update()
 })
 

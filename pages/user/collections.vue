@@ -21,7 +21,8 @@ async function update(data) {
   loading.value = true
   server_error.value = ''
   try {
-    collections.value = await Collection.index()
+    useCollectionStore().collections = await Collection.index()
+    collections.value = useCollectionStore().collections
   }
   catch (error) {
     server_error.value = 'Error at server'

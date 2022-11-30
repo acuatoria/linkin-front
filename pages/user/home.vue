@@ -38,9 +38,6 @@ async function update(data) {
   loading.value = true
   server_error.value = ''
   try {
-    useCategoryStore().categories = await Category.index()
-    categories.value = useCategoryStore().categories
-    useCollectionStore().collections = await Collection.index()
     userLinks.value = await UserLink.index(
       page.value,
       needle.value.trim(),
@@ -57,6 +54,9 @@ async function update(data) {
 }
 
 onMounted(async () => {
+  useCategoryStore().categories = await Category.index()
+  categories.value = useCategoryStore().categories
+  useCollectionStore().collections = await Collection.index()
   update()
 })
 

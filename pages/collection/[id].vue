@@ -39,9 +39,6 @@ async function update(data) {
   urlToUpdate.value = ''
   loading.value = true
   try {
-    useCategoryStore().categories = await Category.index()
-    categories.value = useCategoryStore().categories
-    collection.value = await Collection.get(id.value)
     const user_collections = await Collection.index()
     owner.value = user_collections.filter(item => item.id === id.value).length > 0
     if (owner.value) {
@@ -57,9 +54,6 @@ async function update(data) {
     }
     items_number.value = userLinks.value.count
     urlToUpdate.value = data ? data.url : ''
-    useHead({
-      title: `Collection: ${collection.value.name}`,
-    })
   }
   catch (error) {
     server_error.value = 'Error at server'
@@ -70,6 +64,12 @@ async function update(data) {
 onMounted(async () => {
   id.value = route.params.id
   collections.value = useCollectionStore().collections
+  useCategoryStore().categories = await Category.index()
+  categories.value = useCategoryStore().categories
+  collection.value = await Collection.get(id.value)
+  useHead({
+    title: `Collection: ${collection.value.name}`,
+  })
   update()
 })
 

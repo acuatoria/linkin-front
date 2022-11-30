@@ -17,6 +17,9 @@ export default defineNuxtConfig({
   build: {
     transpile: ['vuetify', 'pinia'],
   },
+  experimental: {
+    payloadExtraction: false,
+  },
   runtimeConfig: {
     public: {
       API_BASE_URL: process.env.API_BASE_URL || 'http://localhost:8000/',

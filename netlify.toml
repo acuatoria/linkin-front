@@ -4,7 +4,7 @@
 
 [build]
   publish = "dist"
-  command = "npx nuxi generate"
+  command = "npx nuxi build"
 
 [[redirects]]
   from = "/*"

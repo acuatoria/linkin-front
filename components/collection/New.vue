@@ -123,7 +123,6 @@ export default {
             density="compact"
             class="mt-5"
             label="Shareable collection"
-            :style="`color:${color_return(color_changing)}`"
           />
         </div>
         <div flex m-2>

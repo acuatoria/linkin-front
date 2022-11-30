@@ -7,8 +7,8 @@ specifiers:
   '@iconify/vue': ^3.2.1
   '@mdi/font': 5.9.55
   '@nuxtjs-alt/auth': ^2.1.6
-  '@nuxtjs-alt/http': ^1.5.3
-  '@nuxtjs-alt/proxy': ^2.1.0
+  '@nuxtjs-alt/http': ^1.5.4
+  '@nuxtjs-alt/proxy': ^2.1.2
   '@nuxtjs/color-mode': ^3.2.0
   '@pinia/nuxt': ^0.3.1
   '@types/webfontloader': ^1.6.35
@@ -24,18 +24,18 @@ specifiers:
   typescript: ^4.9.3
   vite-svg-loader: ^3.6.0
   vue-cli-plugin-vuetify: ~2.5.8
-  vuetify: ^3.0.2
+  vuetify: ^3.0.3
   webfontloader: ^1.6.28
   webpack-plugin-vuetify: ^2.0.0
 
 dependencies:
   '@mdi/font': 5.9.55
   '@nuxtjs-alt/auth': 2.1.6_typescript@4.9.3
-  '@nuxtjs-alt/http': 1.5.3
-  '@nuxtjs-alt/proxy': 2.1.0
+  '@nuxtjs-alt/http': 1.5.4
+  '@nuxtjs-alt/proxy': 2.1.2
   roboto-fontface: 0.10.0
   sass: 1.56.1
-  vuetify: 3.0.2_6d4eo7p4d3w2hdouvzj4xl7lja
+  vuetify: 3.0.3_6d4eo7p4d3w2hdouvzj4xl7lja
   webfontloader: 1.6.28
 
 devDependencies:
@@ -56,7 +56,7 @@ devDependencies:
   typescript: 4.9.3
   vite-svg-loader: 3.6.0
   vue-cli-plugin-vuetify: 2.5.8
-  webpack-plugin-vuetify: 2.0.0_vuetify@3.0.2
+  webpack-plugin-vuetify: 2.0.0_vuetify@3.0.3
 
 packages:
 
@@ -732,7 +732,7 @@ packages:
       postcss-import-resolver: 2.0.0
       scule: 1.0.0
       std-env: 3.3.1
-      ufo: 1.0.0
+      ufo: 1.0.1
       unimport: 1.0.1
       untyped: 1.0.0
     transitivePeerDependencies:
@@ -752,7 +752,7 @@ packages:
       postcss-import-resolver: 2.0.0
       scule: 1.0.0
       std-env: 3.3.1
-      ufo: 1.0.0
+      ufo: 1.0.1
       unimport: 1.0.1_rollup@2.79.1
       untyped: 1.0.0
     transitivePeerDependencies:
@@ -826,7 +826,7 @@ packages:
       postcss-url: 10.1.3_postcss@8.4.19
       rollup: 2.79.1
       rollup-plugin-visualizer: 5.8.3_rollup@2.79.1
-      ufo: 1.0.0
+      ufo: 1.0.1
       unplugin: 1.0.0
       vite: 3.2.4_sass@1.56.1
       vite-node: 0.25.3_sass@1.56.1
@@ -851,7 +851,7 @@ packages:
     resolution: {integrity: sha512-+/wxAbNGilzeXDVjo/8UcpLZK/iuySXXnfxLSPHz7JQaCjBgl4eOMGViOruTX0fm9N7wkdQcpq9lnPvN0uQEjw==}
     dependencies:
       '@nuxt/kit': 3.0.0
-      '@nuxtjs-alt/http': 1.5.3
+      '@nuxtjs-alt/http': 1.5.4
       '@pinia/nuxt': 0.4.6_typescript@4.9.3
       body-parser: 1.20.1
       cookie-es: 0.5.0
@@ -868,20 +868,20 @@ packages:
       - vue
     dev: false
 
-  /@nuxtjs-alt/http/1.5.3:
-    resolution: {integrity: sha512-BLhWl2lFQ4XNmTtsllGzM/qA2iooUtfC53HfMXvkEv44aybKOuBTzqooOFnQwRrPn7FvNJlkg1R0qimAOnrWuw==}
+  /@nuxtjs-alt/http/1.5.4:
+    resolution: {integrity: sha512-Q//ZWYGQYix2RB/ADRGasCnDycoJ+0fxUXLc0iAQQNDRJnC08PQxCI4IFJIT1FKPkRFEdTgn1G+zrVIVv07tEw==}
     dependencies:
       '@nuxt/kit': 3.0.0
       '@refactorjs/ofetch': 1.0.0
       defu: 6.1.1
-      ufo: 1.0.0
+      ufo: 1.0.1
     transitivePeerDependencies:
       - rollup
       - supports-color
     dev: false
 
-  /@nuxtjs-alt/proxy/2.1.0:
-    resolution: {integrity: sha512-FJPCW95prU2W9ppE6Re90Hkp9XECjZtiyZrGAAaHVqtIdlbS6EiKjOUoJE7Fd2+OZbAGbsspKQR7EQBYAh20cA==}
+  /@nuxtjs-alt/proxy/2.1.2:
+    resolution: {integrity: sha512-GWCWfOZa2w7nBRPgWztaIxFaWMF+4ASHqkqmSaGr1vINQbZvIGzLLPC1uxF+YB8wuCw1dVESqajm9w0rGU56vA==}
     dependencies:
       '@nuxt/kit': 3.0.0
       '@refactorjs/http-proxy': 0.1.5
@@ -1116,8 +1116,8 @@ packages:
       '@types/unist': 2.0.6
     dev: true
 
-  /@types/node/18.11.9:
-    resolution: {integrity: sha512-CRpX21/kGdzjOpFsZSkcrXMGIBWMGNIHXXBVFSH+ggkftxg+XYP20TESbh+zFvFj3EQOl5byk0HTRn1IL6hbqg==}
+  /@types/node/18.11.10:
+    resolution: {integrity: sha512-juG3RWMBOqcOuXC643OAdSA525V44cVgGV6dUDuiFtss+8Fk5x1hI93Rsld43VeJVIeqlP9I7Fn9/qaVqoEAuQ==}
     dev: true
 
   /@types/normalize-package-data/2.4.1:
@@ -1457,7 +1457,7 @@ packages:
     resolution: {integrity: sha512-4WTmKsa9sELHwMNc6l2X203asx7xldEX4PhAdEc13yKQk25Sqp/7dwcW9DwXwK82vHqvr5iPxOE/2Z8dHkL8xQ==}
     dependencies:
       '@unocss/core': 0.45.30
-      css-tree: 2.2.1
+      css-tree: 2.3.0
     dev: true
 
   /@unocss/transformer-variant-group/0.45.30:
@@ -1671,7 +1671,7 @@ packages:
       - vue
     dev: true
 
-  /@vuetify/loader-shared/1.7.0_vuetify@3.0.2:
+  /@vuetify/loader-shared/1.7.0_vuetify@3.0.3:
     resolution: {integrity: sha512-Db4K67wMhduDsbvdRBYkrYuomti+j0E/1vlz1lnDng5F9LYYBcXa60qypIazVGI6GX/CuY1vshN6XGtGQI4FKg==}
     peerDependencies:
       vue: ^3.0.0
@@ -1679,7 +1679,7 @@ packages:
     dependencies:
       find-cache-dir: 3.3.2
       upath: 2.0.1
-      vuetify: 3.0.2_6d4eo7p4d3w2hdouvzj4xl7lja
+      vuetify: 3.0.3_6d4eo7p4d3w2hdouvzj4xl7lja
 
   /@vueuse/core/9.6.0:
     resolution: {integrity: sha512-qGUcjKQXHgN+jqXEgpeZGoxdCbIDCdVPz3QiF1uyecVGbMuM63o96I1GjYx5zskKgRI0FKSNsVWM7rwrRMTf6A==}
@@ -1941,7 +1941,7 @@ packages:
       postcss: ^8.1.0
     dependencies:
       browserslist: 4.21.4
-      caniuse-lite: 1.0.30001434
+      caniuse-lite: 1.0.30001435
       fraction.js: 4.2.0
       normalize-range: 0.1.2
       picocolors: 1.0.0
@@ -2034,7 +2034,7 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001434
+      caniuse-lite: 1.0.30001435
       electron-to-chromium: 1.4.284
       node-releases: 2.0.6
       update-browserslist-db: 1.0.10_browserslist@4.21.4
@@ -2137,13 +2137,13 @@ packages:
     resolution: {integrity: sha512-bsTwuIg/BZZK/vreVTYYbSWoe2F+71P7K5QGEX+pT250DZbfU1MQ5prOKpPR+LL6uWKK3KMwMCAS74QB3Um1uw==}
     dependencies:
       browserslist: 4.21.4
-      caniuse-lite: 1.0.30001434
+      caniuse-lite: 1.0.30001435
       lodash.memoize: 4.1.2
       lodash.uniq: 4.5.0
     dev: true
 
-  /caniuse-lite/1.0.30001434:
-    resolution: {integrity: sha512-aOBHrLmTQw//WFa2rcF1If9fa3ypkC1wzqqiKHgfdrXTWcU8C4gKVZT77eQAPWN1APys3+uQ0Df07rKauXGEYA==}
+  /caniuse-lite/1.0.30001435:
+    resolution: {integrity: sha512-kdCkUTjR+v4YAJelyiDTqiu82BDr4W4CP5sgTA0ZBmqn30XfS2ZghPLMowik9TPhS+psWJiUNxsqLyurDbmutA==}
 
   /chalk/2.4.2:
     resolution: {integrity: sha512-Mti+f9lpJNcwF4tWV8/OrTTtF1gZi+f8FqlyAdouralcFWFQWF2+NgCHShjkCb+IFBLq9buZwE1xckQU4peSuQ==}
@@ -2398,11 +2398,11 @@ packages:
       source-map: 0.6.1
     dev: true
 
-  /css-tree/2.2.1:
-    resolution: {integrity: sha512-OA0mILzGc1kCOCSJerOeqDxDQ4HOh+G8NbOJFOTgOCzpw7fCBubk0fEyxp8AgOL/jvLgYA/uV0cMbe43ElF1JA==}
+  /css-tree/2.3.0:
+    resolution: {integrity: sha512-1rg0LiK2MFi4R3/lVvnRokEWTZb30ljSAe5x+0HHkZ+OqZaAeiP8g8Eh91VmkyCtQn9vMgQRiaTDYgLBt+2Qyw==}
     engines: {node: ^10 || ^12.20.0 || ^14.13.0 || >=15.0.0, npm: '>=7.0.0'}
     dependencies:
-      mdn-data: 2.0.28
+      mdn-data: 2.0.30
       source-map-js: 1.0.2
     dev: true
 
@@ -3417,7 +3417,7 @@ packages:
       enhanced-resolve: 5.12.0
       mlly: 1.0.0
       pathe: 1.0.0
-      ufo: 1.0.0
+      ufo: 1.0.1
     dev: true
 
   /fast-deep-equal/3.1.3:
@@ -3714,7 +3714,7 @@ packages:
       fs.realpath: 1.0.0
       inflight: 1.0.6
       inherits: 2.0.4
-      minimatch: 5.1.0
+      minimatch: 5.1.1
       once: 1.4.0
     dev: true
 
@@ -3778,7 +3778,7 @@ packages:
       cookie-es: 0.5.0
       destr: 1.2.1
       radix3: 1.0.0
-      ufo: 1.0.0
+      ufo: 1.0.1
     dev: true
 
   /has-bigints/1.0.2:
@@ -4201,7 +4201,7 @@ packages:
     resolution: {integrity: sha512-KWYVV1c4i+jbMpaBC+U++4Va0cp8OisU185o73T1vo99hqi7w8tSJfUXYswwqqrjzwxa6KpRK54WhPvwf5w6PQ==}
     engines: {node: '>= 10.13.0'}
     dependencies:
-      '@types/node': 18.11.9
+      '@types/node': 18.11.10
       merge-stream: 2.0.0
       supports-color: 7.2.0
     dev: true
@@ -4335,7 +4335,7 @@ packages:
       http-shutdown: 1.2.2
       ip-regex: 5.0.0
       node-forge: 1.3.1
-      ufo: 1.0.0
+      ufo: 1.0.1
     dev: true
 
   /loader-utils/2.0.4:
@@ -4484,8 +4484,8 @@ packages:
     resolution: {integrity: sha512-dn6wd0uw5GsdswPFfsgMp5NSB0/aDe6fK94YJV/AJDYXL6HVLWBsxeq7js7Ad+mU2K9LAlwpk6kN2D5mwCPVow==}
     dev: true
 
-  /mdn-data/2.0.28:
-    resolution: {integrity: sha512-aylIc7Z9y4yzHYAJNuESG3hfhC+0Ibp/MAMiaOZgNv4pmEdFyfZhhhny4MNiAfWdBQ1RQ2mfDWmM1x8SvGyp8g==}
+  /mdn-data/2.0.30:
+    resolution: {integrity: sha512-GaqWWShW4kv/G9IEucWScBx9G1/vsFZZJUO+tD26M8J8z3Kw5RDQjaoZe03YAClgeS/SWPOcb4nkFBTEi5DUEA==}
     dev: true
 
   /media-typer/0.3.0:
@@ -4576,8 +4576,8 @@ packages:
       brace-expansion: 1.1.11
     dev: true
 
-  /minimatch/5.1.0:
-    resolution: {integrity: sha512-9TPBGGak4nHfGZsPBohm9AWg6NoT7QTCehS3BIJABslyZbzxfV78QM2Y6+i741OPZIafFAaiiEMh5OyIrJPgtg==}
+  /minimatch/5.1.1:
+    resolution: {integrity: sha512-362NP+zlprccbEt/SkxKfRMHnNY85V74mVnpUpNyr3F35covl09Kec7/sEFLt3RA4oXmewtoaanoIf67SE5Y5g==}
     engines: {node: '>=10'}
     dependencies:
       brace-expansion: 2.0.1
@@ -4634,7 +4634,7 @@ packages:
       acorn: 8.8.1
       pathe: 1.0.0
       pkg-types: 1.0.1
-      ufo: 1.0.0
+      ufo: 1.0.1
     dev: true
 
   /mlly/1.0.0:
@@ -4643,7 +4643,7 @@ packages:
       acorn: 8.8.1
       pathe: 1.0.0
       pkg-types: 1.0.1
-      ufo: 1.0.0
+      ufo: 1.0.1
 
   /mri/1.2.0:
     resolution: {integrity: sha512-tzzskb3bG8LvYGFF/mDTpq3jpI6Q9wc3LEmBaghu+DdCssd1FakN7Bc0hVNmEyGq1bq3RgfkCb3cmQLpNPOroA==}
@@ -4748,7 +4748,7 @@ packages:
       serve-static: 1.15.0
       source-map-support: 0.5.21
       std-env: 3.3.1
-      ufo: 1.0.0
+      ufo: 1.0.1
       unenv: 1.0.0
       unimport: 1.0.1_rollup@2.79.1
       unstorage: 1.0.1
@@ -4913,7 +4913,7 @@ packages:
       perfect-debounce: 0.1.3
       scule: 1.0.0
       strip-literal: 1.0.0
-      ufo: 1.0.0
+      ufo: 1.0.1
       ultrahtml: 1.0.4
       unctx: 2.1.1
       unenv: 1.0.0
@@ -5006,7 +5006,7 @@ packages:
     dependencies:
       destr: 1.2.1
       node-fetch-native: 1.0.1
-      ufo: 1.0.0
+      ufo: 1.0.1
 
   /ohash/1.0.0:
     resolution: {integrity: sha512-kxSyzq6tt+6EE/xCnD1XaFhCCjUNUaz3X30rJp6mnjGLXAAvuPFqohMdv0aScWzajR45C29HyBaXZ8jXBwnh9A==}
@@ -5721,7 +5721,7 @@ packages:
   /readdir-glob/1.1.2:
     resolution: {integrity: sha512-6RLVvwJtVwEDfPdn6X6Ille4/lxGl0ATOY4FN/B9nxQcgOazvvI0nodiD19ScKq0PvA/29VpaOQML36o5IzZWA==}
     dependencies:
-      minimatch: 5.1.0
+      minimatch: 5.1.1
     dev: true
 
   /readdirp/3.6.0:
@@ -6457,8 +6457,8 @@ packages:
     resolution: {integrity: sha512-fk6CmUgwKCfX79EzcDQQpSCMxrHstvbLswFChHS0Vump+kFkw7nJBfTZoC1j0bOGoY9I7R3n2DGek5ajbcYnOw==}
     dev: true
 
-  /ufo/1.0.0:
-    resolution: {integrity: sha512-DRty0ZBNlJ2R59y4mEupJRKLbkLQsc4qtxjpQv78AwEDuBkaUogMc2LkeqW3HddFlw6NwnXYfdThEZOiNgkmmQ==}
+  /ufo/1.0.1:
+    resolution: {integrity: sha512-boAm74ubXHY7KJQZLlXrtMz52qFvpsbOxDcZOnw/Wf+LS4Mmyu7JxmzD4tDLtUQtmZECypJ0FrCz4QIe6dvKRA==}
 
   /ultrahtml/1.0.4:
     resolution: {integrity: sha512-sso5lk1F1/Q1crKx0+9/9/rHCykRJFSifYLaShnhgzfJhbEDZdpntClBs7ojhx0lRmQlUtDIxrC/8hBJj5bVPw==}
@@ -6705,7 +6705,7 @@ packages:
       mkdir: 0.0.2
       mri: 1.2.0
       ofetch: 1.0.0
-      ufo: 1.0.0
+      ufo: 1.0.1
       ws: 8.11.0
     transitivePeerDependencies:
       - bufferutil
@@ -6907,7 +6907,7 @@ packages:
   /vue-bundle-renderer/1.0.0:
     resolution: {integrity: sha512-43vCqTgaMXfHhtR8/VcxxWD1DgtzyvNc4wNyG5NKCIH19O1z5G9ZCRXTGEA2wifVec5PU82CkRLD2sTK9NkTdA==}
     dependencies:
-      ufo: 1.0.0
+      ufo: 1.0.1
     dev: true
 
   /vue-cli-plugin-vuetify/2.5.8:
@@ -6981,8 +6981,8 @@ packages:
       '@vue/shared': 3.2.45
     dev: true
 
-  /vuetify/3.0.2_6d4eo7p4d3w2hdouvzj4xl7lja:
-    resolution: {integrity: sha512-d+lb8DHUrrn9GnKaZW1dEApjIEamUcZn1HxomiQ0+y8t+jKjktpruo16AvAjpEHhAcCeWZ5RuK/S9HdT6z68Uw==}
+  /vuetify/3.0.3_6d4eo7p4d3w2hdouvzj4xl7lja:
+    resolution: {integrity: sha512-ODqnS2ux/qUjn/E7W600mvy096nUSSf1mEgYN9o1IpfeNOC7RsakPD37t3zmtift54YTrE/upjSpILg3piYKmQ==}
     engines: {node: ^12.20 || >=14.13}
     peerDependencies:
       vite-plugin-vuetify: ^1.0.0-alpha.12
@@ -6997,7 +6997,7 @@ packages:
       webpack-plugin-vuetify:
         optional: true
     dependencies:
-      webpack-plugin-vuetify: 2.0.0_vuetify@3.0.2
+      webpack-plugin-vuetify: 2.0.0_vuetify@3.0.3
 
   /wcwidth/1.0.1:
     resolution: {integrity: sha512-XHPEwS0q6TaxcvG85+8EYkbiCux2XtWG2mkc47Ng2A77BQu9+DqIOJldST4HgPkuea7dvKSj5VgX3P1d4rW8Tg==}
@@ -7018,7 +7018,7 @@ packages:
     resolution: {integrity: sha512-2JAn3z8AR6rjK8Sm8orRC0h/bcl/DqL7tRPdGZ4I1CjdF+EaMLmYxBHyXuKL849eucPFhvBoxMsflfOb8kxaeQ==}
     dev: true
 
-  /webpack-plugin-vuetify/2.0.0_vuetify@3.0.2:
+  /webpack-plugin-vuetify/2.0.0_vuetify@3.0.3:
     resolution: {integrity: sha512-GMAlZPLZfuCOtbw480pncEcDtQjB937qZTp4eiTOqOAM81ManquZDsSbSnTgBHmO9ERbgYRJx0TqucXookTGUg==}
     engines: {node: '>=12'}
     peerDependencies:
@@ -7026,7 +7026,7 @@ packages:
       vuetify: ^3.0.0-beta.4
       webpack: ^5.0.0
     dependencies:
-      '@vuetify/loader-shared': 1.7.0_vuetify@3.0.2
+      '@vuetify/loader-shared': 1.7.0_vuetify@3.0.3
       decache: 4.6.1
       file-loader: 6.2.0
       find-cache-dir: 3.3.2
@@ -7034,7 +7034,7 @@ packages:
       mkdirp: 1.0.4
       null-loader: 4.0.1
       upath: 2.0.1
-      vuetify: 3.0.2_6d4eo7p4d3w2hdouvzj4xl7lja
+      vuetify: 3.0.3_6d4eo7p4d3w2hdouvzj4xl7lja
     transitivePeerDependencies:
       - vue
 
