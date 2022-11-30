@@ -22,7 +22,7 @@ export default {
           <a :href="record.url" target="_blank">
             <div class="item-text">
               <span text-size-lg>
-                {{ record.title || '&nbsp;' }}
+                {{ reocord.url_title || record.title || '&nbsp;' }}
               </span>
             </div>
 
