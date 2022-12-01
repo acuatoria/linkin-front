@@ -24,7 +24,7 @@ export const UserLink = {
 
   update(data: object) {
     return $fetch(`${this.userlink_endpoint()}${data.data.id}/`, {
-      method: 'PATCH',
+      method: 'PUT',
       body: JSON.stringify(data.data),
       headers: this.headers(),
     })
