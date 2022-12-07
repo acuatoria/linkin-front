@@ -14,6 +14,7 @@
     "@nuxtjs-alt/proxy": "^2.1.2",
     "roboto-fontface": "*",
     "sass": "^1.56.1",
+    "vue-recaptcha": "^2.0.3",
     "vuetify": "^3.0.3",
     "webfontloader": "^1.6.28"
   },

@@ -6,11 +6,13 @@
     gap-3
   >
     <div class="flex flex-column">
-      <div class="shadow rounded">
+      <div>
         <div v-if="!$auth.loggedIn">
-          <Login />
+          <div m-3>
+            <Login />
+          </div>
         </div>
-        <div v-if="$auth.loggedIn" class="flex flex-column">
+        <div v-if="$auth.loggedIn" class="shadow rounded">
           <Logout />
           <LinkUserHome />
         </div>
