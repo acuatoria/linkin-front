@@ -91,7 +91,6 @@ export default {
           color="purple"
           v-bind="props"
         >
-          <v-icon icon="i-line-md:account" />
           <span ml-2 text-l>Register</span>
         </v-btn>
       </template>
