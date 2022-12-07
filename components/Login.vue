@@ -112,7 +112,11 @@ export default {
               </div>
             </div>
           </div>
-
+          <div>
+            <v-btn disabled>
+              Recover password ASAP
+            </v-btn>
+          </div>
           <v-btn
             color="orange"
             class="m-3"

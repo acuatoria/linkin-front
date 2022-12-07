@@ -22,7 +22,7 @@ export default {
     >
       <v-card>
         <v-card-text text-center>
-          {{ message }}
+          <span v-html="message" />
         </v-card-text>
         <v-card-actions>
           <v-btn color="primary" block @click="dialog = false">

@@ -18,6 +18,8 @@ export default {
       api_error: '',
       sending: false,
       recaptcha_response: '',
+      show_terms: false,
+      terms: false,
     })
   },
   validations() {
@@ -26,14 +28,17 @@ export default {
       email: { required },
       password: { required },
       recaptcha_response: { required },
+      terms: { accepted: val => val === true },
     }
   },
   methods: {
     expiredMethod() {
-      this.$refs.recaptcha.execute()
+      this.recaptcha_response = ''
+      this.$refs.recaptcha.reset()
     },
     errorMethod() {
-      this.$refs.recaptcha.execute()
+      this.recaptcha_response = ''
+      this.$refs.recaptcha.reset()
     },
     async verifyMethod(response) {
       this.recaptcha_response = await response
@@ -141,14 +146,47 @@ export default {
               </div>
             </div>
           </div>
-          <VueRecaptcha
-            ref="recaptcha"
-            :theme="useColorMode().value"
-            sitekey="6LeqW2EjAAAAAHUbSZ8sfh9JhehxD_xDlPWdz6cJ"
-            @verify="verifyMethod"
-            @expired="expiredMethod"
-            @error="errorMethod"
+
+          <Dialog
+            message="This web application is a personal project for non profit.<br>
+          No personal data is collected.<br>
+          The service could be interrupted without advice.<br>
+          Right reserved for deleting illegal content and user accounts.<br>
+          "
+            :show="show_terms"
           />
+          <div @click="show_terms = !show_terms">
+            Service conditions
+          </div>
+          <div :class="{ 'text-red': v$.terms.$errors.length }">
+            <v-checkbox v-model="terms" label="Accept service's conditions" />
+            <div v-for="error of v$.terms.$errors" :key="error.$uid" class="input-errors">
+              <div class="error-msg">
+                {{ error.$message }}
+              </div>
+            </div>
+          </div>
+
+          <div :class="{ 'text-red': v$.recaptcha_response.$errors.length }">
+            <VueRecaptcha
+              ref="recaptcha"
+              :theme="useColorMode().value"
+              sitekey="6LeqW2EjAAAAAHUbSZ8sfh9JhehxD_xDlPWdz6cJ"
+              @verify="verifyMethod"
+              @expired="expiredMethod"
+              @error="errorMethod"
+            />
+            <div v-for="error of v$.recaptcha_response.$errors" :key="error.$uid" class="input-errors">
+              <div class="error-msg">
+                {{ error.$message }}
+              </div>
+            </div>
+          </div>
+          <div>
+            <v-btn @click="expiredMethod">
+              Reload recaptcha
+            </v-btn>
+          </div>
           <v-btn
             color="purple"
             class="m-3"
