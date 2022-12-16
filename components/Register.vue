@@ -150,7 +150,7 @@ export default {
             message="This web application is a personal project for non profit.<br>
           No personal data is collected.<br>
           The service could be interrupted without advice.<br>
-          Right reserved for deleting illegal content and user accounts.<br>
+          Rights reserved for deleting illegal content and user accounts.<br>
           "
             :show="show_terms"
           />
