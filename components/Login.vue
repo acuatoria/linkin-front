@@ -4,7 +4,7 @@ import { required } from '@vuelidate/validators'
 
 export default {
   setup() {
-    return { v$: useVuelidate() }
+    return { v_login: useVuelidate() }
   },
   data() {
     return ({
@@ -24,7 +24,7 @@ export default {
   },
   methods: {
     async submitForm() {
-      const isFormCorrect = await this.v$.$validate()
+      const isFormCorrect = await this.v_login.$validate()
       if (!isFormCorrect)
         return
       this.api_error = ''
@@ -60,75 +60,53 @@ export default {
 
 <template>
   <div>
-    <v-dialog
-      v-model="dialog"
-      scroll-strategy="close"
-      text-center
+    <v-alert
+      v-if="api_error"
+      prominent
+      type="error"
+      variant="outlined"
     >
-      <template #activator="{ props }">
-        <v-btn
-          color="orange"
-          v-bind="props"
-        >
-          <v-icon icon="i-line-md:account" />
-          <span ml-2 text-l>Sign in</span>
-        </v-btn>
-      </template>
+      {{ api_error }}
+    </v-alert>
+    <v-form
+      ref="form_login"
+    >
+      <div :class="{ 'text-red': v_login.username.$errors.length }">
+        <v-text-field
+          v-model="username"
+          type="username"
+          label="username"
+        />
+        <div v-for="error of v_login.username.$errors" :key="error.$uid" class="input-errors">
+          <div class="error-msg">
+            {{ error.$message }}
+          </div>
+        </div>
+      </div>
 
-      <v-card m-auto class="modal">
-        <v-alert
-          v-if="api_error"
-          prominent
-          type="error"
-          variant="outlined"
-        >
-          {{ api_error }}
-        </v-alert>
-        <v-form
-          ref="form"
-        >
-          <div :class="{ 'text-red': v$.username.$errors.length }">
-            <v-text-field
-              v-model="username"
-              type="username"
-              label="username"
-            />
-            <div v-for="error of v$.username.$errors" :key="error.$uid" class="input-errors">
-              <div class="error-msg">
-                {{ error.$message }}
-              </div>
-            </div>
+      <div :class="{ 'text-red': v_login.password.$errors.length }">
+        <v-text-field
+          v-model="password"
+          type="password"
+          label="password"
+        />
+        <div v-for="error of v_login.password.$errors" :key="error.$uid" class="input-errors">
+          <div class="error-msg">
+            {{ error.$message }}
           </div>
+        </div>
+      </div>
 
-          <div :class="{ 'text-red': v$.password.$errors.length }">
-            <v-text-field
-              v-model="password"
-              type="password"
-              label="password"
-            />
-            <div v-for="error of v$.password.$errors" :key="error.$uid" class="input-errors">
-              <div class="error-msg">
-                {{ error.$message }}
-              </div>
-            </div>
-          </div>
-          <div>
-            <v-btn disabled>
-              Recover password ASAP
-            </v-btn>
-          </div>
-          <v-btn
-            color="orange"
-            class="m-3"
-            :disabled="sending"
-            @click="submitForm"
-          >
-            Sign In
-            <v-icon v-show="sending" icon="i-line-md:loading-alt-loop" />
-          </v-btn>
-        </v-form>
-      </v-card>
-    </v-dialog>
+      <v-btn
+        color="orange"
+        class="m-3"
+        :disabled="sending"
+        @click="submitForm"
+      >
+        Sign In
+        <v-icon v-show="sending" icon="i-line-md:loading-alt-loop" />
+      </v-btn>
+    </v-form>
   </div>
 </template>
 

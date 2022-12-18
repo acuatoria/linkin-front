@@ -9,7 +9,7 @@
       <div>
         <div v-if="!$auth.loggedIn">
           <div>
-            <Login />
+            <BeforeLogin />
           </div>
           <div m-3>
             <Register />
