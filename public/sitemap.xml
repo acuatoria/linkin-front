@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+<url>
+  <loc>https://pyxilink.com/</loc>
+  <lastmod>2022-12-26T08:19:11+00:00</lastmod>
+</url>
+<url>
+  <loc>https://pyxilink.com/discover</loc>
+  <lastmod>2022-12-26T08:19:11+00:00</lastmod>
+</url>
+<url>
+  <loc>https://pyxilink.com/comments/673aa481-d738-4d9c-b6d1-eff7faa2287f</loc>
+  <lastmod>2022-12-26T08:19:11+00:00</lastmod>
+</url>
+<url>
+  <loc>https://pyxilink.com/collection/d46b6ac4-c325-4fbe-9b0d-14ce15af49d4</loc>
+  <lastmod>2022-12-26T08:19:11+00:00</lastmod>
+</url>
+
+</urlset>
