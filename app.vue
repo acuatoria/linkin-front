@@ -13,9 +13,6 @@ useHead({
 </template>
 
 <style>
-body {
-  font-family: Roboto;
-}
 :root {
   color-scheme: unset !important;
 }

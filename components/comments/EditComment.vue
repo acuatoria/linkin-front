@@ -105,7 +105,7 @@ export default {
           </div>
         </div>
 
-        <div flex m-2>
+        <div flex mb-5>
           <v-btn
             color="orange"
             m-auto

@@ -64,11 +64,11 @@ export default {
     >
       <template #activator="{ props }">
         <v-btn
-
+          mt-5
           v-bind="props"
         >
           <v-icon icon="i-line-md:account" />
-          <span ml-2 text-l>Forgot password?</span>
+          <span text-l>Forgot password?</span>
         </v-btn>
       </template>
 
@@ -112,8 +112,3 @@ export default {
   </div>
 </template>
 
-<style scoped>
-.modal{
-  min-width: 270px;
-}
-</style>

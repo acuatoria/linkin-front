@@ -30,5 +30,6 @@ const dialog = ref(false)
 <style scoped>
 .modal{
   min-width: 270px;
+  min-height: 300px;
 }
 </style>

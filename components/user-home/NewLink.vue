@@ -179,7 +179,7 @@ export default {
             :style="`color:${color_return(color_changing)}`"
           />
         </div>
-        <div flex m-2>
+        <div flex mb-5>
           <v-btn
             color="orange"
             m-auto

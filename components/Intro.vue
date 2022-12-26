@@ -14,7 +14,7 @@ const items = [
     max-width="600"
     tile
   >
-    <div text-lg m-3>
+    <div text-sm m-3>
       <h1>Manage your bookmarks, discover links, share links and comment them</h1>
     </div>
     <v-list-item
@@ -23,11 +23,11 @@ const items = [
     >
       <div class="flex" mb-3>
         <span text-left>
-          <h2 text-2xl>
+          <h2 text-lg>
             <v-icon v-if="item.icon" :color="color_return(i + 1)" :icon="item.icon" />
             <span ml-3>{{ item.text }}</span>
           </h2>
-          <br><span text-lg text-gray>{{ item.subtext }}</span>
+          <span text-sm text-gray>{{ item.subtext }}</span>
         </span>
       </div>
     </v-list-item>
