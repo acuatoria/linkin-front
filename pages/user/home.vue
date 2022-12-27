@@ -100,6 +100,7 @@ const items = computed(() => {
             color="deep-orange"
             label="Filter by category"
             variant="outlined"
+            :menu-props="{ maxHeight: '500px', location: 'top' }"
           />
         </v-responsive>
         <v-responsive

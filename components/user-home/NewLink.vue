@@ -152,6 +152,7 @@ export default {
             class="mt-5"
             label="Category"
             color="deep-orange"
+            :menu-props="{ maxHeight: '500px', location: 'top' }"
           />
         </div>
 
@@ -167,6 +168,7 @@ export default {
             density="compact"
             class="mt-5"
             label="Collections"
+            :menu-props="{ maxHeight: '500px', location: 'top' }"
           />
         </div>
 
