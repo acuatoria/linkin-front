@@ -3,9 +3,9 @@ import svgLoader from 'vite-svg-loader'
 
 export default defineNuxtConfig({
   modules: [
-    '@nuxtjs-alt/auth',
-    '@nuxtjs-alt/http',
-    '@nuxtjs-alt/proxy',
+    '@nuxt-alt/auth',
+    '@nuxt-alt/http',
+    '@nuxt-alt/proxy',
     '@vueuse/nuxt',
     '@unocss/nuxt',
     '@pinia/nuxt',

@@ -1,6 +1,10 @@
 <script setup>
 useHead({
   title: 'Discover Links',
+  meta: [{
+    name: 'description',
+    content: 'Discover new websites from other users and join us to share your interesting bookmarks.',
+  }],
 })
 
 const needle = ref('')

@@ -1,6 +1,12 @@
 <script setup>
 useHead({
   title: 'Pyxilink - Links everywhere',
+  script: [
+    {
+      async: true,
+      src: '//static.getclicky.com/101392052.js',
+    },
+  ],
 })
 </script>
 
@@ -10,6 +16,9 @@ useHead({
       <NuxtPage />
     </NuxtLayout>
   </div>
+  <ClientOnly>
+    <noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/101392052ns.gif" /></p></noscript>
+  </ClientOnly>
 </template>
 
 <style>

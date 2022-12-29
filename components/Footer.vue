@@ -11,5 +11,9 @@
       <v-icon icon="i-carbon:campsite" />
     </NuxtLink>
     <DarkToggle />
+    <NuxtLink to="https://twitter.com/pyxilink" title="Home">
+      <v-icon icon="i-carbon:logo-twitter" />
+    </NuxtLink>
+    
   </div>
 </template>
