@@ -138,6 +138,7 @@ export default {
               v-model="password"
               type="password"
               label="password"
+              autocomplete="new-password"
             />
             <div v-for="error of v$.password.$errors" :key="error.$uid" class="input-errors">
               <div class="error-msg">
