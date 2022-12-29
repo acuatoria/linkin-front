@@ -3,9 +3,12 @@ useHead({
   title: 'Pyxilink - Links everywhere',
   script: [
     {
+      src: 'https://polyfill.io/v3/polyfill.min.js?features=IntersectionObserver,ResizeObserver,WebAnimations,Object.fromEntries,Array.prototype.at',
+    },
+    {
       async: true,
       src: '//static.getclicky.com/101392052.js',
-    },
+    }
   ],
 })
 </script>

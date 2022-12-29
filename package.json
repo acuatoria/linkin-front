@@ -8,6 +8,8 @@
     "start": "node .output/server/index.mjs"
   },
   "dependencies": {
+    "@esbuild-plugins/node-globals-polyfill": "^0.1.1",
+    "@esbuild-plugins/node-modules-polyfill": "^0.1.4",
     "@mdi/font": "5.9.55",
     "@nuxt-alt/auth": "^2.1.9",
     "@nuxt-alt/http": "^1.5.5",
