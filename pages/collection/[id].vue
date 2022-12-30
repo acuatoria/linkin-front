@@ -1,13 +1,8 @@
 <script setup>
-definePageMeta({
-  title: 'Collection',
-})
-
 const id = ref('')
 const needle = ref('')
 const category_search = ref('')
 const loading = ref(true)
-const collection = shallowRef([])
 const userLinks = shallowRef([])
 const categories = ref([])
 const collections = ref([])
@@ -19,6 +14,10 @@ const route = useRoute()
 const urlToUpdate = ref('')
 const owner = ref(false)
 const retardo = ref('')
+
+const collection = await useAsyncData(() => {
+  return Collection.get(route.params.id)
+})
 
 watch(page, (newValue) => {
   update()
@@ -66,10 +65,6 @@ onMounted(async () => {
   collections.value = useCollectionStore().collections
   useCategoryStore().categories = await Category.index()
   categories.value = useCategoryStore().categories
-  collection.value = await Collection.get(id.value)
-  useHead({
-    title: `Collection: ${collection.value.name}`,
-  })
   update()
 })
 
@@ -81,6 +76,9 @@ const items = computed(() => {
 
 <template>
   <div>
+    <Head>
+      <Title>{{ `Collection: ${collection.data.value.name}` }}</Title>
+    </Head>
     <ClientOnly>
       <Header path="Collection" />
       <div><b>{{ collection.name }}</b>: {{ collection.description }}</div>

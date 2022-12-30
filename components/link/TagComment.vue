@@ -5,12 +5,13 @@ export default {
 </script>
 
 <template>
-  <v-chip
-    color="amber"
-    @click="$router.push(`/comments/${urlId}`)"
-  >
-    {{ comments }} <v-icon ml-1>
-      mdi-comment-multiple
-    </v-icon>
-  </v-chip>
+  <NuxtLink :to="`/comments/${urlId}`" title="Home">
+    <v-chip
+      color="amber"
+    >
+      {{ comments }} <v-icon ml-1>
+        mdi-comment-multiple
+      </v-icon>
+    </v-chip>
+  </NuxtLink>
 </template>
