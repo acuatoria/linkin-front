@@ -81,7 +81,7 @@ const items = computed(() => {
     </Head>
     <ClientOnly>
       <Header path="Collection" />
-      <div><b>{{ collection.name }}</b>: {{ collection.description }}</div>
+      <div><b>{{ collection.data.value.name }}</b>: {{ collection.data.value.description }}</div>
       <div flex flex-row flex-wrap class="header">
         <v-responsive
           class="mx-auto"
