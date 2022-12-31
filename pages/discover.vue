@@ -8,7 +8,7 @@ useHead({
   {
     hid: 'og-image',
     property: 'og:image',
-    content: 'https://pyxilink.com/logo.svg',
+    content: 'https://pyxilink.com/logo.png',
   },
   ],
 })
