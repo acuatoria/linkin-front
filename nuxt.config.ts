@@ -1,7 +1,7 @@
 import { defineNuxtConfig } from 'nuxt/config'
 import svgLoader from 'vite-svg-loader'
-import { NodeGlobalsPolyfillPlugin } from '@esbuild-plugins/node-globals-polyfill';
-import { NodeModulesPolyfillPlugin } from '@esbuild-plugins/node-modules-polyfill';
+import { NodeGlobalsPolyfillPlugin } from '@esbuild-plugins/node-globals-polyfill'
+import { NodeModulesPolyfillPlugin } from '@esbuild-plugins/node-modules-polyfill'
 
 export default defineNuxtConfig({
   modules: [
@@ -41,16 +41,16 @@ export default defineNuxtConfig({
     optimizeDeps: {
       esbuildOptions: {
         define: {
-          global: 'globalThis'  // fix nuxt3 global
+          global: 'globalThis', // fix nuxt3 global
         },
         plugins: [
           NodeGlobalsPolyfillPlugin({
-            process: true,  // fix nuxt3 process
-            buffer: true
+            process: true, // fix nuxt3 process
+            buffer: true,
           }),
-          NodeModulesPolyfillPlugin()
-        ]
-      }
+          NodeModulesPolyfillPlugin(),
+        ],
+      },
     },
   },
   // https://github.com/nuxt/framework/issues/6204#issuecomment-1201398080
@@ -90,5 +90,15 @@ export default defineNuxtConfig({
       },
     },
   },
-  
+  app: {
+    head: {
+      meta: [
+        {
+          hid: 'og-image',
+          property: 'og:image',
+          content: 'https://pyxilink.com/logo.svg',
+        },
+      ],
+    },
+  },
 })
