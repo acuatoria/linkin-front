@@ -4,7 +4,13 @@ useHead({
   meta: [{
     name: 'description',
     content: 'Discover new websites from other users and join us to share your interesting bookmarks.',
-  }],
+  },
+  {
+    hid: 'og-image',
+    property: 'og:image',
+    content: 'https://pyxilink.com/logo.svg',
+  },
+  ],
 })
 
 const needle = ref('')

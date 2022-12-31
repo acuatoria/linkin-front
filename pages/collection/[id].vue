@@ -1,4 +1,14 @@
 <script setup>
+useHead({
+  meta: [
+    {
+      hid: 'og-image',
+      property: 'og:image',
+      content: 'https://pyxilink.com/logo.svg',
+    },
+  ],
+})
+
 const id = ref('')
 const needle = ref('')
 const category_search = ref('')
