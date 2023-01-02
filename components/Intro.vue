@@ -1,9 +1,9 @@
 <script setup>
 const items = [
-  { text: 'Save and manage your links', icon: 'i-carbon-link', subtext: 'See them in any device and in any browser' },
-  { text: 'Comment on links', icon: 'i-carbon-add-comment', subtext: 'Write or see comments on any url' },
-  { text: 'Share collections of links, like your wish list', icon: 'i-carbon-share-knowledge', subtext: 'Share a link with links inside' },
-  { text: 'Discover amazing sites with button bellow', icon: 'i-carbon-image-search', subtext: '' },
+  { text: 'Save and manage your links', icon: 'i-carbon-link', subtext: 'See them in any device and in any browser (register required)' },
+  { text: 'Comment on links', icon: 'i-carbon-add-comment', subtext: 'Write or see comments on any url (register required)' },
+  { text: 'Share collections of links, like your wish list', icon: 'i-carbon-share-knowledge', subtext: 'Share a link with links inside (register required)' },
+  { text: 'Discover new stuff 👇', icon: 'i-carbon-image-search', subtext: '' },
 ]
 </script>
 
@@ -37,7 +37,7 @@ const items = [
       <v-btn
         color="lime"
       >
-        Discover here now
+        Go to Discover
       </v-btn>
     </NuxtLink>
   </div>

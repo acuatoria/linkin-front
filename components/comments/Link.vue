@@ -20,19 +20,15 @@ export default {
 
 <template>
   <v-card>
-    <a :href="response.url" target="_blank">
-      <div v-if="response.title">
-        {{ response.title }}
-      </div>
-      {{ response.url }}
-    </a>
+    <div>
+      <a :href="response.url" target="_blank">
+        <div v-if="response.title">
+          {{ response.title }}
+        </div>
+        {{ response.url }}
+      </a>
+    </div>
+    <LinkTagCategory :category-name="response.category_name" />
+    <LinkTagComment :url-id="response.id" :comments="response.comments" />
   </v-card>
-  <LinkTagCategory :category-name="response.category_name" />
-  <LinkTagComment :url-id="response.id" :comments="response.comments" />
 </template>
-
-<style scoped>
-.v-card{
-    padding: 1em;
-}
-</style>

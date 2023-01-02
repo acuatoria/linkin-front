@@ -13,8 +13,9 @@ const dialog = ref(false)
         <v-btn
           color="orange"
           v-bind="props"
+          rounded="lg"
+          variant="flat"
         >
-          <v-icon icon="i-line-md:account" />
           <span ml-2 text-l>Sign in</span>
         </v-btn>
       </template>

@@ -88,6 +88,8 @@ export default {
     >
       <template #activator="{ props }">
         <v-btn
+          rounded="lg"
+          variant="flat"
           color="purple"
           v-bind="props"
         >
