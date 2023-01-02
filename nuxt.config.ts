@@ -1,5 +1,6 @@
 import { defineNuxtConfig } from 'nuxt/config'
 import svgLoader from 'vite-svg-loader'
+import legacy from '@vitejs/plugin-legacy'
 import { NodeGlobalsPolyfillPlugin } from '@esbuild-plugins/node-globals-polyfill'
 import { NodeModulesPolyfillPlugin } from '@esbuild-plugins/node-modules-polyfill'
 
@@ -37,6 +38,9 @@ export default defineNuxtConfig({
   vite: {
     plugins: [
       svgLoader(),
+      legacy({
+        targets: ['>0.3%'],
+      }),
     ],
     optimizeDeps: {
       esbuildOptions: {
