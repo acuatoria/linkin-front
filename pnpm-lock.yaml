@@ -662,7 +662,7 @@ packages:
   /@nuxt-alt/auth/2.1.9_typescript@4.9.4:
     resolution: {integrity: sha512-69d4Rk0C/36OjHvdbPz8Osp7SQsdWYvHWY0k1qbW2NOmB9bEFVK+ERK11kZxdOTAG5lbwp+5Qz2vkstqNeaJsg==}
     dependencies:
-      '@nuxt-alt/http': 1.5.5
+      '@nuxt-alt/http': 1.5.6
       '@nuxt/kit': 3.0.0
       '@pinia/nuxt': 0.4.6_typescript@4.9.4
       body-parser: 1.20.1
@@ -682,6 +682,18 @@ packages:
 
   /@nuxt-alt/http/1.5.5:
     resolution: {integrity: sha512-JgviG732vizYqeUZfF5GwpnV6RQohMte1EEtg/If4ptMRl5m25/4qCS/KHZxrweeElxCNESiGIHH0kh5OWvAuQ==}
+    dependencies:
+      '@nuxt/kit': 3.0.0
+      '@refactorjs/ofetch': 1.0.0
+      defu: 6.1.1
+      ufo: 1.0.1
+    transitivePeerDependencies:
+      - rollup
+      - supports-color
+    dev: false
+
+  /@nuxt-alt/http/1.5.6:
+    resolution: {integrity: sha512-GbGYOQT40A4EGgNh2TT75NVWUCu8pqZOYJk+3BKM08fObBCc5hom00USsKg32csJWyitR9PLPOm9D5Y9LzfHUQ==}
     dependencies:
       '@nuxt/kit': 3.0.0
       '@refactorjs/ofetch': 1.0.0

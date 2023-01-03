@@ -45,6 +45,7 @@ export default {
         this.$router.push('/user/home')
       }
       catch (error) {
+        console.log(error)
         this.api_error = 'Server error'
         try {
           const error_msg = await error.response._data

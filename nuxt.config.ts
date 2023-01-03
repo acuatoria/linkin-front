@@ -1,7 +1,5 @@
 import { defineNuxtConfig } from 'nuxt/config'
 import svgLoader from 'vite-svg-loader'
-import { NodeGlobalsPolyfillPlugin } from '@esbuild-plugins/node-globals-polyfill'
-import { NodeModulesPolyfillPlugin } from '@esbuild-plugins/node-modules-polyfill'
 
 export default defineNuxtConfig({
   modules: [
@@ -17,7 +15,7 @@ export default defineNuxtConfig({
     '~/assets/scss/main.scss',
   ],
   build: {
-    transpile: ['vuetify', 'pinia'],
+    transpile: ['vuetify', 'pinia', 'nuxt-alt'],
   },
   experimental: {
     payloadExtraction: false,
@@ -38,20 +36,6 @@ export default defineNuxtConfig({
     plugins: [
       svgLoader(),
     ],
-    optimizeDeps: {
-      esbuildOptions: {
-        define: {
-          global: 'globalThis', // fix nuxt3 global
-        },
-        plugins: [
-          NodeGlobalsPolyfillPlugin({
-            process: true, // fix nuxt3 process
-            buffer: true,
-          }),
-          NodeModulesPolyfillPlugin(),
-        ],
-      },
-    },
   },
   // https://github.com/nuxt/framework/issues/6204#issuecomment-1201398080
   hooks: {
