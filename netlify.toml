@@ -4,7 +4,7 @@
 
 [build]
   publish = "dist"
-  command = "npx nuxi build --modern=server"
+  command = "npx nuxi build --modern=server --target=es2015"
 
 [[redirects]]
   from = "/*"

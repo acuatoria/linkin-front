@@ -15,10 +15,7 @@ export default defineNuxtConfig({
     '~/assets/scss/main.scss',
   ],
   build: {
-    transpile: ['vuetify', 'pinia', 'nuxt-alt'],
-  },
-  experimental: {
-    payloadExtraction: false,
+    transpile: ['vuetify', 'pinia', 'nuxt-alt.+'],
   },
   runtimeConfig: {
     public: {

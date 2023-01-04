@@ -3,6 +3,9 @@ useHead({
   title: 'Pyxilink - where links want to be',
   script: [
     {
+      src: 'https://polyfill.io/v3/polyfill.min.js?version=3.111.0',
+    },
+    {
       async: true,
       src: '//static.getclicky.com/101392052.js',
     },
