@@ -36,6 +36,9 @@ export default defineNuxtConfig({
     plugins: [
       svgLoader(),
     ],
+    define: {
+      'window.global': {},
+    },
   },
   // https://github.com/nuxt/framework/issues/6204#issuecomment-1201398080
   hooks: {
