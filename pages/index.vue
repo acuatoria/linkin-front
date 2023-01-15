@@ -13,13 +13,11 @@ const passwordChanged = ref(false)
 
 <template>
   <div>
-    <ClientOnly>
-      <Header />
-      <Intro />
-      <div v-if="token">
-        <ResetPassword :token="token" @change-success="passwordChanged = true" />
-      </div>
-      <Dialog message="OK. Password changed" :show="passwordChanged" />
-    </ClientOnly>
+    <Header />
+    <Intro />
+    <div v-if="token">
+      <ResetPassword :token="token" @change-success="passwordChanged = true" />
+    </div>
+    <Dialog message="OK. Password changed" :show="passwordChanged" />
   </div>
 </template>
