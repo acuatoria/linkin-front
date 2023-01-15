@@ -65,7 +65,6 @@ export default {
 <template>
   <v-dialog
     v-model="dialog"
-    scroll-strategy="close"
   >
     <template #activator="{ props }">
       <v-responsive
@@ -134,6 +133,14 @@ export default {
           >
             Save
             <v-icon v-show="sending" icon="i-line-md:loading-alt-loop" />
+          </v-btn>
+          <v-btn
+            m-auto
+            :disabled="sending"
+            @click="dialog = false"
+          >
+            <v-icon icon="i-line-md:cancel" />
+            Cancel
           </v-btn>
         </div>
       </v-form>

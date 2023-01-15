@@ -1,9 +1,9 @@
 <script setup>
 const items = [
-  { text: 'Save and manage your links', icon: 'i-carbon-link', subtext: 'See them in any device and in any browser', helptext: 'With your user active you can save your bookmarks and manage them and you will have access to your bookmarks in every device or browser. You can set private description and set a category to filter them.', color: '#4219E6', openhelp: ref(false) },
-  { text: 'Comment on links', icon: 'i-carbon-add-comment', subtext: 'Write and read comments on any url', helptext: 'Every link has an icon that leads you to its comment\'s page. You need to be registered to comment', color: '#6419E6', openhelp: ref(false) },
-  { text: 'Share collections of links', icon: 'i-carbon-share-knowledge', subtext: 'Share a link with links inside', helptext: 'You can create collections with links inside, for example a wish list. Collections can be public or private, if it\'s public you can share the link for others can see your collection', color: '#8619E6', openhelp: ref(false) },
-  { text: 'Discover new stuff', icon: 'i-carbon-image-search', subtext: 'Search is important, but also discover new things', helptext: 'This feature no requires register to use and you can enter by the button below. In that page you can see links that users has marked as public', color: '#A819E6', openhelp: ref(false) },
+  { text: 'Save and manage your links', icon: 'i-carbon-link', subtext: 'See them in any device and in any browser', helptext: 'With your user you can save your bookmarks and manage them. Having access to your bookmarks in every device or browser. You can set a private description and a category for filter them.', color: '#4219E6', openhelp: ref(false) },
+  { text: 'Comment on links', icon: 'i-carbon-add-comment', subtext: 'Write and read comments on any url', helptext: 'Each link has an icon that leads you to its comment\'s page where you can post and read comments about it. You need to be registered for comment', color: '#6419E6', openhelp: ref(false) },
+  { text: 'Share collections of links', icon: 'i-carbon-share-knowledge', subtext: 'Share your links with collections', helptext: 'You can create collections with links inside, for example a wish list. Collections can be public or private, if it\'s public you can share the link for others can see your collection. Each collection has a unique url you can share', color: '#8619E6', openhelp: ref(false) },
+  { text: 'Discover new stuff', icon: 'i-carbon-image-search', subtext: 'Search is important, but also discover new things', helptext: 'This feature is registration free to use and you can enter by the button below. In discover you can see links that users has marked as public', color: '#A819E6', openhelp: ref(false) },
 ]
 </script>
 
@@ -55,7 +55,7 @@ const items = [
   <div mt-5>
     <NuxtLink to="/discover">
       <v-btn
-        color="lime"
+        color="pink"
       >
         Go to Discover
       </v-btn>
