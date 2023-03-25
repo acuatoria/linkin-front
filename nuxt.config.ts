@@ -1,7 +1,5 @@
 import { defineNuxtConfig } from 'nuxt/config'
 import svgLoader from 'vite-svg-loader'
-import { NodeGlobalsPolyfillPlugin } from '@esbuild-plugins/node-globals-polyfill'
-import { NodeModulesPolyfillPlugin } from '@esbuild-plugins/node-modules-polyfill'
 
 export default defineNuxtConfig({
   modules: [
@@ -43,13 +41,6 @@ export default defineNuxtConfig({
         define: {
           global: 'globalThis', // fix nuxt3 global
         },
-        plugins: [
-          NodeGlobalsPolyfillPlugin({
-            process: true, // fix nuxt3 process
-            buffer: true,
-          }),
-          NodeModulesPolyfillPlugin(),
-        ],
       },
     },
   },

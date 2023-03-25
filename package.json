@@ -8,22 +8,20 @@
     "start": "node .output/server/index.mjs"
   },
   "dependencies": {
-    "@esbuild-plugins/node-globals-polyfill": "^0.1.1",
-    "@esbuild-plugins/node-modules-polyfill": "^0.1.4",
     "@mdi/font": "5.9.55",
-    "@nuxt-alt/auth": "^2.2.4",
-    "@nuxt-alt/http": "^1.5.7",
-    "@nuxt-alt/proxy": "^2.1.3",
+    "@nuxt-alt/auth": "^2.3.6",
+    "@nuxt-alt/http": "^1.6.1",
+    "@nuxt-alt/proxy": "^2.2.0",
     "roboto-fontface": "^0.10.0",
-    "sass": "^1.57.1",
+    "sass": "^1.58.3",
     "vue-recaptcha": "^2.0.3",
-    "vuetify": "^3.1.1",
+    "vuetify": "^3.1.7",
     "webfontloader": "^1.6.28"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.25.2",
-    "@iconify-json/carbon": "^1.1.13",
-    "@iconify-json/line-md": "^1.1.22",
+    "@iconify-json/carbon": "^1.1.16",
+    "@iconify-json/line-md": "^1.1.23",
     "@iconify/vue": "^3.2.1",
     "@nuxtjs/color-mode": "^3.2.0",
     "@pinia/nuxt": "^0.3.1",
@@ -31,14 +29,14 @@
     "@unocss/nuxt": "^0.45.30",
     "@vuelidate/core": "2.0.0-alpha.44",
     "@vuelidate/validators": "2.0.0-alpha.31",
-    "@vueuse/nuxt": "^9.10.0",
-    "eslint": "^8.31.0",
-    "nuxt": "^3.0.0",
-    "pinia": "^2.0.28",
-    "typescript": "^4.9.4",
+    "@vueuse/nuxt": "^9.13.0",
+    "eslint": "^8.35.0",
+    "nuxt": "^3.2.3",
+    "pinia": "^2.0.33",
+    "typescript": "^4.9.5",
     "vite-svg-loader": "^3.6.0",
     "vue-cli-plugin-vuetify": "~2.5.8",
-    "webpack-plugin-vuetify": "^2.0.0"
+    "webpack-plugin-vuetify": "^2.0.1"
   },
   "packageManager": "pnpm@7.5.0"
 }

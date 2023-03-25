@@ -16,12 +16,13 @@ const dialog = ref(false)
           rounded="lg"
           variant="flat"
         >
+          <v-icon icon="i-line-md:account-small" />
           <span ml-2 text-l>Sign in</span>
         </v-btn>
       </template>
 
       <v-card m-auto class="modal">
-        <Login />
+        <Login @cancel="dialog = false" />
         <EmailResetPassword />
       </v-card>
     </v-dialog>

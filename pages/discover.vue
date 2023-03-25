@@ -25,6 +25,7 @@ const items_x_page = ref(10)
 const retardo = ref('')
 
 watch(page, (newValue) => {
+  window.scrollTo(0, 0)
   update()
 })
 

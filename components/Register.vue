@@ -93,6 +93,7 @@ export default {
           color="purple"
           v-bind="props"
         >
+          <v-icon icon="i-line-md:account-add" />
           <span ml-2 text-l>Register</span>
         </v-btn>
       </template>
@@ -197,6 +198,15 @@ export default {
           >
             Register
             <v-icon v-show="sending" icon="i-line-md:loading-alt-loop" />
+          </v-btn>
+          <v-btn
+            m-auto
+            ms-3
+            :disabled="sending"
+            @click="dialog = false"
+          >
+            <v-icon icon="i-line-md:cancel" />
+            Cancel
           </v-btn>
         </v-form>
       </v-card>

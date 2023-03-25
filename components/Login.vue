@@ -107,6 +107,15 @@ export default {
         Sign In
         <v-icon v-show="sending" icon="i-line-md:loading-alt-loop" />
       </v-btn>
+      <v-btn
+        m-auto
+        ms-3
+        :disabled="sending"
+        @click="$emit('cancel')"
+      >
+        <v-icon icon="i-line-md:cancel" />
+        Cancel
+      </v-btn>
     </v-form>
   </div>
 </template>
