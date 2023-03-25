@@ -11,10 +11,10 @@ const dialog = ref(false)
     >
       <template #activator="{ props }">
         <v-btn
-          color="orange"
           v-bind="props"
           rounded="lg"
-          variant="flat"
+          variant="outlined"
+          color="orange"
         >
           <v-icon icon="i-line-md:account-small" />
           <span ml-2 text-l>Sign in</span>

@@ -89,8 +89,8 @@ export default {
       <template #activator="{ props }">
         <v-btn
           rounded="lg"
-          variant="flat"
-          color="purple"
+          variant="outlined"
+          color="deep-orange"
           v-bind="props"
         >
           <v-icon icon="i-line-md:account-add" />
