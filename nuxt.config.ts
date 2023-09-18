@@ -92,4 +92,8 @@ export default defineNuxtConfig({
       ],
     },
   },
+  proxy: {
+    proxies: {
+      },
+  },
 })

@@ -13,7 +13,7 @@ const dialog = ref(false)
         <v-btn
           v-bind="props"
           rounded="lg"
-          variant="outlined"
+          variant="tonal"
           color="orange"
         >
           <v-icon icon="i-line-md:account-small" />

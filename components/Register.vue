@@ -18,8 +18,6 @@ export default {
       api_error: '',
       sending: false,
       recaptcha_response: '',
-      show_terms: false,
-      terms: false,
     })
   },
   validations() {
@@ -28,7 +26,6 @@ export default {
       email: { required },
       password: { required },
       recaptcha_response: { required },
-      terms: { accepted: val => val === true },
     }
   },
   methods: {
@@ -89,7 +86,7 @@ export default {
       <template #activator="{ props }">
         <v-btn
           rounded="lg"
-          variant="outlined"
+          variant="tonal"
           color="deep-orange"
           v-bind="props"
         >
@@ -150,25 +147,6 @@ export default {
             </div>
           </div>
 
-          <Dialog
-            message="This web application is a personal project for non profit.<br>
-          No personal data is collected.<br>
-          The service could be interrupted without advice.<br>
-          Rights reserved for deleting illegal content and user accounts.<br>
-          "
-            :show="show_terms"
-          />
-          <div @click="show_terms = !show_terms">
-            Service conditions
-          </div>
-          <div :class="{ 'text-red': v$.terms.$errors.length }">
-            <v-checkbox v-model="terms" label="Accept service's conditions" />
-            <div v-for="error of v$.terms.$errors" :key="error.$uid" class="input-errors">
-              <div class="error-msg">
-                {{ error.$message }}
-              </div>
-            </div>
-          </div>
 
           <div :class="{ 'text-red': v$.recaptcha_response.$errors.length }">
             <VueRecaptcha

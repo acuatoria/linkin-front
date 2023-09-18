@@ -11,7 +11,10 @@ defineProps({
     justify-between
     items-center
   >
+    
     <Logo />
+    
+    
     <div class="title">
       {{ path }}
     </div>

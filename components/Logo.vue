@@ -11,12 +11,17 @@ export default {
 <template>
   <div inline-flex text-2xl font-300 cursor-default>
     <NuxtLink to="/">
+      
+      
+      <v-icon icon="i-line-md:chevron-left" rotate="-90">
+      </v-icon>
       <div flex flex-col children:mx-auto>
+      
         <svg
           id="svg6"
           version="1.0"
-          width="60.000000pt"
-          height="60.000000pt"
+          width="30.000000pt"
+          height="30.000000pt"
           viewBox="0 0 256.000000 256.000000"
           preserveAspectRatio="xMidYMid meet"
           inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
@@ -36,39 +41,10 @@ export default {
           </g>
         </svg>
       </div>
+      <v-icon icon="i-line-md:chevron-left" rotate="90">
+      </v-icon>
+
+      
     </NuxtLink>
   </div>
 </template>
-
-<style scoped>
-.logo{
-  background-image: url('~/src/assets/logo_256_simple.svg');
-  background-size: cover;
-  border:0px !important;
-}
-svg {
-  animation-name: animate;
-  animation-duration: 15s;
-  animation-iteration-count: 1;
-  animation-delay: 5s;
-}
-
-@keyframes animate {
-  0% {
-    filter: none
-  }
-  58% {
-    filter: drop-shadow(0px 0px 1px v-bind('colorFromScript'))
-    drop-shadow(0px 0px 15px v-bind('colorFromScript'))
-  }
-
-  62% {
-    filter: drop-shadow(0px 0px 15px v-bind('colorFromScript'))
-    drop-shadow(0px 0px 1px v-bind('colorFromScript'))
-  }
-  65%{
-    filter: none
-  }
-
-}
-</style>
