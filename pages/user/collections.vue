@@ -70,6 +70,7 @@ onMounted(async () => {
       <v-list class="listado">
         <v-item-group v-for="record, index in collections" :key="record.id">
           <CollectionLink
+            :key="index"
             :record="record"
             @update="update"
           />

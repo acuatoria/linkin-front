@@ -25,14 +25,14 @@ export default {
     <v-item>
       <div flex flex-row justify-between items-center>
         <div text-left ml-3 overflow-x-auto>
-          <a @click="$router.push(`/collection/${record.id}`)">
+          <NuxtLink :to="`/collection/${record.id}`">
             <div class="item-text">
               <span text-size-lg><v-chip color="lighten-1">{{ record.name }}</v-chip></span>
             </div>
             <div class="item-text" text-size-sm>
               {{ record.description || '{ your description }' }}
             </div>
-          </a>
+          </NuxtLink>
           <div v-if="record.public" class="item-text" text-size-sm>
             <v-chip color="orange" @click="showDialog = !showDialog">
               public link: {{ `${baseUrl}/collection/${record.id}` }}
