@@ -1,7 +1,7 @@
 <template>
-  <div class="flex justify-around mt-8">
+  <v-card>
     <NuxtLink to="/user/home">
-      <v-icon icon="i-line-md:account" />
+      My links
     </NuxtLink>
-  </div>
+  </v-card>
 </template>

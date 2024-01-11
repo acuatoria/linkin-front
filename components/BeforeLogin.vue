@@ -16,7 +16,7 @@ const dialog = ref(false)
           color="amber"
         >
           <v-icon icon="i-line-md:account-small" />
-          <span ml-2 text-l>Sign in</span>
+          <span ml-2 text-l>Log in</span>
         </v-btn>
       </template>
 

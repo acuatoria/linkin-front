@@ -104,7 +104,7 @@ export default {
         :disabled="sending"
         @click="submitForm"
       >
-        Sign In
+        Log In
         <v-icon v-show="sending" icon="i-line-md:loading-alt-loop" />
       </v-btn>
       <v-btn

@@ -12,9 +12,9 @@
             <BeforeLogin />
           </div>
         </div>
-        <div v-if="$auth.loggedIn" class="shadow rounded">
-          <Logout />
+        <div v-if="$auth.loggedIn" class="rounded">
           <LinkUserHome />
+          <Logout />
         </div>
       </div>
     </div>
