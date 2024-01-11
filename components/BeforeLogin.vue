@@ -13,8 +13,7 @@ const dialog = ref(false)
         <v-btn
           v-bind="props"
           rounded="lg"
-          variant="tonal"
-          color="orange"
+          color="amber"
         >
           <v-icon icon="i-line-md:account-small" />
           <span ml-2 text-l>Sign in</span>

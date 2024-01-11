@@ -11,9 +11,6 @@
           <div>
             <BeforeLogin />
           </div>
-          <div m-3>
-            <Register />
-          </div>
         </div>
         <div v-if="$auth.loggedIn" class="shadow rounded">
           <Logout />

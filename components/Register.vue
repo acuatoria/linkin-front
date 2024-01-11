@@ -86,12 +86,13 @@ export default {
       <template #activator="{ props }">
         <v-btn
           rounded="lg"
-          variant="tonal"
-          color="deep-orange"
+          color="deep-purple"
           v-bind="props"
         >
           <v-icon icon="i-line-md:account-add" />
-          <span ml-2 text-l>Register</span>
+          <v-text ml-2 text-l>
+            Join now
+          </v-text>
         </v-btn>
       </template>
 
@@ -146,7 +147,6 @@ export default {
               </div>
             </div>
           </div>
-
 
           <div :class="{ 'text-red': v$.recaptcha_response.$errors.length }">
             <VueRecaptcha

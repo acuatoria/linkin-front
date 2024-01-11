@@ -11,12 +11,7 @@ export default {
 <template>
   <div inline-flex text-2xl font-300 cursor-default>
     <NuxtLink to="/">
-      
-      
-      <v-icon icon="i-line-md:chevron-left" rotate="-90">
-      </v-icon>
       <div flex flex-col children:mx-auto>
-      
         <svg
           id="svg6"
           version="1.0"
@@ -41,10 +36,6 @@ export default {
           </g>
         </svg>
       </div>
-      <v-icon icon="i-line-md:chevron-left" rotate="90">
-      </v-icon>
-
-      
     </NuxtLink>
   </div>
 </template>

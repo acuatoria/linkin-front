@@ -6,14 +6,13 @@ defineProps({
 
 <template>
   <div
-    p-1
+    p-4
     flex
     justify-between
     items-center
   >
-    
     <Logo />
-    
+
     <div class="title">
       {{ path }}
     </div>
