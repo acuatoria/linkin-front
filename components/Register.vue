@@ -89,10 +89,8 @@ export default {
           color="deep-purple"
           v-bind="props"
         >
-          <v-icon icon="i-line-md:account-add" />
-          <v-text ml-2 text-l>
-            Join now
-          </v-text>
+          <v-icon icon="i-line-md:account-add" mr-2 />
+          Join now
         </v-btn>
       </template>
 
