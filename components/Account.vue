@@ -14,6 +14,7 @@
         </div>
         <div v-if="$auth.loggedIn" class="rounded">
           <LinkUserHome />
+          <v-divider />
           <Logout />
         </div>
       </div>

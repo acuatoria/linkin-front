@@ -1,7 +1,7 @@
 <template>
-  <v-card>
+  <v-btn color="purple">
     <NuxtLink to="/user/home">
       My links
     </NuxtLink>
-  </v-card>
+  </v-btn>
 </template>
